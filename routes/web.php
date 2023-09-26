@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+//ulasan
+Route::get('/ulasan', [\App\Http\Controllers\UlasanController::class, 'index'])->name('ulasan.index');
+
+
+Route::get('/dashboard', [\App\Http\Controllers\UlasanController::class, 'index'])->name('ulasan.index');
+Route::get('/dashboard/ulasan', [\App\Http\Controllers\UlasanController::class, 'index'])->name('ulasan.index');
