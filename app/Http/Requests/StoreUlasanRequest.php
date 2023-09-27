@@ -22,9 +22,7 @@ class StoreUlasanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'required|string',
-            'email' => 'required|string',
-            'ulasan' => 'required|string'
+            //
         ];
     }
 }

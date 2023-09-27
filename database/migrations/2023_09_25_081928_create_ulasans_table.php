@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('ulasans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('email');
+            $table->longText('ulasan');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

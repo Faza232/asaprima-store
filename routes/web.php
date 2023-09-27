@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 //ulasan
-Route::get('/ulasan', [\App\Http\Controllers\UlasanController::class, 'index'])->name('ulasan.index');
-Route::post('/ulasan', [\App\Http\Controllers\UlasanController::class, 'create'])->name('ulasan.create');
+Route::get('/ulasan', [\App\Http\Controllers\UlasanController::class, 'index'])->name('index');
+Route::post('/ulasan', [\App\Http\Controllers\UlasanController::class, 'store'])->name('create');
 
 //Dashboard
 Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'index'])->name('dashboard.index');

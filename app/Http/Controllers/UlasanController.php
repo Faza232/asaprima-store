@@ -29,19 +29,23 @@ class UlasanController extends Controller
      */
     public function store(StoreUlasanRequest $request)
     {
-        try {
-            $muzaki = Ulasan::create([
-                'nama' => $request->nama,
-                'nik' => $request->nik,
-                'alamat' => $request->alamat,
-                'noTelp' => $request->noTelp,
-                'npwp' => $request->npwp
-            ]);
-            
-            if(!$muzaki)
-            {
-                throw new Exception('Muzaki not created');
-            }
+        // Validasi data jika diperlukan
+        $request->validate([
+            'nama' => 'required|max:255',
+            'email' => 'required',
+            'ulasan' => 'required',
+        ]);
+    
+        // Simpan ulasan ke database
+        $ulasan = new ulasan;
+        $ulasan->nama = $request->input('nama');
+        $ulasan->email = $request->input('email');
+        $ulasan->ulasan = $request->input('ulasan');
+        $ulasan->save();
+    
+        // Redirect ke halaman yang sesuai setelah penyimpanan
+        return redirect('/ulasans')->with('success', 'Ulasan berhasil disimpan!');
+    }
     
 
     /**
