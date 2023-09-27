@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ulasan;
 use App\Http\Requests\StoreUlasanRequest;
 use App\Http\Requests\UpdateUlasanRequest;
+use Exception;
 
 class UlasanController extends Controller
 {
@@ -29,7 +30,24 @@ class UlasanController extends Controller
      */
     public function store(StoreUlasanRequest $request)
     {
-        //
+        try {
+            $muzaki = Ulasan::create([
+                'nama' => $request->nama,
+                'nik' => $request->nik,
+                'alamat' => $request->alamat,
+                'noTelp' => $request->noTelp,
+                'npwp' => $request->npwp
+            ]);
+            
+            if(!$muzaki)
+            {
+                throw new Exception('Muzaki not created');
+            }
+    
+            return ResponseFormatter::success($muzaki, 'Muzaki successfully added');
+        } catch (Exception $e) {
+            return ResponseFormatter::error($e->getMessage(), 500);
+        }
     }
 
     /**
