@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Ulasan;
 use App\Http\Requests\StoreUlasanRequest;
 use App\Http\Requests\UpdateUlasanRequest;
-use Exception;
 
 class UlasanController extends Controller
 {
@@ -44,11 +43,6 @@ class UlasanController extends Controller
                 throw new Exception('Muzaki not created');
             }
     
-            return ResponseFormatter::success($muzaki, 'Muzaki successfully added');
-        } catch (Exception $e) {
-            return ResponseFormatter::error($e->getMessage(), 500);
-        }
-    }
 
     /**
      * Display the specified resource.
