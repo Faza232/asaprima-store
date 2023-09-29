@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Ulasan;
 use App\Http\Requests\StoreUlasanRequest;
+use App\Helpers\ResponseFormatter;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUlasanRequest;
+use Exception;
 
 class UlasanController extends Controller
 {
@@ -19,34 +22,57 @@ class UlasanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUlasanRequest $request)
+    // public function store (StoreUlasanRequest $request)
+    // {
+    //     try {
+    //         $ulasan = Ulasan::create([
+    //             'nama' => $request->nama,
+    //             'email' => $request->email,
+    //             'isi' => $request->isi,
+    //             'status' => false
+    //         ]);
+            
+    //         if(!$ulasan)
+    //         {
+    //             throw new Exception('Ulasan not created');
+    //         }
+    
+    //         return ResponseFormatter::success($ulasan, 'Ulasan successfully added');
+    //     } catch (Exception $e) {
+    //         return ResponseFormatter::error($e->getMessage(), 500);
+    //     }
+    // }
+    public function store(Request $request)
     {
-        // Validasi data jika diperlukan
-        $request->validate([
-            'nama' => 'required|max:255',
-            'email' => 'required',
-            'ulasan' => 'required',
-        ]);
-    
+        // // Validasi data jika diperlukan
+        // $request->validate([
+        //     'nama' => 'required|max:255',
+        //     'email' => 'required|max:255',
+        //     'isi' => 'required',
+        // ]);
+
+        // Inisialisasi variabel $status dengan nilai default false
+        $status = false;
+
         // Simpan ulasan ke database
-        $ulasan = new ulasan;
-        $ulasan->nama = $request->input('nama');
-        $ulasan->email = $request->input('email');
-        $ulasan->ulasan = $request->input('ulasan');
-        $ulasan->save();
-    
-        // Redirect ke halaman yang sesuai setelah penyimpanan
-        return redirect('/ulasans')->with('success', 'Ulasan berhasil disimpan!');
+        $ulasan = Ulasan::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'isi' => $request->isi,
+            'status' => $status
+        ]);
+        return redirect('/ulasan')->with('success', 'Ulasan berhasil disimpan!');
     }
     
+
 
     /**
      * Display the specified resource.

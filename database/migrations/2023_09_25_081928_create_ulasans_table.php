@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('email');
-            $table->longText('ulasan');
-            $table->boolean('status')->default(false);
+            $table->longText('isi');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

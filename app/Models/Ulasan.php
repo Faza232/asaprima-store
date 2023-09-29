@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ulasan extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama', 
+        'email',
+        'isi', 
+        'status',
+    ];
 }
