@@ -18,38 +18,9 @@ class UlasanController extends Controller
     {
         return view('frontend.ulasan');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //     //
-    // }
-
     /**
      * Store a newly created resource in storage.
      */
-    // public function store (StoreUlasanRequest $request)
-    // {
-    //     try {
-    //         $ulasan = Ulasan::create([
-    //             'nama' => $request->nama,
-    //             'email' => $request->email,
-    //             'isi' => $request->isi,
-    //             'status' => false
-    //         ]);
-            
-    //         if(!$ulasan)
-    //         {
-    //             throw new Exception('Ulasan not created');
-    //         }
-    
-    //         return ResponseFormatter::success($ulasan, 'Ulasan successfully added');
-    //     } catch (Exception $e) {
-    //         return ResponseFormatter::error($e->getMessage(), 500);
-    //     }
-    // }
     public function store(Request $request)
     {
         // // Validasi data jika diperlukan
