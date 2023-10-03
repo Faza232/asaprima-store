@@ -23,4 +23,4 @@ Route::post('/ulasan', [\App\Http\Controllers\UlasanController::class, 'store'])
 
 //Dashboard
 Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'index'])->name('dashboard.index');
-Route::get('/dashboard/ulasan', [\App\Http\Controllers\admin\TanggapanController::class, 'index'])->name('dashboard.ulasan.index');
+Route::get('/dashboard/ulasan', [\App\Http\Controllers\admin\DashboardUlasanController::class, 'index'])->name('dashboard.ulasan.index');

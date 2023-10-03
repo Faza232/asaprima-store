@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('email');
-            $table->longText('isi');
-            $table->boolean('status');
+            $table->Text('isi');
+            $table->enum('status',['true', 'false'])->default('false');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }
