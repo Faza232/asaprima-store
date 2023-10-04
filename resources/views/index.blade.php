@@ -1,5 +1,6 @@
 @extends('layout.main')
 @section('container')
+<<<<<<< HEAD
 
 <!-- <div class="container mx-auto px-30"> -->
 <div class="container mx-auto px-40">
@@ -214,4 +215,9 @@
         </div>
     </div>
     </div>
+=======
+  <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
+>>>>>>> 5ce6104da96494b6f17aae7ba6b07ca2b06f29c5
 @endsection

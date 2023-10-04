@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('ulasans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('email');
+            $table->Text('isi');
+            $table->enum('status',['true', 'false'])->default('false');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }
