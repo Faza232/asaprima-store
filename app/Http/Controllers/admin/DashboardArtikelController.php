@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
-class ArtikelController extends Controller
+class DashboardArtikelController extends Controller
 {
     /**
      * Display a listing of the resource.
