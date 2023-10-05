@@ -182,6 +182,10 @@
                         <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                             <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         </button>
+                        <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </button>
+                        
                     </div>
                     <div class="px-5 py-3">
                         <h3 class="text-gray-700 uppercase">Instruments & Orthopedi​</h3>
@@ -214,4 +218,61 @@
         </div>
     </div>
     </div>
+
+<!-- Testimonials  -->
+<div class="container mx-auto px-40">
+<div class="mb-8 text-center">
+    <h3 class="text-gray-600 text-2xl font-medium text-center mt-8 bold">Testimonials</h3>
+    <p class="text-lg text-gray-600">What others say about us</p>
+</div>
+<div class="lg:grid lg:grid-cols-3 lg:gap-x-2">
+    <div class="p-4 text-gray-800 rounded-lg shadow-md">
+        <div class="mb-2">
+            <p class="mb-2 text-center text-gray-600 ">
+                " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique sapiente iusto esse. "
+            </p>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-12 h-12 overflow-hidden bg-gray-100 border-2 border-indigo-100 rounded-full">
+                    <img src="https://cdn.pixabay.com/photo/2017/05/19/12/38/entrepreneur-2326419__340.jpg" alt="img"
+                        class="object-cover object-center w-full h-full" />
+                </div>
+                <h5 class="font-bold text-indigo-600">Name</h5>
+                <p class="text-sm text-gray-600">Customer</p>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 text-gray-800 rounded-lg shadow-md">
+        <div class="mb-2">
+            <p class="mb-2 text-center text-gray-600 ">
+                " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique sapiente iusto esse. "
+            </p>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-12 h-12 overflow-hidden bg-gray-100 border-2 border-indigo-100 rounded-full">
+                    <img src="https://cdn.pixabay.com/photo/2021/07/14/17/32/manager-6466713__340.jpg" alt="img"
+                        class="object-cover object-center w-full h-full" />
+                </div>
+                <h5 class="font-bold text-indigo-600">Name</h5>
+                <p class="text-sm text-gray-600">CUstomer</p>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 text-gray-800 rounded-lg shadow-md">
+        <div class="mb-2">
+            <p class="mb-2 text-center text-gray-600 ">
+                " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique sapiente iusto esse. "
+            </p>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-12 h-12 overflow-hidden bg-gray-100 border-2 border-indigo-100 rounded-full">
+                    <img src="https://cdn.pixabay.com/photo/2021/07/14/17/32/manager-6466713__340.jpg" alt="img"
+                        class="object-cover object-center w-full h-full" />
+                </div>
+                <h5 class="font-bold text-indigo-600">Name</h5>
+                <p class="text-sm text-gray-600">Customer</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
 @endsection
