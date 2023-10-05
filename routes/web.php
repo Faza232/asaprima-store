@@ -21,6 +21,10 @@ Route::get('/', function () {
 Route::get('/ulasan', [\App\Http\Controllers\UlasanController::class, 'index'])->name('index');
 Route::post('/ulasan', [\App\Http\Controllers\UlasanController::class, 'store'])->name('create');
 
+//
+Route::get('/product', [\App\Http\Controllers\ProdukController::class, 'index'])->name('index');
+
 //Dashboard
 Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'index'])->name('dashboard.index');
-Route::get('/dashboard/ulasan', [\App\Http\Controllers\admin\DashboardUlasanController::class, 'index'])->name('dashboard.ulasan.index');
+Route::resource('/dashboard/ulasan', \App\Http\Controllers\admin\DashboardUlasanController::class);
+Route::resource('/dashboard/artikel', \App\Http\Controllers\admin\DashboardArtikelController::class);
