@@ -13,9 +13,9 @@ class ArtikelController extends Controller
     public function index()
     {
         return view('frontend.artikel', [
-            "title" => "All artikel",
-            "active" => "artikel",
-            "artikel" => Artikel::all()
+            // "title" => "All artikel",
+            // "active" => "artikel",
+            // "artikel" => Artikel::all()
         ]);
     }
     /**
@@ -24,9 +24,9 @@ class ArtikelController extends Controller
     public function show(artikel $artikel)
     {
         return view('frontend.artikelshow', [
-            "title" => "Single artikel",
-            "active" => "artikel",
-            "artikel" => $artikel
+            // "title" => "Single artikel",
+            // "active" => "artikel",
+            // "artikel" => $artikel
         ]);
     }
 }

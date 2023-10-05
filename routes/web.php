@@ -21,8 +21,9 @@ Route::get('/', function () {
 Route::get('/ulasan', [\App\Http\Controllers\UlasanController::class, 'index'])->name('index');
 Route::post('/ulasan', [\App\Http\Controllers\UlasanController::class, 'store'])->name('create');
 
-//
-Route::get('/product', [\App\Http\Controllers\ProdukController::class, 'index'])->name('index');
+//artikel
+Route::get('/artikel', [\App\Http\Controllers\ArtikelController::class, 'index'])->name('index');
+Route::get('/artikel/show', [\App\Http\Controllers\ArtikelController::class, 'show'])->name('index');
 
 //Dashboard
 Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'index'])->name('dashboard.index');
