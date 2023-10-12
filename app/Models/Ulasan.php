@@ -9,9 +9,4 @@ class Ulasan extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    
-    public function ulasan()
-    {
-        return $this->hasMany(Ulasan::class);
-    }
 }
