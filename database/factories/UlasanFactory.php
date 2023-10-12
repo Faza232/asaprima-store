@@ -17,7 +17,11 @@ class UlasanFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nama' => $this->faker->name(mt_rand(2, 8)),
+            'email' => $this->faker->email(),
+            'isi' => $this->faker->sentence(10),
+            // 'body' => '<p>' . implode('</p><p>',$this->faker->paragraph(mt_rand(5, 10))) . '</p>',
+            'status' => $this->faker->boolean,
         ];
     }
 }
