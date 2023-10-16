@@ -4,7 +4,7 @@
     <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Edit Ulasan</h1>
     </div>
-    <div class="col-lg-8 ml-20">
+    <div class="col-lg-8 ml-80">
         <form method="POST" action="/dashboard/ulasan" class="mb-5" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

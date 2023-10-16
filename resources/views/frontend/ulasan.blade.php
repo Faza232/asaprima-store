@@ -1,7 +1,7 @@
 @extends('layout.main')
 @section('container')
+<div class="lg:grid lg:grid-flow-col lg:gap-x-2">
 @foreach ($ulasan as $ulasan)
-<div class="lg:grid lg:grid-cols-3 lg:gap-x-2">
     <div class="p-4 text-gray-800 rounded-lg shadow-md">
         <div class="mb-2">
             <p class="mb-2 text-center text-gray-600 ">
@@ -18,6 +18,7 @@
         </div>
     </div>
 @endforeach
+</div>
 <div class="container mx-auto px-40">
 <form action="/ulasan" method="POST">
   @csrf
