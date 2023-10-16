@@ -6,6 +6,7 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\DashboardUlasanController;
 use App\Http\Controllers\admin\DashboardArtikelController;
+use App\Http\Controllers\Home;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,7 @@ use App\Http\Controllers\admin\DashboardArtikelController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [Home::class, 'index'])->name('index');
 
 //ulasan
 Route::get('/ulasan', [UlasanController::class, 'index'])->name('index');

@@ -15,7 +15,7 @@ class DashboardArtikelController extends Controller
      */
     public function index()
     {
-        return view('Dashboard.artikel.index', [
+        return view('admin.artikel.index', [
             'artikel'=>Artikel::all()
         ]);
     }
@@ -25,7 +25,7 @@ class DashboardArtikelController extends Controller
      */
     public function create()
     {
-        return view('dashboard.artikel.create');
+        return view('admin.artikel.create');
     }
 
     /**
@@ -41,15 +41,19 @@ class DashboardArtikelController extends Controller
                 'body' => 'required'
             ]);
     
-            if($request->file('image')) {
-                $validatedData['image'] = $request->file('image')->store('Artikel-images');
-            }
-    
-            $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        // Buat nama foto agar tidak tabrakan
+        $extFile = $request->image->getClientOriginalExtension();
+        $namaFile = Str::random(10) . time() . '.' . $extFile;
+
+        $path = $request->image->move('image/galeri', $namaFile);
+        $path = str_replace('\\', '/', $path);
+
+        $validatedData['image'] = $path;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 75);
     
             Artikel::create($validatedData);
     
-            return redirect('/dashboard/artikel')->with('success', 'New Artikel has been added!');
+            return redirect('/admin/artikel')->with('success', 'New Artikel has been added!');
     }
 
     /**
@@ -58,7 +62,7 @@ class DashboardArtikelController extends Controller
     public function show(Artikel $artikel)
     {
         // Menampilkan data spesifik tiap Artikel (READ)
-        return view('dashboard.artikel.show', [
+        return view('admin.artikel.show', [
             'artikel' => $artikel
         ]);
     }
@@ -68,7 +72,7 @@ class DashboardArtikelController extends Controller
      */
     public function edit(artikel $artikel)
     {
-        return view('dashboard.artikel.edit', [
+        return view('admin.artikel.edit', [
             'artikel' => $artikel
         ]);
     }
@@ -103,7 +107,7 @@ class DashboardArtikelController extends Controller
         Artikel::where('id', $artikel->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/Artikel')->with('success', 'Artikel has been updated!');
+        return redirect('/admin/Artikel')->with('success', 'Artikel has been updated!');
     }
 
     /**
@@ -117,6 +121,6 @@ class DashboardArtikelController extends Controller
         }
 
         Artikel::destroy(@$artikel->id);   // delete from post where id = slug
-        return redirect('/dashboard/artikel')->with('success', 'Post has been deleted');
+        return redirect('/admin/artikel')->with('success', 'Post has been deleted');
     }
 }
