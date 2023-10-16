@@ -18,11 +18,16 @@ class UlasanController extends Controller
     public function index()
     {
         return view('frontend.ulasan', [
-            "tittle" =>"Ulasan",
-            "active" =>"ulasan",
-            'ulasan' => Ulasan::latest()->select('nama', 'isi')->get()
+            "tittle" => "Ulasan",
+            "active" => "ulasan",
+            'ulasan' => Ulasan::latest()
+                ->where('status', true)
+                ->select('nama', 'isi')
+                ->take(3)
+                ->get()
         ]);
     }
+    
     
     /**
      * Store a newly created resource in storage.

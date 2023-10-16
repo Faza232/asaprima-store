@@ -24,7 +24,7 @@ class DashboardUlasanController extends Controller
      * Show the form for creating a new resource.
      */
     public function create(){
-        return view ('dashboard.ulasan.create');
+        return view ('admin.ulasan.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class DashboardUlasanController extends Controller
     public function show(Ulasan $ulasan)
     {
         // Menampilkan data spesifik tiap ulasan (READ)
-        return view('dashboard.posts.show', [
+        return view('admin.ulasan.show', [
             'ulasan' => $ulasan
         ]);
     }
@@ -57,9 +57,12 @@ class DashboardUlasanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function aprove(Ulasan $ulasan)
+    public function edit(Ulasan $ulasan)
     {
-        //
+        // menampilkan view untuk update
+        return view('admin.ulasan.edit', [
+            'ulasan' => $ulasan
+        ]);
     }
 
     /**
@@ -79,29 +82,28 @@ class DashboardUlasanController extends Controller
         Ulasan::where('id', $ulasan->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/Ulasan')->with('success', 'Ulasan has been updated!');
+        return redirect('/dashboard/ulasan')->with('success', 'Ulasan has been updated!');
     }
+    
+    public function approve(Ulasan $ulasan)
+    {
+        $ulasan->update(['status' => true]);
+        return redirect('/dashboard/ulasan')->with('success', 'Ulasan has been approved');
+    }
+    
+    public function notapprove(Ulasan $ulasan)
+    {
+        $ulasan->update(['status' => false]);
+        return redirect('/dashboard/ulasan')->with('success', 'Ulasan has not been approved');
+    }
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Ulasan $ulasan)
     {
-        try {
-            //Get Ulasan
-            $ulasan = Ulasan::find($id);
-
-            //check if Ulasan exists
-            if (!$ulasan) {
-                throw new Exception('Ulasan not Found');
-            }
-
-            //Delete Ulasan
-            $ulasan->delete();
-
-            return ResponseFormatter::success('Ulasan deleted');
-        } catch (Exception $e) {
-            return ResponseFormatter::error($e->getMessage(),500);
-        }
-    }
+        Ulasan::destroy($ulasan->id);
+        return redirect('/dashboard/ulasan')->with('success', 'Ulasan has been deleted');
+    }    
 }

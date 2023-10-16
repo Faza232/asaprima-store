@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UlasanController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\DashboardUlasanController;
+use App\Http\Controllers\admin\DashboardArtikelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +23,19 @@ Route::get('/', function () {
 });
 
 //ulasan
-Route::get('/ulasan', [\App\Http\Controllers\UlasanController::class, 'index'])->name('index');
-Route::post('/ulasan', [\App\Http\Controllers\UlasanController::class, 'store'])->name('create');
+Route::get('/ulasan', [UlasanController::class, 'index'])->name('index');
+Route::post('/ulasan', [UlasanController::class, 'store'])->name('create');
 
 //artikel
-Route::get('/artikel', [\App\Http\Controllers\ArtikelController::class, 'index'])->name('index');
-Route::get('/artikel/show', [\App\Http\Controllers\ArtikelController::class, 'show'])->name('index');
+Route::get('/artikel', [ArtikelController::class, 'index'])->name('index');
+Route::get('/artikel/show', [ArtikelController::class, 'show'])->name('index');
 
 //Dashboard
-Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'index'])->name('dashboard.index');
-Route::resource('/dashboard/ulasan', \App\Http\Controllers\admin\DashboardUlasanController::class);
-Route::resource('/dashboard/artikel', \App\Http\Controllers\admin\DashboardArtikelController::class);
+Route::put('/dashboard/ulasan/{ulasan}/approve', [DashboardUlasanController::class, 'approve'])->name('ulasan.approve');
+Route::put('/dashboard/ulasan/{ulasan}/notapprove', [DashboardUlasanController::class, 'notapprove'])->name('ulasan.notapprove');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::resource('/dashboard/ulasan', DashboardUlasanController::class);
+Route::resource('/dashboard/artikel', DashboardArtikelController::class);
+
+
