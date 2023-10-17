@@ -13,17 +13,24 @@
   <!-- Grid -->
   
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    @foreach($artikel as $artikel)
     <!-- Card -->
     <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5 dark:border-gray-700 dark:hover:border-transparent dark:hover:shadow-black/[.4]" href='/artikel/show'>
+      
+    @if ($artikel->image)
       <div class="aspect-w-16 aspect-h-11">
-        <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1633114128174-2f8aa49759b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description">
+      <img src="{{ asset('storage/'.$artikel->image) }}" class="img-fluid" alt="{{ $artikel->image }}">
       </div>
+    @else
+    <img src="https://source.unsplash.com/1200x400?{{ $artikel }}" class="img-fluid mt-3" alt="{{ $artikel}}">
+    @endif
+
       <div class="my-6">
         <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
-          ARTIKEL 1
+          {{$artikel->title}}
         </h3>
         <p class="mt-5 text-gray-600 dark:text-gray-400">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique sapiente iusto esse.
+        {{$artikel->excerpt}}
         </p>
       </div>
       <div class="mt-auto flex items-center gap-x-3">
@@ -34,45 +41,7 @@
       </div>
     </a>
     <!-- End Card -->
-
-      <div class="my-6">
-        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
-          ARTIKEL 2
-        </h3>
-        <p class="mt-5 text-gray-600 dark:text-gray-400">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique sapiente iusto esse.
-        </p>
-      </div>
-      <div class="mt-auto flex items-center gap-x-3">
-        <img class="w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">
-        <div>
-          <h5 class="text-sm text-gray-800 dark:text-gray-200">By PT Asa Prima Niaga</h5>
-        </div>
-      </div>
-    </a>
-    <!-- End Card -->
-
-    <!-- Card -->
-    <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5 dark:border-gray-700 dark:hover:border-transparent dark:hover:shadow-black/[.4]" href="#">
-      <div class="aspect-w-16 aspect-h-11">
-        <img class="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1521321205814-9d673c65c167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3548&q=80" alt="Image Description">
-      </div>
-      <div class="my-6">
-        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
-          ARTIKEL 3
-        </h3>
-        <p class="mt-5 text-gray-600 dark:text-gray-400">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique sapiente iusto esse.
-        </p>
-      </div>
-      <div class="mt-auto flex items-center gap-x-3">
-        <img class="w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">
-        <div>
-          <h5 class="text-sm text-gray-800 dark:text-gray-200">By PT Asa Prima Niaga</h5>
-        </div>
-      </div>
-    </a>
-    <!-- End Card -->
+    @endforeach
   </div>
   <!-- End Grid -->
 

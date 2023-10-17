@@ -15,7 +15,9 @@ class ArtikelController extends Controller
         return view('frontend.artikel', [
             "title" => "All artikel",
             "active" => "artikel",
-            "artikel" => Artikel::all()
+            "artikel" => Artikel::latest()
+            ->take(20)
+            ->get()
         ]);
     }
     /**

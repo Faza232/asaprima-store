@@ -202,19 +202,19 @@
     <h3 class="text-gray-600 text-2xl font-medium text-center mt-8 bold">Testimonials</h3>
     <p class="text-lg text-gray-600">What others say about us</p>
 </div>
+<div class="grid grid-cols-3 grid-flow-rows gap-4 py-12">
 @foreach ($ulasan as $ulasan)
-<div class="lg:grid lg:grid-cols-3 lg:gap-x-2">
     <div class="p-4 text-gray-800 rounded-lg shadow-md">
         <div class="mb-2">
             <p class="mb-2 text-center text-gray-600 ">
-                " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique sapiente iusto esse. "
+            {{$ulasan->isi}}
             </p>
             <div class="flex flex-col items-center justify-center">
                 <div class="w-12 h-12 overflow-hidden bg-gray-100 border-2 border-indigo-100 rounded-full">
                     <img src="https://cdn.pixabay.com/photo/2017/05/19/12/38/entrepreneur-2326419__340.jpg" alt="img"
                         class="object-cover object-center w-full h-full" />
                 </div>
-                <h5 class="font-bold text-indigo-600">Name</h5>
+                <h5 class="font-bold text-indigo-600">{{$ulasan->nama}}</h5>
                 <p class="text-sm text-gray-600">Customer</p>
             </div>
         </div>
