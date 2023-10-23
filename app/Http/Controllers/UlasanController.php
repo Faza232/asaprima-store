@@ -23,7 +23,7 @@ class UlasanController extends Controller
             'ulasan' => Ulasan::latest()
                 ->where('status', true)
                 ->select('nama', 'isi')
-                ->take(10)
+                ->take(9)
                 ->get()
         ]);
     }

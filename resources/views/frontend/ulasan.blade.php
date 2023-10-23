@@ -1,5 +1,6 @@
 @extends('layout.main')
 @section('container')
+<<<<<<< HEAD
 <div class="container mx-auto px-40">
 <div class="mb-8 text-center">
     <h3 class="text-gray-600 text-2xl font-medium text-center mt-8 bold">Testimonials</h3>
@@ -23,6 +24,24 @@
                   <!-- <p class="center">Customer</p> -->
               </div>
           </div>
+=======
+<div class="grid grid-cols-3 grid-flow-rows gap-4 py-12">
+@foreach ($ulasan as $ulasan)
+    <div class="p-4 text-gray-800 rounded-lg shadow-md">
+        <div class="mb-2">
+            <p class="mb-2 text-center text-gray-600 ">
+            {{$ulasan->isi}}
+            </p>
+            <div class="flex flex-col items-center justify-center">
+                <div class="w-12 h-12 overflow-hidden bg-gray-100 border-2 border-indigo-100 rounded-full">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="img"
+                        class="object-cover object-center w-full h-full" />
+                </div>
+                <h5 class="font-bold text-indigo-600">{{$ulasan->nama}}</h5>
+                <p class="text-sm text-gray-600">Customer</p>
+            </div>
+        </div>
+>>>>>>> fad7a100054c0fd7a7463d7ca64636e641809a13
     </div>
   @endforeach
 </div>
@@ -43,8 +62,7 @@
     <input type="text" name="isi" id="isi" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Ulasan Anda" required>
   </div>
   <div class="flex justify-center items-center">
-  <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default</button>
-
+  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default</button>
 </form>
 </div>
 @endsection
