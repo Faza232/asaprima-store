@@ -21,6 +21,7 @@ class ArtikelFactory extends Factory
             'slug' => $this->faker->slug(),
             'excerpt' => $this->faker->paragraph(),
             // 'body' => '<p>' . implode('</p><p>',$this->faker->paragraph(mt_rand(5, 10))) . '</p>',
+            'status' => $this->faker->boolean,
             'body' => collect($this->faker->paragraphs(mt_rand(5, 10)))
                         ->map(fn($p) => "<p>$p</p>")
                         ->implode('')
