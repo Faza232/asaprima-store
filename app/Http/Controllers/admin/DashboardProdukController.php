@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
-
+use App\Models\SubKategori;
 
 class ProdukController extends Controller
 {
     public function index()
     {
-        return view('dashboard.produk.index', [
+        return view('admin.produk.index', [
+            'kategori' => kategori::all(),
+            'subkategori' => SubKategori::all(),
             'produks' => Produk::all()
         ]);
     }
@@ -26,7 +28,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('dashboard.produk.create', [
+        return view('admin.produk.create', [
+            'subkategori' => SubKategori::all(),
             'kategoris' => Kategori::all()
         ]);
     }
@@ -41,15 +44,21 @@ class ProdukController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:produks',
             'image' => 'image|file|max:5048',
-            'category_id' => 'required',
-            'body' => 'required'
+            'kategori_id' => 'required',
+            'subkategori_id' => 'required',
+            'deskripsi' => 'required'
         ]);
 
+        // Buat nama foto agar tidak tabrakan
+        $extFile = $request->image->getClientOriginalExtension();
+        $namaFile = Str::random(10) . time() . '.' . $extFile;
 
-        if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('post-images');
-        }
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200, '...');
+        $path = $request->image->move('image/galeri', $namaFile);
+        $path = str_replace('\\', '/', $path);
+
+        $validatedData['image'] = $path;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->deskripsi), 75);
+    
 
         Produk::create($validatedData);
 
@@ -64,8 +73,8 @@ class ProdukController extends Controller
      */
     public function show(Produk $produk)
     {
-        return view('dashboard.produks.show', [
-            'post' => $produk
+        return view('admin.produks.show', [
+            'produk' => $produk
                 ]);
     }
 
@@ -75,8 +84,8 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
-        return view('dashboard.produks.edit', [
-            'post' => $produk,
+        return view('admin.produks.edit', [
+            'produk' => $produk,
             'kategoris' => Kategori::all()
         ]);
     }
@@ -89,9 +98,9 @@ class ProdukController extends Controller
     {
         $rules = [
             'title' => 'required|max:255',
-            'category_id' => 'required',
+            'kategori_id' => 'required',
             'image' => 'image|file|max:2048',
-            'body' => 'required'
+            'deskripsi' => 'required'
 
         ];
 
@@ -109,7 +118,7 @@ class ProdukController extends Controller
             }
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200, '...');
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->deskripsi), 200, '...');
 
         Produk::where('id', $produk->id)
             ->update($validatedData);

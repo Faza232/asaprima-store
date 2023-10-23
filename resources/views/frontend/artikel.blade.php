@@ -16,7 +16,7 @@
     @foreach($artikel as $artikel)
     <!-- Card -->
     <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5 dark:border-gray-700 dark:hover:border-transparent dark:hover:shadow-black/[.4]" href='/artikel/show'>
-      
+
     @if ($artikel->image)
       <div class="aspect-w-16 aspect-h-11">
       <img src="{{ asset('storage/'.$artikel->image) }}" class="img-fluid" alt="{{ $artikel->image }}">
@@ -34,7 +34,7 @@
         </p>
       </div>
       <div class="mt-auto flex items-center gap-x-3">
-        <img class="w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">
+        <img class="w-8 h-8 rounded-full" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Image Description">
         <div>
           <h5 class="text-sm text-gray-800 dark:text-gray-200">By PT Asa Prima Niaga</h5>
         </div>

@@ -11,7 +11,7 @@ class DashboardKategoriController extends Controller
 {
     public function index()
     {
-        return view('dashboard.kategori.index', [
+        return view('admin.kategori.index', [
             'kategoris' => Kategori::all()
         ]);
     }

@@ -33,13 +33,13 @@ class DashboardArtikelController extends Controller
      */
     public function store(Request $request)
     {
-            // Proses Menyimpan data
-            $validatedData = $request->validate([
-                'title' => 'required|max:255',
-                'slug' => 'required|unique:artikel',
-                'image' => 'image|file|max:3000',
-                'body' => 'required'
-            ]);
+        // Proses Menyimpan data
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:artikel',
+            'image' => 'image|file|max:3000',
+            'body' => 'required'
+        ]);
     
         // Buat nama foto agar tidak tabrakan
         $extFile = $request->image->getClientOriginalExtension();
@@ -50,10 +50,10 @@ class DashboardArtikelController extends Controller
 
         $validatedData['image'] = $path;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 75);
-    
-            Artikel::create($validatedData);
-    
-            return redirect('/admin/artikel')->with('success', 'New Artikel has been added!');
+
+        Artikel::create($validatedData);
+
+        return redirect('/admin/artikel')->with('success', 'New Artikel has been added!');
     }
 
     /**
