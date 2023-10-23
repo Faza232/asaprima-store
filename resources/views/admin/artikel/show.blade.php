@@ -1,5 +1,5 @@
 {{-- ambil halaman main --}}
-@extends('dashboard.layouts.main')
+@extends('layouts.main')
 
 @section('container')
 <div class="container">

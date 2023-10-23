@@ -21,7 +21,7 @@
                       </li>
                       
                       <li>
-                          <a href="https://wa.me/+6285770553859" class="hover:underline">Phone : +62 857-7055-3859</a>
+                          <a href="https://wa.me/+6282219600023" class="hover:underline">Phone : +62 822-1960-0023</a> 
                       </li>
                       <li>
                           <a class="hover">Email: asaprimaniaga@gmail.com</a>
