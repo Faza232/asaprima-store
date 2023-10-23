@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->text('excerpt');
+            $table->boolean('status')->default(false);
             $table->text('body');
             $table->timestamp('published_at')->nullable();     // tipe data timestamp
             $table->timestamps();   // method untuk membuat created at & updated at

@@ -30,6 +30,9 @@ Route::get('/artikel', [ArtikelController::class, 'index'])->name('index');
 Route::get('/artikel/show', [ArtikelController::class, 'show'])->name('index');
 
 //Dashboard
+Route::put('/dashboard/artikel/{artikel}/approve', [DashboardArtikelController::class, 'approve'])->name('artikel.approve');
+Route::put('/dashboard/artikel/{artikel}/notapprove', [DashboardArtikelController::class, 'notapprove'])->name('artikel.notapprove');
+
 Route::put('/dashboard/ulasan/{ulasan}/approve', [DashboardUlasanController::class, 'approve'])->name('ulasan.approve');
 Route::put('/dashboard/ulasan/{ulasan}/notapprove', [DashboardUlasanController::class, 'notapprove'])->name('ulasan.notapprove');
 

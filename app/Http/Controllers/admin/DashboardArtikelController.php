@@ -17,6 +17,7 @@ class DashboardArtikelController extends Controller
     {
         return view('admin.artikel.index', [
             'artikel'=>Artikel::all()
+            ->where('status', true)
         ]);
     }
 
@@ -108,6 +109,18 @@ class DashboardArtikelController extends Controller
             ->update($validatedData);
 
         return redirect('/admin/Artikel')->with('success', 'Artikel has been updated!');
+    }
+
+    public function approve(Artikel $artikel)
+    {
+        $artikel->update(['status' => true]);
+        return redirect('/dashboard/artikel')->with('success', 'artikel has been approved');
+    }
+    
+    public function notapprove(Artikel $artikel)
+    {
+        $artikel->update(['status' => false]);
+        return redirect('/dashboard/artikel')->with('success', 'artikel has not been approved');
     }
 
     /**
