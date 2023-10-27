@@ -34,14 +34,15 @@ class DashboardArtikelController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         // Proses Menyimpan data
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:artikel',
-            'image' => 'image|file|max:3000',
-            'body' => 'required'
+            'slug' => 'required|unique:artikels',
+            'body' => 'required',
+            'image' => 'nullable|image|file|max:3000',
+            'status'=>'required'
         ]);
-    
         // Buat nama foto agar tidak tabrakan
         $extFile = $request->image->getClientOriginalExtension();
         $namaFile = Str::random(10) . time() . '.' . $extFile;
@@ -54,7 +55,7 @@ class DashboardArtikelController extends Controller
 
         Artikel::create($validatedData);
 
-        return redirect('/admin/artikel')->with('success', 'New Artikel has been added!');
+        return redirect('/dashboard/artikel')->with('success', 'New Artikel has been added!');
     }
 
     /**
@@ -83,9 +84,11 @@ class DashboardArtikelController extends Controller
      */
     public function update(Request $request, Artikel $artikel)
     {
+        dd($request->all());
         //proses update
         $rules = [
             'title' => 'required|max:255',
+            'slug'=> 'required',
             'image' => 'image|file|max:3000',
             'body' => 'required'
         ];
@@ -108,7 +111,7 @@ class DashboardArtikelController extends Controller
         Artikel::where('id', $artikel->id)
             ->update($validatedData);
 
-        return redirect('/admin/Artikel')->with('success', 'Artikel has been updated!');
+        return redirect('/dashboard/Artikel')->with('success', 'Artikel has been updated!');
     }
 
     public function approve(Artikel $artikel)

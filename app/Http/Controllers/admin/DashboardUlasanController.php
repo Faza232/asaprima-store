@@ -70,12 +70,12 @@ class DashboardUlasanController extends Controller
      */
     public function update(Request $request, Ulasan $ulasan)
     {
+        // dd($request);
         //proses update
         $rules = [
             'nama' => 'required|max:255',
             'email' => 'required|max:255',
-            'isi' => 'required',
-            'status'=> 'required'
+            'isi' => 'required'
         ];
         $validatedData = $request->validate($rules);
 
