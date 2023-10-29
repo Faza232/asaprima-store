@@ -1,85 +1,6 @@
 @extends('layout.admin')
 
 @section('container')
-<!-- <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <div class="pb-4 bg-white dark:bg-gray-900">
-         <div class="relative mt-1">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Nama
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Email
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Ulasan
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Status
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Aproval
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Aksi
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($ulasan as $ulasan)
-                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{$ulasan->nama}}
-                        </th>
-                        <td class="px-6 py-4">
-                            {{$ulasan->email}}
-                        </td>
-                        <td class="px-6 py-4">
-                            @if ($ulasan->status)
-                                <span class="font-medium text-green-600 dark:text-green-500">Approved</span>
-                            @else
-                                <span class="font-medium text-red-600 dark:text-red-500">Not Approved</span>
-                            @endif
-                        </td>
-                        <td class="px-6 py-4">
-                            {{$ulasan->isi}}
-                        </td>
-                        <td class="px-6 py-4">
-                            @if ($ulasan->status)
-                                <form action="{{ route('ulasan.notapprove', $ulasan->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="px-6 py-4 font-medium text-red-600 dark:text-red-500 hover:underline">Don't Approve</button>
-                                </form>
-                            @else
-                            <form action="{{ route('ulasan.approve', $ulasan->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="px-6 py-4 font-medium text-green-600 dark:text-green-500 hover:underline">Approve</button>
-                                </form>
-                            @endif
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="{{ route('ulasan.edit', $ulasan->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            <form action="{{ route('ulasan.destroy', $ulasan->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>            
-            <a href="/dashboard/ulasan/create">
-                <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Create New</button>
-            </a>
- 
-        </div>
-    </div>
-</div> -->
 <section class="container px-4 mx-auto">
     <div class="flex flex-col">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -107,12 +28,21 @@
                                     Date
                                 </th>
 
+                                
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                Status
+                                    Pengulas
+                                </th>
+
+                                <th scope="col" class="px-6 py-3">
+                                    Email
                                 </th>
 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     Ulasan
+                                </th>
+
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Status
                                 </th>
 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -129,91 +59,84 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                            @foreach($ulasan as $ulasan)
                             <tr>
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
 
-                                        <span>01</span>
+                                        <span>{{$loop->iteration}}</span>
                                     </div>
                                 </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Jan 6, 2022</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$ulasan->formatted_created_date}}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$ulasan->nama}}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$ulasan->email}}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$ulasan->isi}}</td>
+                                @if($ulasan->status)
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                     <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
-
-                                        <h2 class="text-sm font-normal">Approved</h2>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Monthly subscription</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div class="flex items-center gap-x-6">
-                                        <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
-                                            Approve
-                                        </button>
-
-                                        <button class="text-red-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Dont Approve
-                                        </button>
+                                        <h2 class="text-sm font-normal">Published</h2>
                                     </div>
                                 </td>
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                     <div class="flex items-center gap-x-6">
-                                        <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
-                                            Edit
-                                        </button>
-
+                                    <form action="{{ route('ulasan.notapprove', $ulasan->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
                                         <button class="text-red-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Delete
+                                            Dont Publish
                                         </button>
+                                    </form>
                                     </div>
                                 </td>
-                            </tr>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                            <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-
-                                        <span>02</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Jan 6, 2022</td>
+                                @else
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
+                                    <div class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
-
-                                        <h2 class="text-sm font-normal">Not Approved</h2>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">New Articles</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div class="flex items-center gap-x-6">
-                                        <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
-                                            Approve
-                                        </button>
-
-                                        <button class="text-red-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Dont Approve
-                                        </button>
+                                        <h2 class="text-sm font-normal">Unpublished</h2>
                                     </div>
                                 </td>
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                     <div class="flex items-center gap-x-6">
+                                    <form action="{{ route('ulasan.approve', $ulasan->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
+                                        Publish
+                                    </button>
+                                    </form>
+                                    </div>
+                                </td>
+                                @endif
+                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+
+                                    <div class="flex items-center gap-x-6">
+                                    <a href="{{ route('ulasan.edit', $ulasan->id) }}">
                                         <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
                                             Edit
                                         </button>
+                                    </a>
+                                    </div>
 
-                                        <button class="text-red-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                    <div class="flex items-center gap-x-6">
+                                    <form action="{{ route('ulasan.destroy', $ulasan->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                        <button type="submit" class="text-red-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
                                             Delete
                                         </button>
+                                        </form>
                                     </div>
+                                    
                                 </td>
                             </tr>
+                            @endforeach
+                            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
 
         <a href="/dashboard/ulasan/create" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
             <span>

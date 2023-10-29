@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produk;
-use App\Http\Requests\StoreProdukRequest;
-use App\Http\Requests\UpdateProdukRequest;
+use App\Models\Sertifikat;
+use App\Http\Requests\StoreSertifikatRequest;
+use App\Http\Requests\UpdateSertifikatRequest;
 
-class ProdukController extends Controller
+class SertifikatController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("frontend.produk");
+        //
     }
 
     /**
@@ -27,7 +27,7 @@ class ProdukController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProdukRequest $request)
+    public function store(StoreSertifikatRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class ProdukController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Produk $produk)
+    public function show(Sertifikat $sertifikat)
     {
         //
     }
@@ -43,7 +43,7 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Produk $produk)
+    public function edit(Sertifikat $sertifikat)
     {
         //
     }
@@ -51,7 +51,7 @@ class ProdukController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProdukRequest $request, Produk $produk)
+    public function update(UpdateSertifikatRequest $request, Sertifikat $sertifikat)
     {
         //
     }
@@ -59,7 +59,7 @@ class ProdukController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Produk $produk)
+    public function destroy(Sertifikat $sertifikat)
     {
         //
     }

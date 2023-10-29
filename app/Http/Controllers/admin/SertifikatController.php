@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Artikel;
+use App\Models\Sertifikat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
 
-class DashboardArtikelController extends Controller
+class DashboardSertifikatController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.artikel.index', [
-            'artikel'=>Artikel::all()
-            ->where('status', true)
+        return view('admin.sertifikat.index', [
+            'sertifikat'=>Sertifikat::all()
         ]);
     }
 
@@ -27,7 +25,7 @@ class DashboardArtikelController extends Controller
      */
     public function create()
     {
-        return view('admin.artikel.create');
+        return view('admin.sertifikat.create');
     }
 
     /**
@@ -39,10 +37,8 @@ class DashboardArtikelController extends Controller
         // Proses Menyimpan data
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:artikels',
-            'body' => 'required',
+            'slug'=> 'required',
             'image' => 'nullable|image|file|max:3000',
-            'status'=>'required'
         ]);
         // Buat nama foto agar tidak tabrakan
         $extFile = $request->image->getClientOriginalExtension();
@@ -54,36 +50,36 @@ class DashboardArtikelController extends Controller
         $validatedData['image'] = $path;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 75);
 
-        Artikel::create($validatedData);
+        Sertifikat::create($validatedData);
 
-        return redirect('/dashboard/artikel')->with('success', 'New Artikel has been added!');
+        return redirect('/dashboard/sertifikat')->with('success', 'New Sertifikat has been added!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Artikel $artikel)
+    public function show(Sertifikat $sertifikat)
     {
-        // Menampilkan data spesifik tiap Artikel (READ)
-        return view('admin.artikel.show', [
-            'artikel' => $artikel
+        // Menampilkan data spesifik tiap Sertifikat (READ)
+        return view('admin.sertifikat.show', [
+            'sertifikat' => $sertifikat
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(artikel $artikel)
+    public function edit(Sertifikat $sertifikat)
     {
-        return view('admin.artikel.edit', [
-            'artikel' => $artikel
+        return view('admin.sertifikat.edit', [
+            'sertifikat' => $sertifikat
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Artikel $artikel)
+    public function update(Request $request, Sertifikat $sertifikat)
     {
         
         //proses update
@@ -91,10 +87,9 @@ class DashboardArtikelController extends Controller
             'title' => 'required|max:255',
             'slug'=> 'required',
             'image' => 'image|file|max:3000',
-            'body' => 'required'
         ];
 
-        if($request->slug != $artikel->slug){
+        if($request->slug != $sertifikat->slug){
             $rules['slug'] = 'required|unique:Artikel';
         }
 
@@ -118,39 +113,23 @@ class DashboardArtikelController extends Controller
 
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
-        Artikel::where('id', $artikel->id)
+        Sertifikat::where('id', $sertifikat->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/artikel')->with('success', 'Artikel has been updated!');
-    }
-
-    public function approve(Artikel $artikel)
-    {
-        $artikel->update(['status' => true]);
-        return redirect('/dashboard/artikel')->with('success', 'artikel has been approved');
-    }
-    
-    public function notapprove(Artikel $artikel)
-    {
-        $artikel->update(['status' => false]);
-        return redirect('/dashboard/artikel')->with('success', 'artikel has not been approved');
+        return redirect('/dashboard/sertifikat')->with('success', 'Artikel has been updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Artikel $artikel)
+    public function destroy(Sertifikat $sertifikat)
     {
         // Hapus data
-        if($artikel->file('image')) {
-            if($artikel->Image){
-                $imagepath=public_path($artikel->Image);
-                File::delete($imagepath);
-            }
+        if(@$sertifikat->image){
+            Storage::delete(@$sertifikat->image);
         }
 
-
-        Artikel::destroy(@$artikel->id);   // delete from post where id = slug
-        return redirect('/dashboard/artikel')->with('success', 'Post has been deleted');
+        Sertifikat::destroy(@$sertifikat->id);   // delete from post where id = slug
+        return redirect('/admin/sertifikat')->with('success', 'Post has been deleted');
     }
 }
