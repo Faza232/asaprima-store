@@ -72,6 +72,11 @@
                 <span>Ulasan</span>
             </a>
 
+            <a href="/dashboard/sertifikat" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
+                <span class="text-2xl"><i class="bx bx-certification"></i></span>
+                <span>Sertifikat</span>
+            </a>
+
             <a href="#" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                 <span class="text-2xl"><i class="bx bx-user"></i></span>
                 <span>Profile</span>

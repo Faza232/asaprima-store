@@ -1,6 +1,5 @@
 @extends('layout.main')
 @section('container')
-<<<<<<< HEAD
 <div class="container mx-auto px-40">
 <div class="mb-8 text-center">
     <h3 class="text-gray-600 text-2xl font-medium text-center mt-8 bold">Testimonials</h3>
@@ -24,24 +23,6 @@
                   <!-- <p class="center">Customer</p> -->
               </div>
           </div>
-=======
-<div class="grid grid-cols-3 grid-flow-rows gap-4 py-12">
-@foreach ($ulasan as $ulasan)
-    <div class="p-4 text-gray-800 rounded-lg shadow-md">
-        <div class="mb-2">
-            <p class="mb-2 text-center text-gray-600 ">
-            {{$ulasan->isi}}
-            </p>
-            <div class="flex flex-col items-center justify-center">
-                <div class="w-12 h-12 overflow-hidden bg-gray-100 border-2 border-indigo-100 rounded-full">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="img"
-                        class="object-cover object-center w-full h-full" />
-                </div>
-                <h5 class="font-bold text-indigo-600">{{$ulasan->nama}}</h5>
-                <p class="text-sm text-gray-600">Customer</p>
-            </div>
-        </div>
->>>>>>> fad7a100054c0fd7a7463d7ca64636e641809a13
     </div>
   @endforeach
 </div>

@@ -20,6 +20,7 @@ use App\Http\Controllers\Home;
 */
 
 Route::get('/', [Home::class, 'index'])->name('index');
+Route::get('/product', function(){return view('frontend.product');});
 
 //ulasan
 Route::get('/ulasan', [UlasanController::class, 'index'])->name('index');
@@ -29,6 +30,10 @@ Route::post('/ulasan', [UlasanController::class, 'store'])->name('create');
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('index');
 Route::get('/artikel/show', [ArtikelController::class, 'show'])->name('index');
 
+//sertifikat
+Route::get('/sertifikat', [ArtikelController::class, 'index'])->name('index');
+Route::get('/sertifikat/show', [ArtikelController::class, 'show'])->name('index');
+
 //Dashboard
 Route::put('/dashboard/artikel/{artikel}/approve', [DashboardArtikelController::class, 'approve'])->name('artikel.approve');
 Route::put('/dashboard/artikel/{artikel}/notapprove', [DashboardArtikelController::class, 'notapprove'])->name('artikel.notapprove');
@@ -36,8 +41,18 @@ Route::put('/dashboard/artikel/{artikel}/notapprove', [DashboardArtikelControlle
 Route::put('/dashboard/ulasan/{ulasan}/approve', [DashboardUlasanController::class, 'approve'])->name('ulasan.approve');
 Route::put('/dashboard/ulasan/{ulasan}/notapprove', [DashboardUlasanController::class, 'notapprove'])->name('ulasan.notapprove');
 
+Route::put('/dashboard/sertifikat/{sertifikat}/approve', [DashboardUlasanController::class, 'approve'])->name('sertifikat.approve');
+Route::put('/dashboard/sertifikat/{sertifikat}/notapprove', [DashboardUlasanController::class, 'notapprove'])->name('sertifikat.notapprove');
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('product.index');
+Route::resource('/dashboard/product', DashboardUlasanController::class);
+Route::resource('/dashboard/product', DashboardArtikelController::class);
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::resource('/dashboard/ulasan', DashboardUlasanController::class);
 Route::resource('/dashboard/artikel', DashboardArtikelController::class);
+Route::resource('/dashboard/sertifikat', DashboardArtikelController::class);
+
 
 
