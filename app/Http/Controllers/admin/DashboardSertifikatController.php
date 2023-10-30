@@ -90,7 +90,7 @@ class DashboardSertifikatController extends Controller
         ];
 
         if($request->slug != $sertifikat->slug){
-            $rules['slug'] = 'required|unique:Artikel';
+            $rules['slug'] = 'required|unique:Sertifikat';
         }
 
         $validatedData = $request->validate($rules);
@@ -116,7 +116,7 @@ class DashboardSertifikatController extends Controller
         Sertifikat::where('id', $sertifikat->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/sertifikat')->with('success', 'Artikel has been updated!');
+        return redirect('/dashboard/sertifikat')->with('success', 'Sertifikat has been updated!');
     }
 
     /**
@@ -130,6 +130,6 @@ class DashboardSertifikatController extends Controller
         }
 
         Sertifikat::destroy(@$sertifikat->id);   // delete from post where id = slug
-        return redirect('/admin/sertifikat')->with('success', 'Post has been deleted');
+        return redirect('/dashboard/sertifikat')->with('success', 'Post has been deleted');
     }
 }

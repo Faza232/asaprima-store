@@ -15,6 +15,7 @@ class ProdukController extends Controller
     {
         return view("frontend.produk");
     }
+    
 
     /**
      * Show the form for creating a new resource.

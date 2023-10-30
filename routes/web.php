@@ -1,12 +1,14 @@
 <?php
 
+use App\Http\Controllers\Home;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\DashboardUlasanController;
 use App\Http\Controllers\admin\DashboardArtikelController;
-use App\Http\Controllers\Home;
+use App\Http\Controllers\admin\DashboardSertifikatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +33,8 @@ Route::get('/artikel', [ArtikelController::class, 'index'])->name('index');
 Route::get('/artikel/show', [ArtikelController::class, 'show'])->name('index');
 
 //sertifikat
-Route::get('/sertifikat', [ArtikelController::class, 'index'])->name('index');
-Route::get('/sertifikat/show', [ArtikelController::class, 'show'])->name('index');
+Route::get('/sertifikat', [SertifikatController::class, 'index'])->name('index');
+Route::get('/sertifikat/show', [SertifikatController::class, 'show'])->name('index');
 
 //Dashboard
 Route::put('/dashboard/artikel/{artikel}/approve', [DashboardArtikelController::class, 'approve'])->name('artikel.approve');
@@ -52,7 +54,7 @@ Route::resource('/dashboard/product', DashboardArtikelController::class);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::resource('/dashboard/ulasan', DashboardUlasanController::class);
 Route::resource('/dashboard/artikel', DashboardArtikelController::class);
-Route::resource('/dashboard/sertifikat', DashboardArtikelController::class);
+Route::resource('/dashboard/sertifikat', DashboardSertifikatController::class);
 
 
 
