@@ -13,7 +13,11 @@ class Produk extends Model
 
     public function subkategori()
     {
-        return $this->belongsTo(SubKategori::class);
+        return $this->belongsTo(SubKategori::class,'subkategori_id');
+    }
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class,'kategori_id');
     }
     public function variasi()
     {

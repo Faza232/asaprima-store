@@ -6,6 +6,7 @@ use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\DashboardProdukController;
 use App\Http\Controllers\admin\DashboardUlasanController;
 use App\Http\Controllers\admin\DashboardArtikelController;
 use App\Http\Controllers\admin\DashboardSertifikatController;
@@ -55,6 +56,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::resource('/dashboard/ulasan', DashboardUlasanController::class);
 Route::resource('/dashboard/artikel', DashboardArtikelController::class);
 Route::resource('/dashboard/sertifikat', DashboardSertifikatController::class);
+Route::resource('/dashboard/produk', DashboardProdukController::class);
+
 
 
 

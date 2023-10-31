@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Sertifikat;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardSertifikatController extends Controller
 {
@@ -36,8 +37,9 @@ class DashboardSertifikatController extends Controller
         // dd($request);
         // Proses Menyimpan data
         $validatedData = $request->validate([
-            'title' => 'required|max:255',
+            'nama' => 'required|max:255',
             'slug'=> 'required',
+            'tahun'=> 'required',
             'image' => 'nullable|image|file|max:3000',
         ]);
         // Buat nama foto agar tidak tabrakan
@@ -84,14 +86,11 @@ class DashboardSertifikatController extends Controller
         
         //proses update
         $rules = [
-            'title' => 'required|max:255',
+            'nama' => 'required|max:255',
             'slug'=> 'required',
-            'image' => 'image|file|max:3000',
+            'tahun'=> 'required',
+            'image' => 'nullable|image|file|max:3000',
         ];
-
-        if($request->slug != $sertifikat->slug){
-            $rules['slug'] = 'required|unique:Sertifikat';
-        }
 
         $validatedData = $request->validate($rules);
 
@@ -111,8 +110,6 @@ class DashboardSertifikatController extends Controller
             }
         }
 
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
-
         Sertifikat::where('id', $sertifikat->id)
             ->update($validatedData);
 
@@ -125,8 +122,9 @@ class DashboardSertifikatController extends Controller
     public function destroy(Sertifikat $sertifikat)
     {
         // Hapus data
-        if(@$sertifikat->image){
-            Storage::delete(@$sertifikat->image);
+        if($sertifikat->image){
+            $imagepath=public_path($sertifikat->image);
+            unlink($imagepath);
         }
 
         Sertifikat::destroy(@$sertifikat->id);   // delete from post where id = slug

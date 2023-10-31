@@ -17,8 +17,7 @@ class DashboardArtikelController extends Controller
     public function index()
     {
         return view('admin.artikel.index', [
-            'artikel'=>Artikel::all()
-            ->where('status', true)
+            'artikel'=>Artikel::selectRaw('*, DATE_FORMAT(CONVERT_TZ(created_at, "+00:00", "+07:00"), "%d %M %Y") as formatted_created_date')->get()
         ]);
     }
 
@@ -142,13 +141,10 @@ class DashboardArtikelController extends Controller
     public function destroy(Artikel $artikel)
     {
         // Hapus data
-        if($artikel->file('image')) {
-            if($artikel->Image){
-                $imagepath=public_path($artikel->Image);
-                File::delete($imagepath);
-            }
+        if($artikel->Image){
+            $imagepath=public_path($artikel->Image);
+            unlink($imagepath);
         }
-
 
         Artikel::destroy(@$artikel->id);   // delete from post where id = slug
         return redirect('/dashboard/artikel')->with('success', 'Post has been deleted');

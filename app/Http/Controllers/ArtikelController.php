@@ -12,12 +12,18 @@ class ArtikelController extends Controller
      */
     public function index()
     {
+        $status=true;
+        if(request('status')){
+            $status = request('status');
+        }
+        
         return view('frontend.artikel', [
             "title" => "All artikel",
             "active" => "artikel",
             "artikel" => Artikel::latest()
-            ->take(20)
-            ->get()
+            ->where('status',$status)
+            ->orderBy("created_at","desc")
+            ->paginate(9)
         ]);
     }
     /**

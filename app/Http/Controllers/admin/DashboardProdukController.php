@@ -4,13 +4,15 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Produk;
 use App\Models\Kategori;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\Controller;
 use App\Models\SubKategori;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
-class ProdukController extends Controller
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+
+class DashboardProdukController extends Controller
 {
     public function index()
     {
@@ -98,27 +100,30 @@ class ProdukController extends Controller
     {
         $rules = [
             'title' => 'required|max:255',
+            'slug' => 'required|unique:produks',
+            'image' => 'image|file|max:5048',
             'kategori_id' => 'required',
-            'image' => 'image|file|max:2048',
+            'subkategori_id' => 'required',
             'deskripsi' => 'required'
-
         ];
-
-
-
-        if ($request->slug != $produk->slug) {
-            $rules['slug'] = 'required|unique:produks';
-        }
 
         $validatedData = $request->validate($rules);
 
-        if ($request->file('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+        if($request->file('image')) {
+            if($request->oldImage){
+                $imagepath=public_path($request->oldImage);
+                if(file_exists($imagepath)) {
+                    unlink($imagepath);
             }
-            $validatedData['image'] = $request->file('image')->store('post-images');
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = Str::random(10) . time() . '.' . $extFile;
+
+            $path = $request->image->move('image/galeri', $namaFile);
+            $path = str_replace('\\', '/', $path);
+
+            $validatedData['image'] = $path;
+            }
         }
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->deskripsi), 200, '...');
 
         Produk::where('id', $produk->id)
             ->update($validatedData);
@@ -132,8 +137,11 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
-        if ($produk->image) {
-            Storage::delete($produk->image);
+        if($produk->file('image')) {
+            if($produk->Image){
+                $imagepath=public_path($produk->Image);
+                File::delete($imagepath);
+            }
         }
         Produk::destroy($produk->id);
         return redirect('/dashboard/produks')->with('success', 'Produk has been deleted');

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('sertifikats', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('Tahun');
+            $table->string('nama');
+            $table->string('slug');
+            $table->string('tahun');
             $table->string('image');
             $table->timestamps();
         });

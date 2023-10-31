@@ -12,6 +12,6 @@ class SubKategori extends Model
     protected $guarded = ['id'];   
     public function kategori()  //category = nama relasi
     {
-        return $this->belongsTo(Kategori::class);
+        return $this->belongsTo(Kategori::class,'kategori_id');
     }  
 }
