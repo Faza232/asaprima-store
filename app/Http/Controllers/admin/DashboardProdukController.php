@@ -17,9 +17,7 @@ class DashboardProdukController extends Controller
     public function index()
     {
         return view('admin.produk.index', [
-            'kategori' => kategori::all(),
-            'subkategori' => SubKategori::all(),
-            'produks' => Produk::all()
+            'produk' => Produk::all()
         ]);
     }
 

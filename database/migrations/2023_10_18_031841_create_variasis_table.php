@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('produk_id');
             $table->string('cat');
             $table->string('deskripsi');
-            $table->integer('stok');
+            // $table->integer('stok');
             $table->timestamps();
         });
     }

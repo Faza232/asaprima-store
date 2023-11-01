@@ -9,6 +9,7 @@ use App\Models\Ulasan;
 use App\Models\Artikel;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\ProdukSeeder;
 use Database\Seeders\KategoriSeeder;
 use Database\Seeders\SubKategoriSeeder;
 
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             KategoriSeeder::class,
             SubKategoriSeeder::class,
+            ProdukSeeder::class,
         ]);
         Ulasan::factory(20)->create();
         Artikel::factory(20)->create();
