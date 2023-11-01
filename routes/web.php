@@ -48,9 +48,9 @@ Route::put('/dashboard/sertifikat/{sertifikat}/approve', [DashboardUlasanControl
 Route::put('/dashboard/sertifikat/{sertifikat}/notapprove', [DashboardUlasanController::class, 'notapprove'])->name('sertifikat.notapprove');
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('product.index');
-Route::resource('/dashboard/product', DashboardUlasanController::class);
-Route::resource('/dashboard/product', DashboardArtikelController::class);
+// Route::get('/dashboard', [DashboardController::class, 'index'])->name('product.index');
+// Route::resource('/dashboard/product', DashboardUlasanController::class);
+// Route::resource('/dashboard/product', DashboardArtikelController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::resource('/dashboard/ulasan', DashboardUlasanController::class);
