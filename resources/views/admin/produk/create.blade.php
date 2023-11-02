@@ -37,7 +37,28 @@
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
       </div>
-
+    <!-- drop down -->
+      <div class="flex justify-center space-x-4">
+          <div class="relative group">
+              <select id="dropdown-menu-1" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
+                  <option value="" disabled selected>Kategori</option>
+                  <option value="Uppercase">Uppercase</option>
+                  <option value="Lowercase">Lowercase</option>
+                  <option value="Camel Case">Camel Case</option>
+                  <option value="Kebab Case">Kebab Case</option>
+              </select>
+          </div>
+          <div class="relative group">
+              <select id="dropdown-menu-2" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
+                  <option value="" disabled selected>Sub Kategori</option>
+                  <option value="Option 1">Option 1</option>
+                  <option value="Option 2">Option 2</option>
+                  <option value="Option 3">Option 3</option>
+                  <option value="Option 4">Option 4</option>
+              </select>
+          </div>
+      </div>
+      
       <div class="col-span-full">
         <label
           for="image"
@@ -66,7 +87,6 @@
       
     </div>
 
-    
     <div class="flex justify-center items-center">
         <button
           type="submit" class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
@@ -78,6 +98,8 @@
     </form>
   </div>
 </div>
+
+<!-- Javascript -->
 <script>
         // Membuat slug otomatis
         const title = document.querySelector('#nama');
@@ -108,6 +130,40 @@
                 imgPreview.src = oFREvent.target.result;
             }
         }
+
+        // JavaScript to toggle the dropdown
+        const dropdownButton = document.getElementById('dropdown-button');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const searchInput = document.getElementById('search-input');
+        let isOpen = false; // Set to true to open the dropdown by default
+        
+        // Function to toggle the dropdown state
+        function toggleDropdown() {
+          isOpen = !isOpen;
+          dropdownMenu.classList.toggle('hidden', !isOpen);
+        }
+        
+        // Set initial state
+        toggleDropdown();
+        
+        dropdownButton.addEventListener('click', () => {
+          toggleDropdown();
+        });
+        
+        // Add event listener to filter items based on input
+        searchInput.addEventListener('input', () => {
+          const searchTerm = searchInput.value.toLowerCase();
+          const items = dropdownMenu.querySelectorAll('a');
+        
+          items.forEach((item) => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(searchTerm)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
     </script>
 
 @endsection
