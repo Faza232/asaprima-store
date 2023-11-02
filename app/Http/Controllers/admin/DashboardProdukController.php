@@ -42,7 +42,7 @@ class DashboardProdukController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:produks',
+            'slug' => 'required|unique:produk',
             'image' => 'image|file|max:5048',
             'kategori_id' => 'required',
             'subkategori_id' => 'required',
@@ -62,7 +62,7 @@ class DashboardProdukController extends Controller
 
         Produk::create($validatedData);
 
-        return redirect('/dashboard/produks')->with('success', 'New Produk has been added');
+        return redirect('/dashboard/produk')->with('success', 'New Produk has been added');
     }
 
     /**
@@ -73,7 +73,7 @@ class DashboardProdukController extends Controller
      */
     public function show(Produk $produk)
     {
-        return view('admin.produks.show', [
+        return view('admin.produk.show', [
             'produk' => $produk
                 ]);
     }
@@ -84,7 +84,7 @@ class DashboardProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
-        return view('admin.produks.edit', [
+        return view('admin.produk.edit', [
             'produk' => $produk,
             'kategoris' => Kategori::all()
         ]);
@@ -98,7 +98,7 @@ class DashboardProdukController extends Controller
     {
         $rules = [
             'title' => 'required|max:255',
-            'slug' => 'required|unique:produks',
+            'slug' => 'required|unique:produk',
             'image' => 'image|file|max:5048',
             'kategori_id' => 'required',
             'subkategori_id' => 'required',
@@ -126,7 +126,7 @@ class DashboardProdukController extends Controller
         Produk::where('id', $produk->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/produks')->with('success', 'New Produk has been updated');
+        return redirect('/dashboard/produk')->with('success', 'New Produk has been updated');
     }
 
     /**
@@ -142,6 +142,6 @@ class DashboardProdukController extends Controller
             }
         }
         Produk::destroy($produk->id);
-        return redirect('/dashboard/produks')->with('success', 'Produk has been deleted');
+        return redirect('/dashboard/produk')->with('success', 'Produk has been deleted');
     }
 }

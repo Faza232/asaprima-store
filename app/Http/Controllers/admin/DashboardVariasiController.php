@@ -13,7 +13,7 @@ class DashboardVariasiController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.variasi.index");
     }
 
     /**
