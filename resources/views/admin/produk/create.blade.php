@@ -39,8 +39,9 @@
       </div>
     <!-- drop down -->
       <div class="flex justify-center space-x-4">
+      <input id="searchInput" class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" autocomplete="off">
           <div class="relative group">
-              <select id="dropdown-menu-1" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
+              <select id="selectElement1" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
                   <option value="" disabled selected>Kategori</option>
                   <option value="Uppercase">Uppercase</option>
                   <option value="Lowercase">Lowercase</option>
@@ -49,7 +50,7 @@
               </select>
           </div>
           <div class="relative group">
-              <select id="dropdown-menu-2" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
+              <select id="selectElement" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
                   <option value="" disabled selected>Sub Kategori</option>
                   <option value="Option 1">Option 1</option>
                   <option value="Option 2">Option 2</option>
@@ -131,39 +132,25 @@
             }
         }
 
-        // JavaScript to toggle the dropdown
-        const dropdownButton = document.getElementById('dropdown-button');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        const searchInput = document.getElementById('search-input');
-        let isOpen = false; // Set to true to open the dropdown by default
-        
-        // Function to toggle the dropdown state
-        function toggleDropdown() {
-          isOpen = !isOpen;
-          dropdownMenu.classList.toggle('hidden', !isOpen);
+      // Dapatkan elemen-elemen yang diperlukan
+      var selectElement = document.getElementById('selectElement');
+      var searchInput = document.getElementById('searchInput');
+
+      // Tambahkan event listener untuk input
+      searchInput.addEventListener('input', function() {
+        var searchText = searchInput.value.toLowerCase();
+
+        for (var i = 0; i < selectElement.options.length; i++) {
+          var optionText = selectElement.options[i].text.toLowerCase();
+
+          // Periksa apakah teks yang diinputkan sesuai dengan pilihan
+          if (optionText.includes(searchText)) {
+            selectElement.options[i].style.display = 'block';
+          } else {
+            selectElement.options[i].style.display = 'none';
+          }
         }
-        
-        // Set initial state
-        toggleDropdown();
-        
-        dropdownButton.addEventListener('click', () => {
-          toggleDropdown();
-        });
-        
-        // Add event listener to filter items based on input
-        searchInput.addEventListener('input', () => {
-          const searchTerm = searchInput.value.toLowerCase();
-          const items = dropdownMenu.querySelectorAll('a');
-        
-          items.forEach((item) => {
-            const text = item.textContent.toLowerCase();
-            if (text.includes(searchTerm)) {
-              item.style.display = 'block';
-            } else {
-              item.style.display = 'none';
-            }
-          });
-        });
+      });
     </script>
 
 @endsection
