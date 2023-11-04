@@ -1,6 +1,9 @@
 @extends('layout.admin')
 
 @section('container')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
 <div class="flex items-center justify-center p-12">
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
@@ -37,6 +40,29 @@
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
       </div>
+    <!-- drop down -->
+      <div class="flex justify-center space-x-4">
+          <div class="relative group">
+              <select id="selectElement1" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
+                  <option value="" disabled selected>Kategori</option>
+                  <option value="Uppercase">Uppercase</option>
+                  <option value="Lowercase">Lowercase</option>
+                  <option value="Camel Case">Camel Case</option>
+                  <option value="Kebab Case">Kebab Case</option>
+              </select>
+          </div>
+          <!-- <input id="searchInput" class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" autocomplete="off"> -->
+          <div class="relative group">
+            <select id="selectElement" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
+                <option value="" disabled selected>Sub Kategori</option>
+                <option value="Option 1">Option 1</option>
+                <option value="Option 2">Option 2</option>
+                <option value="Option 3">Option 3</option>
+                <option value="Option 4">Option 4</option>
+            </select>
+          </div>
+      </div>
+      
       <div class="col-span-full">
         <label
           for="image"
@@ -64,47 +90,29 @@
       </div>
       
     </div>
-    <div class="flex items-center justify-center p-10 space-x-12">
-    <!-- Left Dropdown -->
-    <select
-        class="p-2 bg-white rounded-3xl"
-        value={selectedValueLeft}
-        onChange={handleSelectChangeLeft}
-    >
-        <option value="Select">Kategori</option>
-        <option value="">a</option>
-        <option value="">b</option>
-        <option value="">c</option>
-        <option value="">d</option>
-    </select>
 
-    <!-- Right Dropdown -->
-    <select
-        class="p-2 bg-white rounded-3xl"
-        value={selectedValueRight}
-        onChange={handleSelectChangeRight}
-    >
-        <option value="Select">Sub Kategori</option>
-        <option value="a">a</option>
-        <option value="b">b</option>
-        <option value="c">c</option>
-        <option value="d">d</option>
-    </select>
-    </div>
-
-    
     <div class="flex justify-center items-center">
         <button
           type="submit" class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
         >
-            Update Product
+            Update Produk
         </button>
     </div>
 
     </form>
   </div>
 </div>
+
+
+
+<!-- Javascript -->
 <script>
+        $(document).ready(function () {
+                $('#selectElement').select2();
+            });
+        $(document).ready(function () {
+                $('#selectElement1').select2();
+            });
         // Membuat slug otomatis
         const title = document.querySelector('#nama');
         const slug = document.querySelector('#slug');
@@ -134,6 +142,27 @@
                 imgPreview.src = oFREvent.target.result;
             }
         }
+    
+
+      // Dapatkan elemen-elemen yang diperlukan
+      var selectElement = document.getElementById('selectElement');
+      var searchInput = document.getElementById('searchInput');
+
+      // Tambahkan event listener untuk input
+      searchInput.addEventListener('input', function() {
+        var searchText = searchInput.value.toLowerCase();
+
+        for (var i = 0; i < selectElement.options.length; i++) {
+          var optionText = selectElement.options[i].text.toLowerCase();
+
+          // Periksa apakah teks yang diinputkan sesuai dengan pilihan
+          if (optionText.includes(searchText)) {
+            selectElement.options[i].style.display = 'block';
+          } else {
+            selectElement.options[i].style.display = 'none';
+          }
+        }
+      });
     </script>
 
 @endsection
