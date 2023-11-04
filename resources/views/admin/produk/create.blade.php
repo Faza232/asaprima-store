@@ -1,6 +1,9 @@
 @extends('layout.admin')
 
 @section('container')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
 <div class="flex items-center justify-center p-12">
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
@@ -39,7 +42,6 @@
       </div>
     <!-- drop down -->
       <div class="flex justify-center space-x-4">
-      <input id="searchInput" class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" autocomplete="off">
           <div class="relative group">
               <select id="selectElement1" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
                   <option value="" disabled selected>Kategori</option>
@@ -51,14 +53,15 @@
                   <option value="Kebab Case">Kebab Case</option>
               </select>
           </div>
+          <!-- <input id="searchInput" class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" autocomplete="off"> -->
           <div class="relative group">
-              <select id="selectElement" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
-                  <option value="" disabled selected>Sub Kategori</option>
-                  <option value="Option 1">Option 1</option>
-                  <option value="Option 2">Option 2</option>
-                  <option value="Option 3">Option 3</option>
-                  <option value="Option 4">Option 4</option>
-              </select>
+            <select id="selectElement" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
+                <option value="" disabled selected>Sub Kategori</option>
+                <option value="Option 1">Option 1</option>
+                <option value="Option 2">Option 2</option>
+                <option value="Option 3">Option 3</option>
+                <option value="Option 4">Option 4</option>
+            </select>
           </div>
       </div>
       
@@ -104,6 +107,12 @@
 
 <!-- Javascript -->
 <script>
+        $(document).ready(function () {
+                $('#selectElement').select2();
+            });
+        $(document).ready(function () {
+                $('#selectElement1').select2();
+            });
         // Membuat slug otomatis
         const title = document.querySelector('#nama');
         const slug = document.querySelector('#slug');
@@ -133,6 +142,7 @@
                 imgPreview.src = oFREvent.target.result;
             }
         }
+    
 
       // Dapatkan elemen-elemen yang diperlukan
       var selectElement = document.getElementById('selectElement');
