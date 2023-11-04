@@ -43,7 +43,9 @@
           <div class="relative group">
               <select id="selectElement1" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
                   <option value="" disabled selected>Kategori</option>
+                  @foreach($kategori as $kategori)
                   <option value="Uppercase">Uppercase</option>
+                  @endforeach
                   <option value="Lowercase">Lowercase</option>
                   <option value="Camel Case">Camel Case</option>
                   <option value="Kebab Case">Kebab Case</option>
