@@ -21,7 +21,6 @@ class ArtikelController extends Controller
             "title" => "All artikel",
             "active" => "artikel",
             "artikel" => Artikel::latest()
-            ->filter(request('search'))
             ->where('status',$status)
             ->orderBy("created_at","desc")
             ->paginate(9)
