@@ -24,6 +24,7 @@ use App\Http\Controllers\admin\DashboardSertifikatController;
 
 Route::get('/', [Home::class, 'index'])->name('index');
 Route::get('/product', function(){return view('frontend.product');});
+Route::get('/certificates', function(){return view('frontend.certificates');});
 
 //ulasan
 Route::get('/ulasan', [UlasanController::class, 'index'])->name('index');
@@ -36,6 +37,10 @@ Route::get('/artikel/show', [ArtikelController::class, 'show'])->name('index');
 //sertifikat
 Route::get('/sertifikat', [SertifikatController::class, 'index'])->name('index');
 Route::get('/sertifikat/show', [SertifikatController::class, 'show'])->name('index');
+
+//contact
+Route::get('/contact', [ContactController::class, 'index'])->name('index');
+Route::get('/contact/show', [ContactController::class, 'show'])->name('index');
 
 //Dashboard
 Route::put('/dashboard/artikel/{artikel}/approve', [DashboardArtikelController::class, 'approve'])->name('artikel.approve');

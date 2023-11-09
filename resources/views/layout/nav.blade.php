@@ -70,9 +70,9 @@
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/'>Home</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/product'>Product</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/ulasan'>Testimoni</a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Certificates</a>
+                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/certificates">Certificates</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/artikel'>Article</a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Contact</a>
+                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/contact">Contact</a>
             </div>
         </nav>
         <div class="relative mt-6 max-w-lg mx-auto">

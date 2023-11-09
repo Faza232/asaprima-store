@@ -1,60 +1,101 @@
 @extends('layout.main')
 @section('container')
 
-<!-- Card Blog -->
+<!-- Weekly Card Blog -->
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  <!-- Title -->
-  <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">ARTIKEL</h2>
-    <p class="mt-1 text-gray-600 dark:text-gray-400"></p>
-  </div>
-  <!-- End Title -->
+<h2 class="mb-12 text-center text-3xl font-bold">Newest Article</h2>
 
-  <!-- Grid -->
-  
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    @foreach($artikel as $artikel)
-    <!-- Card -->
-    <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5 dark:border-gray-700 dark:hover:border-transparent dark:hover:shadow-black/[.4]" href='/artikel/show'>
 
-    @if ($artikel->image)
-      <div class="aspect-w-16 aspect-h-11">
-      <img src="{{ asset('storage/'.$artikel->image) }}" class="img-fluid" alt="{{ $artikel->image }}">
-      </div>
-    @else
-    <img src="https://source.unsplash.com/1200x400?{{ $artikel }}" class="img-fluid mt-3" alt="{{ $artikel}}">
-    @endif
+    <div class="mb-10 rounded overflow-hidden flex flex-col mx-auto">
+        <a href="#"
+            class="text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">The
+            Lorem Ipsum Dolor Sit Amet
+        </a>
 
-      <div class="my-6">
-        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
-          {{$artikel->title}}
-        </h3>
-        <p class="mt-5 text-gray-600 dark:text-gray-400">
-        {{$artikel->excerpt}}
+        <div class="relative">
+            <a href="#">
+                <img class="w-full"
+                    src="https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=625.0&amp;sharp=10&amp;w=1500"
+                    alt="image">
+            </a>
+
+            <a href="#!"
+                class="hidden absolute z-10 text-xs absolute bottom-0 right-0 bg-indigo-600 px-6 m-2 py-2 text-white hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out sm:flex items-center"><span
+                class="text-lg">|</span>&nbsp;&nbsp;<span>Read more</span>
+            </a>
+
+        </div>
+        <p class="text-gray-700 py-5 text-base leading-8">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique, neque ut laoreet lacinia, ipsum turpis feugiat libero, 
+        sit amet lobortis orci ex et diam. Donec in mollis orci. Maecenas suscipit luctus gravida. Vestibulum ante ipsum primis in 
+        faucibus orci luctus et ultrices posuere cubilia curae; Donec varius nisi porta magna dapibus laoreet.
         </p>
-      </div>
-      <div class="mt-auto flex items-center gap-x-3">
-        <img class="w-8 h-8 rounded-full" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Image Description">
-        <div>
-          <h5 class="text-sm text-gray-800 dark:text-gray-200">By PT Asa Prima Niaga</h5>
+        <div class="py-5 text-sm font-regular text-gray-900 flex">
+            <span class="mr-3 flex flex-row items-center">
+                <svg class="text-indigo-600" fill="currentColor" height="13px" width="13px" version="1.1" id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M277.333,256
+			c0,11.797-9.536,21.333-21.333,21.333h-85.333c-11.797,0-21.333-9.536-21.333-21.333s9.536-21.333,21.333-21.333h64v-128
+			c0-11.797,9.536-21.333,21.333-21.333s21.333,9.536,21.333,21.333V256z"></path>
+                        </g>
+                    </g>
+                </svg>
+                <span class="ml-1">6 mins ago</span></span>
+            <a href="#" class="flex flex-row items-center hover:text-indigo-600">
+                <svg class="text-indigo-600" fill="currentColor" height="16px" aria-hidden="true" role="img"
+                    focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor"
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+                    </path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                </svg>
+                <span class="ml-1">PT Asa Prima Niaga</span></a>
+        </div>
+        <hr>
+
+    </div>
+
+
+<!-- List Card -->
+<div class="container my-24 mx-auto md:px-6">
+  <!-- Section: Design Block -->
+  <section class="mb-32 text-center md:text-left">
+
+    <div class="mb-6 flex flex-wrap">
+      <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
+        <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
+          data-te-ripple-init data-te-ripple-color="light">
+          <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/059.jpg" class="w-full" alt="Louvre" />
+          <a href="#!">
+            <div
+              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
+            </div>
+          </a>
         </div>
       </div>
-    </a>
-    <!-- End Card -->
-    @endforeach
-  </div>
-  <!-- End Grid -->
 
-  <!-- Card -->
-  <div class="mt-12 text-center">
-    <a class="inline-flex justify-center items-center gap-x-2 text-center bg-white border hover:border-gray-300 text-sm text-blue-600 hover:text-blue-700 font-medium hover:shadow-sm rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:bg-slate-900 dark:border-gray-700 dark:hover:border-gray-600 dark:text-blue-500 dark:hover:text-blue-400 dark:hover:shadow-slate-700/[.7] dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" href="#">
-      Read more
-      <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </a>
-  </div>
-  <!-- End Card -->
+      <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12">
+        <h5 class="mb-3 text-lg font-bold">Lorem Ipsum Dolor Sit Amet</h5>
+        <div class="mb-3 flex items-center justify-center text-sm font-medium text-yellow-600 md:justify-start">
+        </div>
+        <p class="mb-6 text-neutral-500 dark:text-neutral-300">
+          <small>Published <u>10.01.2022</u> by
+            <a href="#!">PT Asa Prima Niaga</a></small>
+        </p>
+        <p class="text-neutral-500 dark:text-neutral-300">
+          Curabitur tristique, mi a mollis sagittis, metus felis mattis
+          arcu, non vehicula nisl dui quis diam. Mauris ut risus eget massa
+          volutpat feugiat. Donec.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
+</div>
+<!-- Container for demo purpose -->
 </div>
 <!-- End Card Blog -->
 @endsection
