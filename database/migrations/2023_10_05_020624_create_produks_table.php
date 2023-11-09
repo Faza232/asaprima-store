@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('kategori_id');
             $table->foreignId('subkategori_id');
             $table->string('nama');
+            $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->string('deskripsi')->nullable();
             $table->timestamps();

@@ -15,6 +15,7 @@ class ProdukSeeder extends Seeder
     {
         Produk::create([
             'kategori_id' => '1',
+            'slug' => 'ini-produk-seed',
             'subkategori_id' => '1',
             'nama' => 'ini produk seed',
         ]);
