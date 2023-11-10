@@ -48,6 +48,12 @@
                   <option value="Uppercase">Implamts</option>
                   <option value="Lowercase">Instruments : Orthopedi</option>
                   <option value="Camel Case">General Instruments Surgical</option>
+                  @foreach($kategori as $kategori)
+                  <option value="Uppercase">Uppercase</option>
+                  @endforeach
+                  <option value="Lowercase">Lowercase</option>
+                  <option value="Camel Case">Camel Case</option>
+                  <option value="Kebab Case">Kebab Case</option>
               </select>
           </div>
           <!-- <input id="searchInput" class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" autocomplete="off"> -->
@@ -110,37 +116,7 @@
         $(document).ready(function () {
                 $('#selectElement1').select2();
             });
-        // Membuat slug otomatis
-        const title = document.querySelector('#nama');
-        const slug = document.querySelector('#slug');
-
-        title.addEventListener("keyup", function(){
-            let preslug = title.value;
-            preslug = preslug.replace(/ /g,"-");
-            slug.value = preslug.toLowerCase();
-        });
-
-        // Mematikan fungsi upload file dalam trix editor
-        document.addEventListener('trix-file-accept', function(e){
-            e.preventDefault();
-        })
-
-        function previewImage(){
-            const image = document.querySelector('#image');
-            const imgPreview = document.querySelector('.img-preview');
-
-            imgPreview.style.display = 'block';
-
-            // ambil data gambar
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
-
-            oFReader.onload = function(oFREvent){
-                imgPreview.src = oFREvent.target.result;
-            }
-        }
-    
-
+      
       // Dapatkan elemen-elemen yang diperlukan
       var selectElement = document.getElementById('selectElement');
       var searchInput = document.getElementById('searchInput');

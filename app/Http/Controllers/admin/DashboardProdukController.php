@@ -30,7 +30,7 @@ class DashboardProdukController extends Controller
     {
         return view('admin.produk.create', [
             'subkategori' => SubKategori::all(),
-            'kategoris' => Kategori::all()
+            'kategori' => Kategori::all()
         ]);
     }
 
