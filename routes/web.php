@@ -39,8 +39,7 @@ Route::get('/sertifikat', [SertifikatController::class, 'index'])->name('index')
 Route::get('/sertifikat/show', [SertifikatController::class, 'show'])->name('index');
 
 //contact
-Route::get('/contact', [ContactController::class, 'index'])->name('index');
-Route::get('/contact/show', [ContactController::class, 'show'])->name('index');
+Route::get('/contact', [Home::class, 'contact'])->name('contact');
 
 //Dashboard
 Route::put('/dashboard/artikel/{artikel}/approve', [DashboardArtikelController::class, 'approve'])->name('artikel.approve');

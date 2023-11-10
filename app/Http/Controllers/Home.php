@@ -20,4 +20,7 @@ class Home extends Controller
                 ->get()
         ]);
     }
+    public function contact(){
+        return view('contact', []);
+    }
 }
