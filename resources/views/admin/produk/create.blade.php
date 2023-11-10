@@ -54,16 +54,8 @@
           <div class="relative group">
               <select id="kategori_id" name="kategori_id" class="form-select input block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
                   <option value="" disabled selected>Kategori</option>
-<<<<<<< HEAD
-                  <option value="Uppercase">Implamts</option>
-                  <option value="Lowercase">Instruments : Orthopedi</option>
-                  <option value="Camel Case">General Instruments Surgical</option>
-                  @foreach($kategori as $kategori)
-                  <option value="Uppercase">Uppercase</option>
-=======
                   @foreach($kategori as $item)
                   <option value="{{$item->id}}">{{$item->name}}</option>
->>>>>>> 6d276ad8071d668169fae154eef499017d9bf3cb
                   @endforeach
                   
               </select>
@@ -124,28 +116,6 @@
         $(document).ready(function () {
                 $('#subkategori_id').select2();
             });
-<<<<<<< HEAD
-      
-      // Dapatkan elemen-elemen yang diperlukan
-      var selectElement = document.getElementById('selectElement');
-      var searchInput = document.getElementById('searchInput');
-
-      // Tambahkan event listener untuk input
-      searchInput.addEventListener('input', function() {
-        var searchText = searchInput.value.toLowerCase();
-
-        for (var i = 0; i < selectElement.options.length; i++) {
-          var optionText = selectElement.options[i].text.toLowerCase();
-
-          // Periksa apakah teks yang diinputkan sesuai dengan pilihan
-          if (optionText.includes(searchText)) {
-            selectElement.options[i].style.display = 'block';
-          } else {
-            selectElement.options[i].style.display = 'none';
-          }
-        }
-      });
-=======
 
 $(document).ready(function() {
       $('#kategori_id').on('change', function() {
@@ -210,7 +180,6 @@ $(document).ready(function() {
                 imgPreview.src = oFREvent.target.result;
             }
         }
->>>>>>> 6d276ad8071d668169fae154eef499017d9bf3cb
     </script>
 
 
