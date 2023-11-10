@@ -28,11 +28,19 @@ class DashboardProdukController extends Controller
      */
     public function create()
     {
+        $kategoriId = request('kategory_id');
+        
         return view('admin.produk.create', [
-            'subkategori' => SubKategori::all(),
             'kategori' => Kategori::all()
         ]);
     }
+
+        public function getSubKategori($id)
+    {
+        $subkategori = SubKategori::where('kategori_id', $id)->get();
+        return response()->json($subkategori);
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -41,8 +49,8 @@ class DashboardProdukController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'slug' => 'required|unique:produk',
+            'nama' => 'required|max:255',
+            'slug' => 'required|unique:produks',
             'image' => 'image|file|max:5048',
             'kategori_id' => 'required',
             'subkategori_id' => 'required',
@@ -86,7 +94,7 @@ class DashboardProdukController extends Controller
     {
         return view('admin.produk.edit', [
             'produk' => $produk,
-            'kategoris' => Kategori::all()
+            'kategori' => Kategori::all()
         ]);
     }
 

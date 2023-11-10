@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('variasis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('produk_id');
-            $table->string('cat');
+            $table->string('cat_no');
             $table->string('deskripsi');
             // $table->integer('stok');
             $table->timestamps();

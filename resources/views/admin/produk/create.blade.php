@@ -7,12 +7,13 @@
 <div class="flex items-center justify-center p-12">
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
+  
   <div class="mx-auto w-full max-w-[550px]">
     <form action="/dashboard/produk" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="mb-5">
         <label
-          for="name"
+          for="nama"
           class="mb-3 block text-base font-medium text-[#07074D]"
         >
           Nama
@@ -28,13 +29,21 @@
       </div>
       <div class="mb-5">
         <label
-          for="slug"
+          for="deskripsi"
           class="mb-3 block text-base font-medium text-[#07074D]"
         >
           Deskripsi
         </label>
         <input
           type="text"
+          name="deskripsi"
+          id="deskripsi"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        />
+      </div>
+      <div class="mb-5">
+        <input
+          type="hidden"
           name="slug"
           id="slug"
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -43,27 +52,26 @@
     <!-- drop down -->
       <div class="flex justify-center space-x-4">
           <div class="relative group">
-              <select id="selectElement1" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
+              <select id="kategori_id" name="kategori_id" class="form-select input block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
                   <option value="" disabled selected>Kategori</option>
+<<<<<<< HEAD
                   <option value="Uppercase">Implamts</option>
                   <option value="Lowercase">Instruments : Orthopedi</option>
                   <option value="Camel Case">General Instruments Surgical</option>
                   @foreach($kategori as $kategori)
                   <option value="Uppercase">Uppercase</option>
+=======
+                  @foreach($kategori as $item)
+                  <option value="{{$item->id}}">{{$item->name}}</option>
+>>>>>>> 6d276ad8071d668169fae154eef499017d9bf3cb
                   @endforeach
-                  <option value="Lowercase">Lowercase</option>
-                  <option value="Camel Case">Camel Case</option>
-                  <option value="Kebab Case">Kebab Case</option>
+                  
               </select>
           </div>
           <!-- <input id="searchInput" class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" autocomplete="off"> -->
           <div class="relative group">
-            <select id="selectElement" class="block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
+            <select id="subkategori_id" name="subkategori_id" class="form-select input block w-48 px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none ring-1 ring-black ring-opacity-5">
                 <option value="" disabled selected>Sub Kategori</option>
-                <option value="Option 1">Option 1</option>
-                <option value="Option 2">Option 2</option>
-                <option value="Option 3">Option 3</option>
-                <option value="Option 4">Option 4</option>
             </select>
           </div>
       </div>
@@ -110,12 +118,13 @@
 
 <!-- Javascript -->
 <script>
-        $(document).ready(function () {
-                $('#selectElement').select2();
+          $(document).ready(function () {
+                $('#kategori_id').select2();
             });
         $(document).ready(function () {
-                $('#selectElement1').select2();
+                $('#subkategori_id').select2();
             });
+<<<<<<< HEAD
       
       // Dapatkan elemen-elemen yang diperlukan
       var selectElement = document.getElementById('selectElement');
@@ -136,6 +145,73 @@
           }
         }
       });
+=======
+
+$(document).ready(function() {
+      $('#kategori_id').on('change', function() {
+          var kategori_id = $(this).val();
+          // console.log(kategori_id);
+          if (kategori_id) {
+              $.ajax({
+                  url: '/subkategori/' + kategori_id,
+                  type: 'GET',
+                  data: {
+                      '_token': '{{ csrf_token() }}'
+                  },
+                  dataType: 'json',
+                  success: function(data) {
+                      // console.log(data);
+                      if (data) {
+                          $('#subkategori_id').empty();
+                          $('#subkategori_id').append('<option value="">-Pilih-</option>');
+                          $.each(data, function(key, subkategori) {
+                              $('select[name="subkategori_id"]').append(
+                                  '<option value="' + subkategori.id + '">' +
+                                  subkategori.name + '</option>'
+                              );
+                          });
+                      } else {
+                          $('#subkategori_id').empty();
+                      }
+                  }
+              });
+          } else {
+              $('#subkategori').empty();
+          }
+      });
+  });
+
+        // Membuat slug otomatis
+        const title = document.querySelector('#nama');
+        const slug = document.querySelector('#slug');
+
+        title.addEventListener("keyup", function(){
+            let preslug = title.value;
+            preslug = preslug.replace(/ /g,"-");
+            slug.value = preslug.toLowerCase();
+        });
+
+        // Mematikan fungsi upload file dalam trix editor
+        document.addEventListener('trix-file-accept', function(e){
+            e.preventDefault();
+        })
+
+        function previewImage(){
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            // ambil data gambar
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent){
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+>>>>>>> 6d276ad8071d668169fae154eef499017d9bf3cb
     </script>
+
 
 @endsection
