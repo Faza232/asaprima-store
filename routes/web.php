@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\DashboardProdukController;
 use App\Http\Controllers\admin\DashboardUlasanController;
 use App\Http\Controllers\admin\DashboardArtikelController;
 use App\Http\Controllers\admin\DashboardSertifikatController;
+use App\Http\Controllers\ProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ use App\Http\Controllers\admin\DashboardSertifikatController;
 */
 
 Route::get('/', [Home::class, 'index'])->name('index');
-Route::get('/product', function(){return view('frontend.product');});
+Route::get('/product', [ProdukController::class, 'index'])->name('index');
 Route::get('/certificates', function(){return view('frontend.certificates');});
 
 //ulasan
@@ -51,10 +52,6 @@ Route::put('/dashboard/ulasan/{ulasan}/notapprove', [DashboardUlasanController::
 Route::put('/dashboard/sertifikat/{sertifikat}/approve', [DashboardUlasanController::class, 'approve'])->name('sertifikat.approve');
 Route::put('/dashboard/sertifikat/{sertifikat}/notapprove', [DashboardUlasanController::class, 'notapprove'])->name('sertifikat.notapprove');
 
-
-// Route::get('/dashboard', [DashboardController::class, 'index'])->name('product.index');
-// Route::resource('/dashboard/product', DashboardUlasanController::class);
-// Route::resource('/dashboard/product', DashboardArtikelController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('/subkategori/{id}', [DashboardProdukController::class,'getSubKategori'])->name('getSubKategori');

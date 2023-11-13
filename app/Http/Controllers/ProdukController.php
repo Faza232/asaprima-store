@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use App\Http\Requests\StoreProdukRequest;
 use App\Http\Requests\UpdateProdukRequest;
+use App\Models\Kategori;
+use App\Models\SubKategori;
 
 class ProdukController extends Controller
 {
@@ -13,7 +15,10 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        return view("frontend.produk");
+        return view("frontend.product", [
+            'kategories'=> Kategori::all(),
+            'subkategories'=>SubKategori::all()
+        ]);
     }
     
 
