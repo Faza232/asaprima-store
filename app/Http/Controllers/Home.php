@@ -21,6 +21,6 @@ class Home extends Controller
         ]);
     }
     public function contact(){
-        return view('contact', []);
+        return view('frontend.contact');
     }
 }

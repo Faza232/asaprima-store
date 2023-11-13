@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
-use App\Http\Requests\StoreProdukRequest;
-use App\Http\Requests\UpdateProdukRequest;
 use App\Models\Kategori;
 use App\Models\SubKategori;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProdukRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\UpdateProdukRequest;
+
 
 class ProdukController extends Controller
 {
@@ -17,9 +20,22 @@ class ProdukController extends Controller
     {
         return view("frontend.product", [
             'kategories'=> Kategori::all(),
-            'subkategories'=>SubKategori::all()
+            'subkategories'=>SubKategori::all(),
+            'produks'=>Produk::all(),
         ]);
     }
+
+    public function getProdukBySubkategori(Request $request)
+    {
+        $subkategoriId = $request->query('subkategori_id');
+
+        // Lakukan logika untuk mendapatkan produk berdasarkan subkategori
+        $produks = Produk::where('subkategori_id', $subkategoriId)->get();
+
+        return response()->json(['produks' => $produks]);
+    }
+    
+
     
 
     /**

@@ -7,7 +7,7 @@
   <!-- Learn More: https://formbold.com -->
 
   <div class="container mx-auto px-40">
-  <aside class="w-64" aria-label="Sidebar">
+  <aside class="fixed top-50 left-10 z-40 w-64 h-screen " aria-label="Sidebar">
     <h1 class>kategori</h1>
     <div class="px-3 py-4 overflow-y-auto rounded bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2">
@@ -22,11 +22,11 @@
                 <ul id="{{ $kategori->id }}" class="hidden py-2 space-y-2">
                   @foreach($subkategories as $subkategori)
                   @if($subkategori->kategori_id == $kategori->id)
-                  <li>
-                      <a href="#" class="flex items-center w-full p-2 text-sm font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover-bg-gray-700 pl-11">{{ $subkategori->name }}</a>
-                  </li>
-              @endif              
-                  @endforeach
+                      <li>
+                          <button type="button" class="flex items-center w-full p-2 text-sm font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover-bg-gray-700 pl-11" data-subkategori-id="{{ $subkategori->id }}">{{ $subkategori->name }}</button>
+                      </li>
+                  @endif              
+              @endforeach                           
               </ul>
                 @endforeach
 
@@ -37,93 +37,59 @@
 
 <div class="p-4 sm:ml-64">
   <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-  <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
-    <div class="overflow-x-hidden rounded-2xl relative">
-      <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
-    </div>
-    <div class="mt-4 pl-2 mb-2 flex justify-between ">
-      <div>
-        <p class="text-lg font-semibold text-gray-900 mb-0">Product Name</p>
+    <div class="p-4 sm:ml-64">
+      <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 produk-container">
+        <!-- Produk akan dimuat ke sini -->
       </div>
-    </div>
-  </div>
-  <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
-    <div class="overflow-x-hidden rounded-2xl relative">
-      <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
-    </div>
-    <div class="mt-4 pl-2 mb-2 flex justify-between ">
-      <div>
-        <p class="text-lg font-semibold text-gray-900 mb-0">Product Name</p>
-      </div>
-    </div>
-  </div>
-  <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
-    <div class="overflow-x-hidden rounded-2xl relative">
-      <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
-    </div>
-    <div class="mt-4 pl-2 mb-2 flex justify-between ">
-      <div>
-        <p class="text-lg font-semibold text-gray-900 mb-0">Product Name</p>
-      </div>
-    </div>
-  </div>
-  <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
-    <div class="overflow-x-hidden rounded-2xl relative">
-      <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
-    </div>
-    <div class="mt-4 pl-2 mb-2 flex justify-between ">
-      <div>
-        <p class="text-lg font-semibold text-gray-900 mb-0">Product Name</p>
-      </div>
-    </div>
-  </div>
-  <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
-    <div class="overflow-x-hidden rounded-2xl relative">
-      <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
-    </div>
-    <div class="mt-4 pl-2 mb-2 flex justify-between ">
-      <div>
-        <p class="text-lg font-semibold text-gray-900 mb-0">Product Name</p>
-      </div>
-    </div>
-  </div>
-  
+    </div>    
   </div>
   </div>
 <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
 </div>
-    
 
-
-
-<!-- Javascript -->
 <script>
-        $(document).ready(function () {
-                $('#selectElement').select2();
-            });
-        $(document).ready(function () {
-                $('#selectElement1').select2();
-            });
-
-      // Dapatkan elemen-elemen yang diperlukan
-      var selectElement = document.getElementById('selectElement');
-      var searchInput = document.getElementById('searchInput');
-
-      // Tambahkan event listener untuk input
-      searchInput.addEventListener('input', function() {
-        var searchText = searchInput.value.toLowerCase();
-
-        for (var i = 0; i < selectElement.options.length; i++) {
-          var optionText = selectElement.options[i].text.toLowerCase();
-
-          // Periksa apakah teks yang diinputkan sesuai dengan pilihan
-          if (optionText.includes(searchText)) {
-            selectElement.options[i].style.display = 'block';
-          } else {
-            selectElement.options[i].style.display = 'none';
-          }
+  $(document).ready(function() {
+    // Menangani klik pada subkategori (button)
+    $("button[data-subkategori-id]").on('click', function() {
+      var subkategoriId = $(this).data('data-subkategori-id');
+  
+      // Lakukan pemrosesan AJAX untuk mendapatkan produk berdasarkan subkategori yang dipilih
+      $.ajax({
+        url: '/get-produk-by-subkategori', // Ganti dengan URL endpoint yang sesuai
+        type: 'GET',
+        data: {
+            '_token': '{{ csrf_token() }}'
+        },
+        dataType: 'json',
+        success: function(data) {
+          // Bersihkan area produk sebelum memuat produk baru
+          
+          // Memuat produk yang sesuai ke dalam container produk
+          $.each(data, function(key, produk) {
+            alert("Hello, World!");
+            var produkHTML = `
+              <div class="relative max-w-xs min-w-[200px] bg-white shadow-md rounded-lg mx-1 my-3 cursor-pointer">
+                <div class="overflow-x-hidden rounded-t-lg relative">
+                  <img class="h-40 w-full object-cover" src="${produk.image}">
+                </div>
+                <div class="mt-4 pl-2 mb-2 flex justify-between ">
+                  <div>
+                    <p class="p-2 font-semibold text-sm text-gray-900 mb-0">coba${produk.nama}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+            $('.produk-container').append(produkHTML);
+          });
+        },
+        error: function(xhr) {
+          // Penanganan kesalahan jika permintaan AJAX gagal
+          console.log('Error:', xhr);
         }
       });
-    </script>
-
+    });
+  });
+  </script>
+  
+  
 @endsection

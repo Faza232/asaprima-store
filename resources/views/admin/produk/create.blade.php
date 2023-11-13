@@ -110,12 +110,13 @@
 
 <!-- Javascript -->
 <script>
-          $(document).ready(function () {
-                $('#kategori_id').select2();
-            });
-        $(document).ready(function () {
-                $('#subkategori_id').select2();
-            });
+  
+  $(document).ready(function () {
+          $('#kategori_id').select2();
+      });
+  $(document).ready(function () {
+          $('#subkategori_id').select2();
+      });
 
 $(document).ready(function() {
       $('#kategori_id').on('change', function() {

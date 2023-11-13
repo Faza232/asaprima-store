@@ -24,8 +24,12 @@ use App\Http\Controllers\ProdukController;
 */
 
 Route::get('/', [Home::class, 'index'])->name('index');
-Route::get('/product', [ProdukController::class, 'index'])->name('index');
 Route::get('/certificates', function(){return view('frontend.certificates');});
+
+
+//produk
+Route::get('/get-produk-by-subkategori', [ProdukController::class, 'getProdukBySubkategori']);
+Route::get('/product', [ProdukController::class, 'index'])->name('index');
 
 //ulasan
 Route::get('/ulasan', [UlasanController::class, 'index'])->name('index');
