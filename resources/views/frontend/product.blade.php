@@ -7,7 +7,7 @@
   <!-- Learn More: https://formbold.com -->
 
   <div class="container mx-auto px-40">
-  <aside class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+  <aside class="w-64" aria-label="Sidebar">
     <h1 class>kategori</h1>
     <div class="px-3 py-4 overflow-y-auto rounded bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2">
