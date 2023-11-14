@@ -6,8 +6,13 @@
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
 
+<<<<<<< HEAD
   <div class="container mx-auto px-40">
   <aside class="fixed top-50 left-10 z-40 w-64 h-screen " aria-label="Sidebar">
+=======
+  <div class="container mx-auto px-40 container mx-auto px-40 grid grid-cols-3 gap-4">
+  <aside class="w-64" aria-label="Sidebar">
+>>>>>>> 1e0bba3702121d905a94084f50b1fd6faad3bd6c
     <h1 class>kategori</h1>
     <div class="px-3 py-4 overflow-y-auto rounded bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2">
@@ -35,15 +40,23 @@
     </div>
 </aside>
 
-<div class="p-4 sm:ml-64">
+<div class="p-4 sm:ml-64" style="margin-left: -20px;">
   <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
     <div class="p-4 sm:ml-64">
       <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 produk-container">
         <!-- Produk akan dimuat ke sini -->
       </div>
+<<<<<<< HEAD
     </div>    
+=======
+    </div>
   </div>
+  
+>>>>>>> 1e0bba3702121d905a94084f50b1fd6faad3bd6c
   </div>
+  <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+  </div>
+<<<<<<< HEAD
 <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
 </div>
 
@@ -92,4 +105,9 @@ $(document).ready(function() {
   </script>
   
   
+=======
+
+    
+
+>>>>>>> 1e0bba3702121d905a94084f50b1fd6faad3bd6c
 @endsection
