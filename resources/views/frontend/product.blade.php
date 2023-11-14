@@ -6,7 +6,7 @@
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
 
-  <div class="container mx-auto px-40">
+  <div class="container mx-auto px-40 container mx-auto px-40 grid grid-cols-3 gap-4">
   <aside class="w-64" aria-label="Sidebar">
     <h1 class>kategori</h1>
     <div class="px-3 py-4 overflow-y-auto rounded bg-gray-50 dark:bg-gray-800">
@@ -35,48 +35,8 @@
     </div>
 </aside>
 
-<div class="p-4 sm:ml-64">
+<div class="p-4 sm:ml-64" style="margin-left: -20px;">
   <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-  <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
-    <div class="overflow-x-hidden rounded-2xl relative">
-      <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
-    </div>
-    <div class="mt-4 pl-2 mb-2 flex justify-between ">
-      <div>
-        <p class="text-lg font-semibold text-gray-900 mb-0">Product Name</p>
-      </div>
-    </div>
-  </div>
-  <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
-    <div class="overflow-x-hidden rounded-2xl relative">
-      <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
-    </div>
-    <div class="mt-4 pl-2 mb-2 flex justify-between ">
-      <div>
-        <p class="text-lg font-semibold text-gray-900 mb-0">Product Name</p>
-      </div>
-    </div>
-  </div>
-  <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
-    <div class="overflow-x-hidden rounded-2xl relative">
-      <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
-    </div>
-    <div class="mt-4 pl-2 mb-2 flex justify-between ">
-      <div>
-        <p class="text-lg font-semibold text-gray-900 mb-0">Product Name</p>
-      </div>
-    </div>
-  </div>
-  <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
-    <div class="overflow-x-hidden rounded-2xl relative">
-      <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
-    </div>
-    <div class="mt-4 pl-2 mb-2 flex justify-between ">
-      <div>
-        <p class="text-lg font-semibold text-gray-900 mb-0">Product Name</p>
-      </div>
-    </div>
-  </div>
   <div class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
     <div class="overflow-x-hidden rounded-2xl relative">
       <img class="h-40 rounded-2xl w-full object-cover" src="https://pixahive.com/wp-content/uploads/2020/10/Gym-shoes-153180-pixahive.jpg">
@@ -89,41 +49,9 @@
   </div>
   
   </div>
+  <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
   </div>
-<script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
-</div>
+
     
-
-
-
-<!-- Javascript -->
-<script>
-        $(document).ready(function () {
-                $('#selectElement').select2();
-            });
-        $(document).ready(function () {
-                $('#selectElement1').select2();
-            });
-
-      // Dapatkan elemen-elemen yang diperlukan
-      var selectElement = document.getElementById('selectElement');
-      var searchInput = document.getElementById('searchInput');
-
-      // Tambahkan event listener untuk input
-      searchInput.addEventListener('input', function() {
-        var searchText = searchInput.value.toLowerCase();
-
-        for (var i = 0; i < selectElement.options.length; i++) {
-          var optionText = selectElement.options[i].text.toLowerCase();
-
-          // Periksa apakah teks yang diinputkan sesuai dengan pilihan
-          if (optionText.includes(searchText)) {
-            selectElement.options[i].style.display = 'block';
-          } else {
-            selectElement.options[i].style.display = 'none';
-          }
-        }
-      });
-    </script>
 
 @endsection

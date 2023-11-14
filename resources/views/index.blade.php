@@ -2,7 +2,7 @@
 @section('container')
 
 <!-- <div class="container mx-auto px-30"> -->
-<div class="container mx-auto">
+<div class="container mx-auto px-40">
 <div
   id="carouselExampleIndicators"
   class="relative"
