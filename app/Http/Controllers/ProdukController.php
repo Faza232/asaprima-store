@@ -25,12 +25,14 @@ class ProdukController extends Controller
         ]);
     }
 
-    public function getProdukBySubkategori(Request $request)
+    public function getProdukBySubkategori($id)
     {
-        $subkategoriId = $request->query('subkategori_id');
+        dd($id);
+
+        // $subkategoriId = $id->query('subkategori_id');
 
         // Lakukan logika untuk mendapatkan produk berdasarkan subkategori
-        $produks = Produk::where('subkategori_id', $subkategoriId)->get();
+        $produks = Produk::where('subkategori_id', $id)->get();
 
         return response()->json(['produks' => $produks]);
     }

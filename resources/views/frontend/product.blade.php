@@ -48,47 +48,47 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+$(document).ready(function() {
     // Menangani klik pada subkategori (button)
     $("button[data-subkategori-id]").on('click', function() {
-      var subkategoriId = $(this).data('data-subkategori-id');
-  
-      // Lakukan pemrosesan AJAX untuk mendapatkan produk berdasarkan subkategori yang dipilih
-      $.ajax({
-        url: '/get-produk-by-subkategori', // Ganti dengan URL endpoint yang sesuai
-        type: 'GET',
-        data: {
-            '_token': '{{ csrf_token() }}'
-        },
-        dataType: 'json',
-        success: function(data) {
-          // Bersihkan area produk sebelum memuat produk baru
-          
-          // Memuat produk yang sesuai ke dalam container produk
-          $.each(data, function(key, produk) {
-            alert("Hello, World!");
-            var produkHTML = `
-              <div class="relative max-w-xs min-w-[200px] bg-white shadow-md rounded-lg mx-1 my-3 cursor-pointer">
-                <div class="overflow-x-hidden rounded-t-lg relative">
-                  <img class="h-40 w-full object-cover" src="${produk.image}">
-                </div>
-                <div class="mt-4 pl-2 mb-2 flex justify-between ">
-                  <div>
-                    <p class="p-2 font-semibold text-sm text-gray-900 mb-0">coba${produk.nama}</p>
-                  </div>
-                </div>
-              </div>
-            `;
-            $('.produk-container').append(produkHTML);
-          });
-        },
-        error: function(xhr) {
-          // Penanganan kesalahan jika permintaan AJAX gagal
-          console.log('Error:', xhr);
+        var subkategoriId = $(this).data('subkategori-id');
+
+        // Lakukan pemrosesan AJAX untuk mendapatkan produk berdasarkan subkategori yang dipilih
+        if (subkategoriId) {
+            $.ajax({
+                url: '/produk/' + subkategoriId,
+                type: 'GET',
+                data: {
+                    '_token': '{{ csrf_token() }}'
+                },
+                dataType: 'json',
+                success: function(data) {
+                    if (data) {
+                        $('.produk-container').empty();
+                        $.each(data, function(key, produk) {
+                            var productHTML = '<div class="relative max-w-xs min-w-[200px] bg-white shadow-md rounded-lg mx-1 my-3 cursor-pointer">' +
+                                '<div class="overflow-x-hidden rounded-t-lg relative">' +
+                                '<img class="h-40 w-full object-cover" src=' + produk.image + '>' +
+                                '</div>' +
+                                '<div class="mt-4 pl-2 mb-2 flex justify-between ">' +
+                                '<div>' +
+                                '<p class="p-2 font-semibold text-sm text-gray-900 mb-0">' + produk.nama + '</p>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                            $('.produk-container').append(productHTML);
+                        });
+                    } else {
+                        $('.produk-container').empty();
+                    }
+                }
+            });
+        } else {
+            $('.produk-container').empty();
         }
-      });
     });
-  });
+});
+
   </script>
   
   
