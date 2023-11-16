@@ -28,8 +28,7 @@ Route::get('/certificates', function(){return view('frontend.certificates');});
 
 
 //produk
-Route::get('/produk/{id}', [ProdukController::class, 'getProdukBySubkategori']);
-Route::get('/product', [ProdukController::class, 'index'])->name('index');
+Route::get('/produk', [ProdukController::class, 'index'])->name('index');
 
 //ulasan
 Route::get('/ulasan', [UlasanController::class, 'index'])->name('index');

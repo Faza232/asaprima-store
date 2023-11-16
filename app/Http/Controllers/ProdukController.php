@@ -18,10 +18,19 @@ class ProdukController extends Controller
      */
     public function index()
     {
+        $title = '';
+        $active = '';
+
+        if(request('subkategori')){
+            $subkategori = SubKategori::firstWhere('id', request('subkategori'));
+            $title = ' in '.$subkategori->name;
+            $active = $subkategori->id;
+        }
         return view("frontend.product", [
+            'active'=> $active,
             'kategories'=> Kategori::all(),
             'subkategories'=>SubKategori::all(),
-            'produks'=>Produk::all(),
+            'produks'=>Produk::latest()->filter(request(['subkategori']))->paginate(7)->withQueryString()
         ]);
     }
 

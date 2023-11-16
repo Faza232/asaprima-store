@@ -23,7 +23,7 @@
                   @foreach($subkategories as $subkategori)
                   @if($subkategori->kategori_id == $kategori->id)
                       <li>
-                          <button type="button" class="flex items-center w-full p-2 text-sm font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover-bg-gray-700 pl-11" data-subkategori-id="{{ $subkategori->id }}">{{ $subkategori->name }}</button>
+                          <a href="/produk?subkategori={{ $subkategori->id }}" class="flex items-center w-full p-2 text-sm font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover-bg-gray-700 pl-11" data-subkategori-id="{{ $subkategori->id }}">{{ $subkategori->name }}</a>
                       </li>
                   @endif              
               @endforeach                           
@@ -35,62 +35,22 @@
     </div>
 </aside>
 
-<div class="p-4 sm:ml-64" style="margin-left: -20px;">
-  <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-    <div class="p-4 sm:ml-64">
-      <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 produk-container">
-        <!-- Produk akan dimuat ke sini -->
+<div class="p-4 sm:ml-64">
+    <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+      @foreach($produks as $produk)
+    <div class="relative max-w-xs min-w-[200px] bg-white shadow-md rounded-lg mx-1 my-3 cursor-pointer">
+      <div class="overflow-x-hidden rounded-t-lg relative">
+        <img class="h-40 w-full object-cover" src="{{ $produk->image }}">
       </div>
-    </div>    
-  </div>
+      <div class="mt-4 pl-2 mb-2 flex justify-between ">
+        <div>
+          <p class="p-2 font-semibold text-sm text-gray-900 mb-0">{{ $produk->nama }}</p>
+        </div>
+      </div>
+    </div>
+  @endforeach
+    </div>
+    </div>
   <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
   </div>
-<script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
-</div>
-
-<script>
-$(document).ready(function() {
-    // Menangani klik pada subkategori (button)
-    $("button[data-subkategori-id]").on('click', function() {
-        var subkategoriId = $(this).data('subkategori-id');
-
-        // Lakukan pemrosesan AJAX untuk mendapatkan produk berdasarkan subkategori yang dipilih
-        if (subkategoriId) {
-            $.ajax({
-                url: '/produk/' + subkategoriId,
-                type: 'GET',
-                data: {
-                    '_token': '{{ csrf_token() }}'
-                },
-                dataType: 'json',
-                success: function(data) {
-                    if (data) {
-                        $('.produk-container').empty();
-                        $.each(data, function(key, produk) {
-                            var productHTML = '<div class="relative max-w-xs min-w-[200px] bg-white shadow-md rounded-lg mx-1 my-3 cursor-pointer">' +
-                                '<div class="overflow-x-hidden rounded-t-lg relative">' +
-                                '<img class="h-40 w-full object-cover" src=' + produk.image + '>' +
-                                '</div>' +
-                                '<div class="mt-4 pl-2 mb-2 flex justify-between ">' +
-                                '<div>' +
-                                '<p class="p-2 font-semibold text-sm text-gray-900 mb-0">' + produk.nama + '</p>' +
-                                '</div>' +
-                                '</div>' +
-                                '</div>';
-                            $('.produk-container').append(productHTML);
-                        });
-                    } else {
-                        $('.produk-container').empty();
-                    }
-                }
-            });
-        } else {
-            $('.produk-container').empty();
-        }
-    });
-});
-
-  </script>
-  
-  
-@endsection
+  @endsection

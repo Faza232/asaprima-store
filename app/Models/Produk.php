@@ -9,6 +9,17 @@ class Produk extends Model
 {
     use HasFactory;
 
+    public function scopeFilter($query, array $filters)
+    {
+
+        $query->when($filters['subkategori'] ?? false, function($query, $subkategori) {
+            return $query->whereHas('subkategori', function($query) use ($subkategori) {
+                $query->where('id', $subkategori);
+            });
+        });
+
+    }
+
     protected $guarded = ['id'];
 
     public function subkategori()
