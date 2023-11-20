@@ -45,9 +45,9 @@
                 </svg>
                 <span class="mx-1 text-sm">YOGYAKARTA</span>
             </div>
-            <div class="w-full text-gray-700 md:text-center text-2xl font-semibold">
-                PT ASA PRIMA NIAGA
-                <img src="img/asa.png" alt="Logo" class="h-8 mr-2 ml-9" style="margin-top: -30px; ">
+            <div class="w-full items-center text-gray-700 md:text-center text-2xl font-semibold">
+                <span class="">PT ASA PRIMA NIAGA</span>
+                <img src="img/APN_Logo.png" alt="Logo" class="h-10 mr-2 ml-9" style="margin-top: -30px; ">
             </div>
             <div class="flex items-center justify-end w-full">
                 <button @click="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none mx-4 sm:mx-0">
