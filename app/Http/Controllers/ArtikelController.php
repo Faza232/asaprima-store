@@ -20,7 +20,8 @@ class ArtikelController extends Controller
         return view('frontend.artikel', [
             "title" => "All artikel",
             "active" => "artikel",
-            "artikel" => Artikel::latest()
+            "artikels" => Artikel::latest()
+            ->selectRaw('*, DATE_FORMAT(CONVERT_TZ(created_at, "+00:00", "+07:00"), "%d %M %Y") as formatted_created_date')
             ->where('status',$status)
             ->orderBy("created_at","desc")
             ->paginate(9)

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Home;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\SertifikatController;
@@ -9,8 +10,9 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\DashboardProdukController;
 use App\Http\Controllers\admin\DashboardUlasanController;
 use App\Http\Controllers\admin\DashboardArtikelController;
+use App\Http\Controllers\admin\DashboardKategoriController;
 use App\Http\Controllers\admin\DashboardSertifikatController;
-use App\Http\Controllers\ProdukController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +60,9 @@ Route::put('/dashboard/sertifikat/{sertifikat}/notapprove', [DashboardUlasanCont
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('/subkategori/{id}', [DashboardProdukController::class,'getSubKategori'])->name('getSubKategori');
+
+Route::resource('/dashboard/kategori', DashboardKategoriController::class);
+
 Route::resource('/dashboard/ulasan', DashboardUlasanController::class);
 Route::resource('/dashboard/artikel', DashboardArtikelController::class);
 Route::resource('/dashboard/sertifikat', DashboardSertifikatController::class);

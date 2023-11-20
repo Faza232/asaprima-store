@@ -5,18 +5,23 @@
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 <h2 class="mb-12 text-center text-3xl font-bold">Newest Article</h2>
 
-
+@if($artikels->count())
     <div class="mb-10 rounded overflow-hidden flex flex-col mx-auto">
         <a href="#"
             class="text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">The
-            Lorem Ipsum Dolor Sit Amet
+            {{ $artikels[0]->title }}
         </a>
-
         <div class="relative">
             <a href="#">
+              @if($artikels[0]->image)
+              <img class="w-full"
+              sr="{{ $artikels[0]->image }}"
+              alt="image">
+              @else
                 <img class="w-full"
                     src="https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=625.0&amp;sharp=10&amp;w=1500"
                     alt="image">
+              @endif
             </a>
 
             <a href="#!"
@@ -26,9 +31,7 @@
 
         </div>
         <p class="text-gray-700 py-5 text-base leading-8">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique, neque ut laoreet lacinia, ipsum turpis feugiat libero, 
-        sit amet lobortis orci ex et diam. Donec in mollis orci. Maecenas suscipit luctus gravida. Vestibulum ante ipsum primis in 
-        faucibus orci luctus et ultrices posuere cubilia curae; Donec varius nisi porta magna dapibus laoreet.
+        {{ $artikels[0]->excerpt }}
         </p>
         <div class="py-5 text-sm font-regular text-gray-900 flex">
             <span class="mr-3 flex flex-row items-center">
@@ -58,7 +61,7 @@
 
     </div>
 
-
+@foreach ($artikels->skip(1) as $artikel)
 <!-- List Card -->
 <div class="container my-24 mx-auto md:px-6">
   <!-- Section: Design Block -->
@@ -68,7 +71,11 @@
       <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
         <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
           data-te-ripple-init data-te-ripple-color="light">
+          @if($artikel->image)
+          <img src="{{ $artikel->image }}" class="w-full" alt="Louvre" />
+          @else
           <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/059.jpg" class="w-full" alt="Louvre" />
+          @endif
           <a href="#!">
             <div
               class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
@@ -78,17 +85,15 @@
       </div>
 
       <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12">
-        <h5 class="mb-3 text-lg font-bold">Lorem Ipsum Dolor Sit Amet</h5>
+        <h5 class="mb-3 text-lg font-bold">{{ $artikel->title }}</h5>
         <div class="mb-3 flex items-center justify-center text-sm font-medium text-yellow-600 md:justify-start">
         </div>
         <p class="mb-6 text-neutral-500 dark:text-neutral-300">
-          <small>Published <u>10.01.2022</u> by
+          <small>Published <u>{{ $artikel->formatted_created_date }}</u> by
             <a href="#!">PT Asa Prima Niaga</a></small>
         </p>
         <p class="text-neutral-500 dark:text-neutral-300">
-          Curabitur tristique, mi a mollis sagittis, metus felis mattis
-          arcu, non vehicula nisl dui quis diam. Mauris ut risus eget massa
-          volutpat feugiat. Donec.
+          {{ $artikel->excerpt }}
         </p>
       </div>
     </div>
@@ -96,6 +101,10 @@
   <!-- Section: Design Block -->
 </div>
 <!-- Container for demo purpose -->
+@endforeach
+@else
+<p class="text-center fs-4">No post found</p>
+@endif
 </div>
 <!-- End Card Blog -->
 @endsection

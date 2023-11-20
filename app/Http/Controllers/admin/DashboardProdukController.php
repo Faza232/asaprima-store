@@ -16,8 +16,14 @@ class DashboardProdukController extends Controller
 {
     public function index()
     {
+        if(request('subkategori')){
+            $subkategori = SubKategori::firstWhere('id', request('subkategori'));
+            $title = ' in '.$subkategori->name;
+            $active = $subkategori->id;
+        }
         return view('admin.produk.index', [
-            'produk' => Produk::all()
+            'produk'=>Produk::latest()->filter(request(['subkategori']))->paginate(7)->withQueryString(),
+            'kategori' => Kategori::all()
         ]);
     }
 
