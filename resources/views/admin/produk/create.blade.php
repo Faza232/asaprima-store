@@ -98,7 +98,7 @@
 
     <div class="flex justify-center items-center">
         <button
-          type="submit" class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
+          type="submit" class="hover:shadow-form rounded-md !bg-main py-3 px-8 text-base font-semibold text-white outline-none"
         >
             Submit
         </button>
