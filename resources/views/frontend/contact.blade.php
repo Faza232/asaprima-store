@@ -22,7 +22,7 @@
 
                     <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">Email</h2>
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Our friendly team is here to help.</p>
-                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">hello@merakiui.com</p>
+                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">asaprimaniaga@gmail.com</p>
                 </div>
 
                 <div>
@@ -35,7 +35,8 @@
                     
                     <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">Office</h2>
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Come say hello at our office HQ.</p>
-                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">100 Smith Street Collingwood VIC 3066 AU</p>
+                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400"> Jl. Griya Punto Dewo Indah, Kragilan,
+Sinduadi, Kec. Mlati, Kabupaten Sleman, DIY</p>
                 </div>
 
                 <div>
@@ -47,12 +48,12 @@
                     
                     <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">Phone</h2>
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Mon-Fri from 8am to 5pm.</p>
-                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">+1 (555) 000-0000</p>
+                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">+62 822-1960-0023</p>
                 </div>
             </div>
 
             <div class="overflow-hidden rounded-lg lg:col-span-2 h-96 lg:h-auto">
-                <iframe width="100%" height="100%" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m22!1m12!1m3!1d63253.9772280526!2d110.2792550730578!3d-7.750142020675745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m7!3e0!4m0!4m4!1s0x2e7af7f4e4dfbaab%3A0xcdbedf2486ac8586!3m2!1d-7.750157!2d110.3205091!5e0!3m2!1sid!2sid!4v1700015636497!5m2!1sid!2sid" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
