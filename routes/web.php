@@ -58,7 +58,7 @@ Route::put('/dashboard/sertifikat/{sertifikat}/approve', [DashboardUlasanControl
 Route::put('/dashboard/sertifikat/{sertifikat}/notapprove', [DashboardUlasanController::class, 'notapprove'])->name('sertifikat.notapprove');
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/dashboard', [ DashboardProdukController::class, 'index'])->name('dashboard.index');
 Route::get('/subkategori/{id}', [DashboardProdukController::class,'getSubKategori'])->name('getSubKategori');
 
 Route::resource('/dashboard/kategori', DashboardKategoriController::class);

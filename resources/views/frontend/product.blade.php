@@ -37,6 +37,9 @@
 
 <div class="p-4 sm:ml-64">
     <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+      @if($produks->isEmpty())
+      <p>Belum ada produk</p>
+      @endif
       @foreach($produks as $produk)
     <div class="relative max-w-xs min-w-[200px] bg-white shadow-md rounded-lg mx-1 my-3 cursor-pointer">
       <div class="overflow-x-hidden rounded-t-lg relative">
