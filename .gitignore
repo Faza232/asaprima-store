@@ -1,4 +1,3 @@
-D:\magang-asaprima\asaprima-store\public\image
 /.phpunit.cache
 /node_modules
 /public/build
@@ -18,3 +17,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/public/image/galeri
