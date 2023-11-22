@@ -20,18 +20,18 @@
 
 <section>
 <!-- image -->
-<div>
-<div>
     <div class="max-w-6xl mx-auto duration-1000 delay-300 opacity-0 select-none ease animate-fade-in-view" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
       <ul x-ref="gallery" id="gallery" class="grid grid-cols-2 gap-5 lg:grid-cols-5">
+        @foreach($sertifikats as $sertifikat)
         <li>
           <img 
             x-on:click="imageGalleryOpen" 
-            src="https://images.pexels.com/photos/2356059/pexels-photo-2356059.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+            src="{{ $sertifikat->image }}" 
             class="object-cover select-none w-full h-auto bg-gray-200 rounded cursor-zoom-in aspect-[3/4] lg:aspect-[3/4] xl:aspect-[3/4] hover:opacity-80 transition-opacity"
             alt="photo gallery image 01"
           >
         </li>
+        @endforeach
       </ul>
     </div>
 

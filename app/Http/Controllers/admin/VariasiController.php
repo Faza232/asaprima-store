@@ -29,7 +29,17 @@ class VariasiController extends Controller
      */
     public function store(StorevariasiRequest $request)
     {
-        //
+        // foreach($request->item as $key => $items)
+        // {
+        //     $estimatesAdd['item']            = $items;
+        //     $estimatesAdd['estimate_number'] = $estimate_number;
+        //     $estimatesAdd['description']     = $request->description[$key];
+        //     $estimatesAdd['unit_cost']       = $request->unit_cost[$key];
+        //     $estimatesAdd['qty']             = $request->qty[$key];
+        //     $estimatesAdd['amount']          = $request->amount[$key];
+
+        //     EstimatesAdd::create($estimatesAdd);
+        // }
     }
 
     /**
