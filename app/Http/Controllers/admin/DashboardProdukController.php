@@ -56,7 +56,7 @@ class DashboardProdukController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
-            'slug' => 'required|unique:produks',
+            'slug' => 'required',
             'image' => 'image|file|max:5048',
             'kategori_id' => 'required',
             'subkategori_id' => 'required',
@@ -111,8 +111,8 @@ class DashboardProdukController extends Controller
     public function update(Request $request, Produk $produk)
     {
         $rules = [
-            'title' => 'required|max:255',
-            'slug' => 'required|unique:produk',
+            'nama' => 'required|max:255',
+            'slug' => 'required',
             'image' => 'image|file|max:5048',
             'kategori_id' => 'required',
             'subkategori_id' => 'required',
