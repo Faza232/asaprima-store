@@ -10,30 +10,12 @@
       <h1 class="font-semibold text-2xl mb-2">Product</h1>
     </div>
     <!-- Upload Button -->
-    <a href="/dashboard/produk/create" class="my-4 bg-main hover:bg-third text-white py-2 px-4 rounded-lg inline-flex items-center">
+    <a href="/dashboard/kategori/create" class="my-4 bg-main hover:bg-third text-white py-2 px-4 rounded-lg inline-flex items-center">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
       </svg>
-      <span class="text-sm">Upload</span>
+      <span class="text-sm">Create</span>
     </a>
-    {{-- Kategori Produk --}}
-    <div class="mb-6 flex flex-row space-x-7">
-        <div>
-          <label for="kategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
-          <select id="kategori_id" name="kategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-            <option value="" selected>Pilih Kategori</option>
-            @foreach ($kategori as $item)
-            <option value="{{ $item->id }}">{{ $item->name }}</option>
-            @endforeach
-          </select>
-        </div>
-        <div>
-          <label for="subkategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub-Kategori</label>
-          <select id="subkategori_id" name="subkategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-            <option value="" selected>Pilih Sub-Kategori</option>
-          </select>
-        </div>
-      </div>
   
     <!-- Tabel Data -->
     <div class="relative overflow-x-auto shadow-sm sm:rounded-lg">
@@ -44,56 +26,36 @@
                         #
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Produk
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         Kategori
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Sub Kategori
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Variasi
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Aksi
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                        
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($produk as $produk)
+                @foreach ($kategoris as $kategori)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}
                     </th>
                     <td class="px-6 py-4">
-                        {{$produk->nama}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{$produk->kategori->name}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{$produk->subkategori->name}}
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 hover:text-slate-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                            </svg>                       
-                            <span class="inline">Edit Variasi</span>
-                          </a>
+                        {{$kategori->name}}
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex flex-row space-x-4">
                             {{-- Edit Button --}}
-                            <a href="{{ route('produk.edit', $produk->id) }}" class="flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 hover:text-slate-800">
+                            <a href="{{ route('kategori.edit', $kategori->id) }}" class="flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 hover:text-slate-800">
                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                               </svg>                       
                               <span class="inline">Edit</span>
                             </a>
                             {{-- Delete Button --}}
-                            <form action="{{ route('produk.destroy', $produk->id) }}" method="post">
+                            <form action="{{ route('kategori.destroy', $kategori->id) }}" method="post">
                               @method('delete')
                               @csrf
                               <button class="show_confirm flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-red-600 hover:text-pink-800" onclick="return confirm('Are you sure?')">
