@@ -150,12 +150,12 @@ class DashboardProdukController extends Controller
     public function destroy(Produk $produk)
     {
         // Hapus data
-        if($produk->Image){
-            $imagepath=public_path($produk->Image);
+        if($produk->image){
+            $imagepath=public_path($produk->image);
             unlink($imagepath);
         }
 
-        Produk::destroy(@$produk->id);   // delete from post where id = slug
+        Produk::destroy($produk->id);   // delete from post where id = slug
         return redirect('/dashboard/produk')->with('success', 'Post has been deleted');
     }
 }

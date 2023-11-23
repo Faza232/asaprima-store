@@ -141,12 +141,12 @@ class DashboardArtikelController extends Controller
     public function destroy(Artikel $artikel)
     {
         // Hapus data
-        if($artikel->Image){
-            $imagepath=public_path($artikel->Image);
+        if($artikel->image){
+            $imagepath=public_path($artikel->image);
             unlink($imagepath);
         }
 
-        Artikel::destroy(@$artikel->id);   // delete from post where id = slug
+        Artikel::destroy($artikel->id);   // delete from post where id = slug
         return redirect('/dashboard/artikel')->with('success', 'Post has been deleted');
     }
 }

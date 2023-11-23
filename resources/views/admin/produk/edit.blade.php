@@ -51,6 +51,8 @@
 
       {{-- Image --}}
       <div class="mb-6">
+        
+        <input type="hidden" name="oldImage" value="{{ $produk->image }}">
         <label class="block mb-2 text-sm font-medium text-gray-900" for="image">Foto Produk</label>
         @if ($produk->image)
           <img class="img-preview w-full object-cover md:object-none md:max-h-96 mb-2 rounded-sm" src="{{ asset($produk->image) }}">

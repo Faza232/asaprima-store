@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\variasi;
 use App\Http\Requests\StorevariasiRequest;
 use App\Http\Requests\UpdatevariasiRequest;
+use Illuminate\Http\Request;
 
 class VariasiController extends Controller
 {
@@ -27,19 +28,17 @@ class VariasiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorevariasiRequest $request)
+    public function store(Request $request)
     {
-        // foreach($request->item as $key => $items)
-        // {
-        //     $estimatesAdd['item']            = $items;
-        //     $estimatesAdd['estimate_number'] = $estimate_number;
-        //     $estimatesAdd['description']     = $request->description[$key];
-        //     $estimatesAdd['unit_cost']       = $request->unit_cost[$key];
-        //     $estimatesAdd['qty']             = $request->qty[$key];
-        //     $estimatesAdd['amount']          = $request->amount[$key];
+        $produkid = $request->produkid;
+        foreach($request->item as $key => $items)
+        {
+            $variasiadd['cat_no']            = $items;
+            $variasiadd['produk_id'] = $produkid;
+            $variasiadd['deskripsi']     = $request->description[$key];
 
-        //     EstimatesAdd::create($estimatesAdd);
-        // }
+            Variasi::create($variasiadd);
+        }
     }
 
     /**
