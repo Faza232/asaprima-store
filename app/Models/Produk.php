@@ -18,6 +18,23 @@ class Produk extends Model
             });
         });
 
+        $query->when($filters['kategori'] ?? false, function($query, $kategori) {
+            return $query->whereHas('kategori', function($query) use ($kategori) {
+                $query->where('id', $kategori);
+            });
+        });
+
+        $query->when($filters['subkategori_id'] ?? false, function($query, $subkategori) {
+            return $query->whereHas('subkategori', function($query) use ($subkategori) {
+                $query->where('id', $subkategori);
+            });
+        });
+
+        $query->when($filters['kategori_id'] ?? false, function($query, $kategori) {
+            return $query->whereHas('kategori', function($query) use ($kategori) {
+                $query->where('id', $kategori);
+            });
+        });
     }
 
     protected $guarded = ['id'];

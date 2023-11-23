@@ -63,10 +63,12 @@ Route::get('/subkategori/{id}', [DashboardProdukController::class,'getSubKategor
 
 Route::resource('/dashboard/kategori', DashboardKategoriController::class);
 
+
 Route::resource('/dashboard/ulasan', DashboardUlasanController::class);
 Route::resource('/dashboard/artikel', DashboardArtikelController::class);
 Route::resource('/dashboard/sertifikat', DashboardSertifikatController::class);
 Route::resource('/dashboard/produk', DashboardProdukController::class);
+
 
 
 

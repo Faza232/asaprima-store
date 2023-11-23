@@ -17,24 +17,28 @@
       <span class="text-sm">Upload</span>
     </a>
     {{-- Kategori Produk --}}
-    <div class="mb-6 flex flex-row space-x-7">
-        <div>
-          <label for="kategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
-          <select id="kategori_id" name="kategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-            <option value="" selected>Pilih Kategori</option>
-            @foreach ($kategori as $item)
-            <option value="{{ $item->id }}">{{ $item->name }}</option>
-            @endforeach
-          </select>
+    <form action="/dashboard/produk" method="GET">
+        <div class="mb-6 flex flex-row space-x-7">
+            <div>
+                <label for="kategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
+                <select id="kategori_id" name="kategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option value="" selected>Pilih Kategori</option>
+                    @foreach ($kategori as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div>
+                <label for="subkategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub-Kategori</label>
+                <select id="subkategori_id" name="subkategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option value="" selected>Pilih Sub-Kategori</option>
+                    <!-- Add options for subcategories here if needed -->
+                </select>
+            </div>
         </div>
-        <div>
-          <label for="subkategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub-Kategori</label>
-          <select id="subkategori_id" name="subkategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-            <option value="" selected>Pilih Sub-Kategori</option>
-          </select>
-        </div>
-      </div>
-  
+        <button type="submit">Filter</button>
+    </form>
+    
     <!-- Tabel Data -->
     <div class="relative overflow-x-auto shadow-sm sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
