@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\variation;
-use App\Http\Requests\StorevariationRequest;
-use App\Http\Requests\UpdatevariationRequest;
 
 class DashboardVariationController extends Controller
 {
@@ -27,7 +25,7 @@ class DashboardVariationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorevariationRequest $request)
+    public function store( $request)
     {
         //
     }
@@ -51,7 +49,7 @@ class DashboardVariationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatevariationRequest $request, variation $variation)
+    public function update($request, variation $variation)
     {
         //
     }

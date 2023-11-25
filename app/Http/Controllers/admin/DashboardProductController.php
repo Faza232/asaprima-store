@@ -35,8 +35,8 @@ class DashboardProductController extends Controller
         $productQuery = Product::latest()->filter(request(['category_id', 'subcategory_id']));
     
         return view('admin.product.index', [
-            'product' => $productQuery->paginate(7)->withQueryString(),
-            'category' => Category::all(),
+            'products' => $productQuery->paginate(7)->withQueryString(),
+            'categories' => Category::all(),
             'title' => $title,
             'active' => $active,
         ]);
@@ -51,7 +51,7 @@ class DashboardProductController extends Controller
         $categoryId = request('kategory_id');
         
         return view('admin.product.create', [
-            'category' => Category::all()
+            'categories' => Category::all()
         ]);
     }
 

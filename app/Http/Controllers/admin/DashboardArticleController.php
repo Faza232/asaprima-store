@@ -16,7 +16,7 @@ class DashboardArticleController extends Controller
      */
     public function index()
     {
-        return view('admin.articles.index', [
+        return view('admin.article.index', [
             'articles'=>Article::selectRaw('*, DATE_FORMAT(CONVERT_TZ(created_at, "+00:00", "+07:00"), "%d %M %Y") as formatted_created_date')->get()
         ]);
     }

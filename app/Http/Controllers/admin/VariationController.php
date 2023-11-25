@@ -27,7 +27,7 @@ class VariationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVariationRequest $request, Variation $variation)
+    public function update( $request, Variation $variation)
     {
         //
     }

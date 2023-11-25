@@ -40,7 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($article as $article)
+                @foreach ($articles as $article)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}

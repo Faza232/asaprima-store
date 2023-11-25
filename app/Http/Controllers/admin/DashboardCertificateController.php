@@ -17,7 +17,7 @@ class DashboardCertificateController extends Controller
     public function index()
     {
         return view('admin.certificate.index', [
-            'certificate'=>Certificate::all()
+            'certificates'=>Certificate::all()
         ]);
     }
 

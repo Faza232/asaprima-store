@@ -1,4 +1,5 @@
 @extends('layout.admin')
+
 @section('container')
 <section class="container px-4 mx-auto">
     <div class="flex flex-col">
@@ -24,11 +25,28 @@
                                 </th>
 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    Nama Sertifikat
+                                    Date
+                                </th>
+
+                                
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Pengulas
+                                </th>
+
+                                <th scope="col" class="px-6 py-3">
+                                    Email
                                 </th>
 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    Tahun Aktif
+                                    Ulasan
+                                </th>
+
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Status
+                                </th>
+
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Aproval
                                 </th>
 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -41,8 +59,8 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                            @foreach($reviews as $review)
                             <tr>
-                            @foreach($certicate as $certicate)
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
@@ -50,18 +68,63 @@
                                         <span>{{$loop->iteration}}</span>
                                     </div>
                                 </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$certicate->name}}</td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$certicate->year}}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$review->formatted_created_date}}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$review->name}}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$review->email}}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$review->body}}</td>
+                                @if($review->status)
+                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <h2 class="text-sm font-normal">Published</h2>
+                                    </div>
+                                </td>
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                     <div class="flex items-center gap-x-6">
-                                    <a href="{{ route('certicate.edit', $certicate->id) }}">
+                                    <form action="{{ route('review.notapprove', $review->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                        <button class="text-red-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                            Dont Publish
+                                        </button>
+                                    </form>
+                                    </div>
+                                </td>
+                                @else
+                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <h2 class="text-sm font-normal">Unpublished</h2>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div class="flex items-center gap-x-6">
+                                    <form action="{{ route('review.approve', $review->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
+                                        Publish
+                                    </button>
+                                    </form>
+                                    </div>
+                                </td>
+                                @endif
+                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+
+                                    <div class="flex items-center gap-x-6">
+                                    <a href="{{ route('review.edit', $review->id) }}">
                                         <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
                                             Edit
                                         </button>
                                     </a>
                                     </div>
+
                                     <div class="flex items-center gap-x-6">
-                                    <form action="{{ route('certicate.destroy', $certicate->id) }}" method="POST" style="display: inline;">
+                                    <form action="{{ route('review.destroy', $review->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                         <button type="submit" class="text-red-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
@@ -73,8 +136,9 @@
                                 </td>
                             </tr>
                             @endforeach
+                            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
 
-        <a href="/dashboard/certicate/create" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+        <a href="/dashboard/review/create" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
             <span>
                 Create New
             </span>
@@ -85,5 +149,4 @@
         </a>
     </div>
 </section>
-
 @endsection

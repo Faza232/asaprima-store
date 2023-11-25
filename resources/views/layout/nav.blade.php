@@ -71,7 +71,7 @@
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/product'>Product</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/review'>Testimoni</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/certificate'>Certificates</a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/articles'>Article</a>
+                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/article'>Article</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/contact">Contact</a>
             </div>
         </nav>
