@@ -15,28 +15,28 @@
   
   {{-- Form --}}
   <div class="block border max-w-3xl rounded-lg p-6 my-4">
-    <form method="POST" action="/dashboard/produk" enctype="multipart/form-data">
+    <form method="POST" action="/dashboard/product" enctype="multipart/form-data">
       @csrf
       {{-- Nama Produk --}}
       <div class="mb-6">
-        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Produk</label>
-        <input type="text" id="nama" name="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Produk</label>
+        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
       </div>
 
       {{-- Kategori Produk --}}
       <div class="mb-6 flex flex-row space-x-7">
         <div>
-          <label for="kategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
-          <select id="kategori_id" name="kategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
+          <select id="category_id" name="category_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             <option value="" selected>Pilih Kategori</option>
-            @foreach ($kategori as $item)
+            @foreach ($categories as $item)
             <option value="{{ $item->id }}">{{ $item->name }}</option>
             @endforeach
           </select>
         </div>
         <div>
-          <label for="subkategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub-Kategori</label>
-          <select id="subkategori_id" name="subkategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <label for="subcategory_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub-Kategori</label>
+          <select id="subcategory_id" name="subcategory_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             <option value="" selected>Pilih Sub-Kategori</option>
           </select>
         </div>
@@ -57,12 +57,12 @@
 
       {{-- Description --}}
       <div class="relative mb-6">
-        <label for="deskripsi" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Description</label>
-        <textarea class="full-featured-non-premium" id="deskripsi" name="deskripsi"></textarea>        
+        <label for="description" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Description</label>
+        <textarea class="full-featured-non-premium" id="description" name="description"></textarea>        
       </div>
 
       {{-- Button --}}
-      <a href="/dashboard/produk">
+      <a href="/dashboard/product">
         <button type="button" class="mr-1 rounded-lg py-2 px-4 text-sm !bg-slate-500 hover:!bg-slate-800 text-white">Cancel</button>
       </a>
       <button type="submit" class="rounded-lg py-2 px-4 text-sm !bg-blue-500 hover:!bg-blue-800 text-white">Create Product</button>
@@ -79,19 +79,19 @@
 <script>
   
   $(document).ready(function () {
-          $('#kategori_id').select2();
+          $('#category_id').select2();
       });
   $(document).ready(function () {
-          $('#subkategori_id').select2();
+          $('#subcategory_id').select2();
       });
 
   $(document).ready(function() {
-      $('#kategori_id').on('change', function() {
-          var kategori_id = $(this).val();
-          // console.log(kategori_id);
-          if (kategori_id) {
+      $('#category_id').on('change', function() {
+          var category_id = $(this).val();
+          // console.log(category_id);
+          if (category_id) {
               $.ajax({
-                  url: '/subkategori/' + kategori_id,
+                  url: '/subcategory/' + category_id,
                   type: 'GET',
                   data: {
                       '_token': '{{ csrf_token() }}'
@@ -100,27 +100,27 @@
                   success: function(data) {
                       // console.log(data);
                       if (data) {
-                          $('#subkategori_id').empty();
-                          $('#subkategori_id').append('<option value="">Pilih Sub-Kategori</option>');
-                          $.each(data, function(key, subkategori) {
-                              $('select[name="subkategori_id"]').append(
-                                  '<option value="' + subkategori.id + '">' +
-                                  subkategori.name + '</option>'
+                          $('#subcategory_id').empty();
+                          $('#subcategory_id').append('<option value="">Pilih Sub-Kategori</option>');
+                          $.each(data, function(key, subcategory) {
+                              $('select[name="subcategory_id"]').append(
+                                  '<option value="' + subcategory.id + '">' +
+                                  subcategory.name + '</option>'
                               );
                           });
                       } else {
-                          $('#subkategori_id').empty();
+                          $('#subcategory_id').empty();
                       }
                   }
               });
           } else {
-              $('#subkategori').empty();
+              $('#subcategory').empty();
           }
       });
   });
 
   // Membuat slug otomatis
-  const title = document.querySelector('#nama');
+  const title = document.querySelector('#name');
   const slug = document.querySelector('#slug');
 
   title.addEventListener("keyup", function(){

@@ -5,7 +5,7 @@
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
   <div class="mx-auto w-full max-w-[550px]">
-    <form action="/dashboard/sertifikat/{{$sertifikat->id}}" method="POST" enctype="multipart/form-data">
+    <form action="/dashboard/certificate/{{$certificate->id}}" method="POST" enctype="multipart/form-data">
     @method('put')
       @csrf
       <div class="mb-5">
@@ -17,12 +17,12 @@
         </label>
         <input
           type="text"
-          name="nama"
-          id="nama"
+          name="name"
+          id="name"
           placeholder="Full Name"
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
           required
-          value="{{ old('nama', $sertifikat->nama) }}"
+          value="{{ old('name', $certificate->name) }}"
         />
       </div>
       <div class="mb-5">
@@ -31,23 +31,23 @@
           name="slug"
           id="slug"
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-          value="{{ old('slug', $sertifikat->slug) }}"
+          value="{{ old('slug', $certificate->slug) }}"
         />
       </div>
       <div class="mb-5">
         <label
-          for="tahun"
+          for="year"
           class="mb-3 block text-base font-medium text-[#07074D]"
         >
           Tahun Aktif
         </label>
         <input
           type="number"
-          name="tahun"
-          id="tahun"
+          name="year"
+          id="year"
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
           required
-          value="{{ old('tahun', $sertifikat->tahun) }}"
+          value="{{ old('year', $certificate->year) }}"
         />
       </div>
       <div class="col-span-full">
@@ -63,9 +63,9 @@
             </svg>
 
             <div class="mb-3 z-20">
-                <input type="hidden" name="oldImage" value="{{ $sertifikat->image }}">
-                @if ($sertifikat->image)
-                    <img class="img-preview img-fluid mb-3 col-sm-5 d-block" src="{{ asset($sertifikat->image) }}">
+                <input type="hidden" name="oldImage" value="{{ $certificate->image }}">
+                @if ($certificate->image)
+                    <img class="img-preview img-fluid mb-3 col-sm-5 d-block" src="{{ asset($certificate->image) }}">
                 @else
                     <img class="img-preview img-fluid mb-3 col-sm-5">
                 @endif
@@ -96,7 +96,7 @@
 </div>
 <script>
         // Membuat slug otomatis
-        const title = document.querySelector('#nama');
+        const title = document.querySelector('#name');
         const slug = document.querySelector('#slug');
 
         title.addEventListener("keyup", function(){

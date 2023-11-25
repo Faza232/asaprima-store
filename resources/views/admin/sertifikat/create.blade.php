@@ -16,8 +16,8 @@
         </label>
         <input
           type="text"
-          name="nama"
-          id="nama"
+          name="name"
+          id="name"
           placeholder="Full Name"
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
           required
@@ -33,15 +33,15 @@
       </div>
       <div class="mb-5">
         <label
-          for="tahun"
+          for="year"
           class="mb-3 block text-base font-medium text-[#07074D]"
         >
           Tahun Aktif
         </label>
         <input
           type="number"
-          name="tahun"
-          id="tahun"
+          name="year"
+          id="year"
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
       </div>
@@ -85,7 +85,7 @@
 </div>
 <script>
         // Membuat slug otomatis
-        const title = document.querySelector('#nama');
+        const title = document.querySelector('#name');
         const slug = document.querySelector('#slug');
 
         title.addEventListener("keyup", function(){

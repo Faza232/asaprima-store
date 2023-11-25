@@ -5,7 +5,7 @@
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
   <div class="mx-auto w-full max-w-[550px]">
-    <form action="/dashboard/artikel" method="post" enctype="multipart/form-data">
+    <form action="/dashboard/article" method="post" enctype="multipart/form-data">
       @csrf
       <div class="mb-5">
         <label

@@ -5,17 +5,17 @@
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 <h2 class="mb-12 text-center text-3xl font-bold">Newest Article</h2>
 
-@if($artikels->count())
+@if($articles->count())
     <div class="mb-10 rounded overflow-hidden flex flex-col mx-auto">
         <a href="#"
             class="text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">The
-            {{ $artikels[0]->title }}
+            {{ $articles[0]->title }}
         </a>
         <div class="relative">
             <a href="#">
-              @if($artikels[0]->image)
+              @if($articles[0]->image)
               <img class="w-full"
-              sr="{{ $artikels[0]->image }}"
+              sr="{{ $articles[0]->image }}"
               alt="image">
               @else
                 <img class="w-full"
@@ -31,7 +31,7 @@
 
         </div>
         <p class="text-gray-700 py-5 text-base leading-8">
-        {{ $artikels[0]->excerpt }}
+        {{ $articles[0]->excerpt }}
         </p>
         <div class="py-5 text-sm font-regular text-gray-900 flex">
             <span class="mr-3 flex flex-row items-center">
@@ -61,7 +61,7 @@
 
     </div>
 
-@foreach ($artikels->skip(1) as $artikel)
+@foreach ($articles->skip(1) as $article)
 <!-- List Card -->
 <div class="container my-24 mx-auto md:px-6">
   <!-- Section: Design Block -->
@@ -71,8 +71,8 @@
       <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
         <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
           data-te-ripple-init data-te-ripple-color="light">
-          @if($artikel->image)
-          <img src="{{ $artikel->image }}" class="w-full" alt="Louvre" />
+          @if($article->image)
+          <img src="{{ $article->image }}" class="w-full" alt="Louvre" />
           @else
           <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/059.jpg" class="w-full" alt="Louvre" />
           @endif
@@ -85,15 +85,15 @@
       </div>
 
       <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12">
-        <h5 class="mb-3 text-lg font-bold">{{ $artikel->title }}</h5>
+        <h5 class="mb-3 text-lg font-bold">{{ $article->title }}</h5>
         <div class="mb-3 flex items-center justify-center text-sm font-medium text-yellow-600 md:justify-start">
         </div>
         <p class="mb-6 text-neutral-500 dark:text-neutral-300">
-          <small>Published <u>{{ $artikel->formatted_created_date }}</u> by
+          <small>Published <u>{{ $article->formatted_created_date }}</u> by
             <a href="#!">PT Asa Prima Niaga</a></small>
         </p>
         <p class="text-neutral-500 dark:text-neutral-300">
-          {{ $artikel->excerpt }}
+          {{ $article->excerpt }}
         </p>
       </div>
     </div>

@@ -22,11 +22,11 @@
 <!-- image -->
     <div class="max-w-6xl mx-auto duration-1000 delay-300 opacity-0 select-none ease animate-fade-in-view" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
       <ul x-ref="gallery" id="gallery" class="grid grid-cols-2 gap-5 lg:grid-cols-5">
-        @foreach($sertifikats as $sertifikat)
+        @foreach($certificates as $certificate)
         <li>
           <img 
             x-on:click="imageGalleryOpen" 
-            src="{{ $sertifikat->image }}" 
+            src="{{ $certificate->image }}" 
             class="object-cover select-none w-full h-auto bg-gray-200 rounded cursor-zoom-in aspect-[3/4] lg:aspect-[3/4] xl:aspect-[3/4] hover:opacity-80 transition-opacity"
             alt="photo gallery image 01"
           >

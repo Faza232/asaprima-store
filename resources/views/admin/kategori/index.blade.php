@@ -10,7 +10,7 @@
       <h1 class="font-semibold text-2xl mb-2">Product</h1>
     </div>
     <!-- Upload Button -->
-    <a href="/dashboard/kategori/create" class="my-4 bg-main hover:bg-third text-white py-2 px-4 rounded-lg inline-flex items-center">
+    <a href="/dashboard/category/create" class="my-4 bg-main hover:bg-third text-white py-2 px-4 rounded-lg inline-flex items-center">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
       </svg>
@@ -37,25 +37,25 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($kategoris as $kategori)
+                @foreach ($categories as $category)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $loop->iteration }}
                     </th>
                     <td class="px-6 py-4">
-                        {{$kategori->name}}
+                        {{$category->name}}
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex flex-row space-x-4">
                             {{-- Edit Button --}}
-                            <a href="{{ route('kategori.edit', $kategori->id) }}" class="flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 hover:text-slate-800">
+                            <a href="{{ route('category.edit', $category->id) }}" class="flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 hover:text-slate-800">
                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                               </svg>                       
                               <span class="inline">Edit</span>
                             </a>
                             {{-- Delete Button --}}
-                            <form action="{{ route('kategori.destroy', $kategori->id) }}" method="post">
+                            <form action="{{ route('category.destroy', $category->id) }}" method="post">
                               @method('delete')
                               @csrf
                               <button class="show_confirm flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-red-600 hover:text-pink-800" onclick="return confirm('Are you sure?')">
@@ -80,19 +80,19 @@
 
 <script>
   $(document).ready(function () {
-          $('#kategori_id').select2();
+          $('#category_id').select2();
       });
   $(document).ready(function () {
-          $('#subkategori_id').select2();
+          $('#subcategory_id').select2();
       });
 
   $(document).ready(function() {
-      $('#kategori_id').on('change', function() {
-          var kategori_id = $(this).val();
-          // console.log(kategori_id);
-          if (kategori_id) {
+      $('#category_id').on('change', function() {
+          var category_id = $(this).val();
+          // console.log(category_id);
+          if (category_id) {
               $.ajax({
-                  url: '/subkategori/' + kategori_id,
+                  url: '/subcategory/' + category_id,
                   type: 'GET',
                   data: {
                       '_token': '{{ csrf_token() }}'
@@ -101,21 +101,21 @@
                   success: function(data) {
                       // console.log(data);
                       if (data) {
-                          $('#subkategori_id').empty();
-                          $('#subkategori_id').append('<option value="">Pilih Sub-Kategori</option>');
-                          $.each(data, function(key, subkategori) {
-                              $('select[name="subkategori_id"]').append(
-                                  '<option value="' + subkategori.id + '">' +
-                                  subkategori.name + '</option>'
+                          $('#subcategory_id').empty();
+                          $('#subcategory_id').append('<option value="">Pilih Sub-Kategori</option>');
+                          $.each(data, function(key, subcategory) {
+                              $('select[name="subcategory_id"]').append(
+                                  '<option value="' + subcategory.id + '">' +
+                                  subcategory.name + '</option>'
                               );
                           });
                       } else {
-                          $('#subkategori_id').empty();
+                          $('#subcategory_id').empty();
                       }
                   }
               });
           } else {
-              $('#subkategori').empty();
+              $('#subcategory').empty();
           }
       });
   });

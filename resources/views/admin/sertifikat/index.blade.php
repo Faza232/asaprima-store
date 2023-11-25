@@ -42,7 +42,7 @@
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                             <tr>
-                            @foreach($sertifikat as $sertifikat)
+                            @foreach($certicate as $certicate)
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
@@ -50,18 +50,18 @@
                                         <span>{{$loop->iteration}}</span>
                                     </div>
                                 </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$sertifikat->nama}}</td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$sertifikat->tahun}}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$certicate->name}}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{$certicate->year}}</td>
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                     <div class="flex items-center gap-x-6">
-                                    <a href="{{ route('sertifikat.edit', $sertifikat->id) }}">
+                                    <a href="{{ route('certicate.edit', $certicate->id) }}">
                                         <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
                                             Edit
                                         </button>
                                     </a>
                                     </div>
                                     <div class="flex items-center gap-x-6">
-                                    <form action="{{ route('sertifikat.destroy', $sertifikat->id) }}" method="POST" style="display: inline;">
+                                    <form action="{{ route('certicate.destroy', $certicate->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                         <button type="submit" class="text-red-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
@@ -74,7 +74,7 @@
                             </tr>
                             @endforeach
 
-        <a href="/dashboard/sertifikat/create" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+        <a href="/dashboard/certicate/create" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
             <span>
                 Create New
             </span>

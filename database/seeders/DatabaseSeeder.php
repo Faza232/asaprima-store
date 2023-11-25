@@ -5,13 +5,13 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\User;
-use App\Models\Ulasan;
-use App\Models\Artikel;
+use App\Models\Review;
+use App\Models\Article;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
-use Database\Seeders\ProdukSeeder;
-use Database\Seeders\KategoriSeeder;
-use Database\Seeders\SubKategoriSeeder;
+use Database\Seeders\ProductSeeder;
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\SubCategorySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            KategoriSeeder::class,
-            SubKategoriSeeder::class,
-            ProdukSeeder::class,
+            CategorySeeder::class,
+            SubCategorySeeder::class,
+            ProductSeeder::class,
         ]);
-        Ulasan::factory(20)->create();
-        Artikel::factory(20)->create();
+        Review::factory(20)->create();
+        Article::factory(20)->create();
      }
 }

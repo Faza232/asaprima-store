@@ -5,7 +5,7 @@
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
   <div class="mx-auto w-full max-w-[550px]">
-    <form action="/dashboard/artikel/{{$artikel->id}}" method="post" enctype="multipart/form-data">
+    <form action="/dashboard/articles/{{$articles->id}}" method="post" enctype="multipart/form-data">
     @method('put')
       @csrf
       <div class="mb-5">
@@ -22,7 +22,7 @@
           placeholder="Judul Artikel"
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
           required
-          value="{{old('title', $artikel->title)}}"
+          value="{{old('title', $articles->title)}}"
         />
       </div>
       <div class="mb-5">
@@ -31,7 +31,7 @@
           name="slug"
           id="slug"
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-          value="{{old('slug', $artikel->slug)}}"
+          value="{{old('slug', $articles->slug)}}"
         />
       </div>
       <div class="mb-5">
@@ -48,7 +48,7 @@
           placeholder="Type your message"
           class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
           required
-        >{{old('body', $artikel->body)}}</textarea>
+        >{{old('body', $articles->body)}}</textarea>
       </div>
       <div class="col-span-full">
         <label
@@ -63,9 +63,9 @@
             </svg>
 
             <div class="mb-3 z-20">
-                <input type="hidden" name="oldImage" value="{{ $artikel->image }}">
-                @if ($artikel->image)
-                    <img class="img-preview img-fluid mb-3 col-sm-5 d-block" src="{{ asset($artikel->image) }}">
+                <input type="hidden" name="oldImage" value="{{ $articles->image }}">
+                @if ($articles->image)
+                    <img class="img-preview img-fluid mb-3 col-sm-5 d-block" src="{{ asset($articles->image) }}">
                 @else
                     <img class="img-preview img-fluid mb-3 col-sm-5">
                 @endif
