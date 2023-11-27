@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ulasan;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,11 +11,11 @@ class Home extends Controller
     public function index()
     {
         return view('index', [
-            "tittle" => "Ulasan",
-            "active" => "ulasan",
-            'ulasan' => Ulasan::latest()
+            "tittle" => "Home",
+            "active" => "Home",
+            'reviews' => Review::latest()
                 ->where('status', true)
-                ->select('nama', 'isi')
+                ->select('name', 'body')
                 ->take(3)
                 ->get()
         ]);

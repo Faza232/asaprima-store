@@ -2,16 +2,16 @@
 
 use App\Http\Controllers\Home;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\UlasanController;
-use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\SertifikatController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\DashboardProdukController;
-use App\Http\Controllers\admin\DashboardUlasanController;
-use App\Http\Controllers\admin\DashboardArtikelController;
-use App\Http\Controllers\admin\DashboardKategoriController;
-use App\Http\Controllers\admin\DashboardSertifikatController;
+use App\Http\Controllers\admin\DashboardProductController;
+use App\Http\Controllers\admin\DashboardReviewController;
+use App\Http\Controllers\admin\DashboardArticleController;
+use App\Http\Controllers\admin\DashboardCategoryController;
+use App\Http\Controllers\admin\DashboardCertificateController;
 
 
 /*
@@ -29,44 +29,47 @@ Route::get('/', [Home::class, 'index'])->name('index');
 Route::get('/certificates', function(){return view('frontend.certificates');});
 
 
-//produk
-Route::get('/produk', [ProdukController::class, 'index'])->name('index');
+//product
+Route::get('/product', [ProductController::class, 'index'])->name('index');
+Route::get('/product/{product:slug}', [ProductController::class, 'show'])->name('index');
 
-//ulasan
-Route::get('/ulasan', [UlasanController::class, 'index'])->name('index');
-Route::post('/ulasan', [UlasanController::class, 'store'])->name('create');
+//review
+Route::get('/review', [ReviewController::class, 'index'])->name('index');
+Route::post('/review', [ReviewController::class, 'store'])->name('create');
 
-//artikel
-Route::get('/artikel', [ArtikelController::class, 'index'])->name('index');
-Route::get('/artikel/show', [ArtikelController::class, 'show'])->name('index');
+//article
+Route::get('/article', [ArticleController::class, 'index'])->name('index');
+Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('show');
 
-//sertifikat
-Route::get('/sertifikat', [SertifikatController::class, 'index'])->name('index');
-Route::get('/sertifikat/show', [SertifikatController::class, 'show'])->name('index');
+//certificate
+Route::get('/certificate', [CertificateController::class, 'index'])->name('index');
+Route::get('/certificate/show', [CertificateController::class, 'show'])->name('index');
 
 //contact
 Route::get('/contact', [Home::class, 'contact'])->name('contact');
 
 //Dashboard
-Route::put('/dashboard/artikel/{artikel}/approve', [DashboardArtikelController::class, 'approve'])->name('artikel.approve');
-Route::put('/dashboard/artikel/{artikel}/notapprove', [DashboardArtikelController::class, 'notapprove'])->name('artikel.notapprove');
+Route::put('/dashboard/article/{article}/approve', [DashboardArticleController::class, 'approve'])->name('article.approve');
+Route::put('/dashboard/article/{article}/notapprove', [DashboardArticleController::class, 'notapprove'])->name('article.notapprove');
 
-Route::put('/dashboard/ulasan/{ulasan}/approve', [DashboardUlasanController::class, 'approve'])->name('ulasan.approve');
-Route::put('/dashboard/ulasan/{ulasan}/notapprove', [DashboardUlasanController::class, 'notapprove'])->name('ulasan.notapprove');
+Route::put('/dashboard/review/{review}/approve', [DashboardReviewController::class, 'approve'])->name('review.approve');
+Route::put('/dashboard/review/{review}/notapprove', [DashboardReviewController::class, 'notapprove'])->name('review.notapprove');
 
-Route::put('/dashboard/sertifikat/{sertifikat}/approve', [DashboardUlasanController::class, 'approve'])->name('sertifikat.approve');
-Route::put('/dashboard/sertifikat/{sertifikat}/notapprove', [DashboardUlasanController::class, 'notapprove'])->name('sertifikat.notapprove');
+Route::put('/dashboard/certificate/{certificate}/approve', [DashboardReviewController::class, 'approve'])->name('certificate.approve');
+Route::put('/dashboard/certificate/{certificate}/notapprove', [DashboardReviewController::class, 'notapprove'])->name('certificate.notapprove');
 
 
-Route::get('/dashboard', [ DashboardProdukController::class, 'index'])->name('dashboard.index');
-Route::get('/subkategori/{id}', [DashboardProdukController::class,'getSubKategori'])->name('getSubKategori');
+Route::get('/dashboard', [ DashboardProductController::class, 'index'])->name('dashboard.index');
+Route::get('/subcategory/{id}', [DashboardProductController::class,'getSubCategory'])->name('getSubCategory');
 
-Route::resource('/dashboard/kategori', DashboardKategoriController::class);
+Route::resource('/dashboard/category', DashboardCategoryController::class);
 
-Route::resource('/dashboard/ulasan', DashboardUlasanController::class);
-Route::resource('/dashboard/artikel', DashboardArtikelController::class);
-Route::resource('/dashboard/sertifikat', DashboardSertifikatController::class);
-Route::resource('/dashboard/produk', DashboardProdukController::class);
+
+Route::resource('/dashboard/review', DashboardReviewController::class);
+Route::resource('/dashboard/article', DashboardArticleController::class);
+Route::resource('/dashboard/certificate', DashboardCertificateController::class);
+Route::resource('/dashboard/product', DashboardProductController::class);
+
 
 
 
