@@ -7,12 +7,12 @@
 
 @if($articles->count())
     <div class="mb-10 rounded overflow-hidden flex flex-col mx-auto">
-        <a href="#"
+        <a href="/articles/{{ $articles[0]->slug }}"
             class="text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">The
             {{ $articles[0]->title }}
         </a>
         <div class="relative">
-            <a href="#">
+            <a href="/articles/{{ $articles[0]->slug }}">
               @if($articles[0]->image)
               <img class="w-full"
               sr="{{ $articles[0]->image }}"
@@ -24,7 +24,7 @@
               @endif
             </a>
 
-            <a href="#!"
+            <a href="/articles/{{ $articles[0]->slug }}"
                 class="hidden absolute z-10 text-xs absolute bottom-0 right-0 bg-indigo-600 px-6 m-2 py-2 text-white hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out sm:flex items-center"><span
                 class="text-lg">|</span>&nbsp;&nbsp;<span>Read more</span>
             </a>
@@ -76,7 +76,7 @@
           @else
           <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/059.jpg" class="w-full" alt="Louvre" />
           @endif
-          <a href="#!">
+          <a href="/article/{{ $article->slug }}">
             <div
               class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
             </div>
@@ -85,7 +85,9 @@
       </div>
 
       <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12">
+        <a href="/article/{{ $article->slug }}">
         <h5 class="mb-3 text-lg font-bold">{{ $article->title }}</h5>
+        </a>
         <div class="mb-3 flex items-center justify-center text-sm font-medium text-yellow-600 md:justify-start">
         </div>
         <p class="mb-6 text-neutral-500 dark:text-neutral-300">
@@ -103,7 +105,7 @@
 <!-- Container for demo purpose -->
 @endforeach
 @else
-<p class="text-center fs-4">No post found</p>
+<p class="text-center fs-4">No article found</p>
 @endif
 </div>
 <!-- End Card Blog -->

@@ -31,6 +31,7 @@ Route::get('/certificates', function(){return view('frontend.certificates');});
 
 //product
 Route::get('/product', [ProductController::class, 'index'])->name('index');
+Route::get('/product/{product:slug}', [ProductController::class, 'show'])->name('index');
 
 //review
 Route::get('/review', [ReviewController::class, 'index'])->name('index');
@@ -38,7 +39,7 @@ Route::post('/review', [ReviewController::class, 'store'])->name('create');
 
 //article
 Route::get('/article', [ArticleController::class, 'index'])->name('index');
-Route::get('/article/show', [ArticleController::class, 'show'])->name('index');
+Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('show');
 
 //certificate
 Route::get('/certificate', [CertificateController::class, 'index'])->name('index');
