@@ -15,30 +15,30 @@
   
   {{-- Form --}}
   <div class="block border max-w-3xl rounded-lg p-6 my-4">
-    <form method="POST" action="/dashboard/produk/{{ $produk->id }}" enctype="multipart/form-data">
+    <form method="POST" action="/dashboard/product/{{ $product->id }}" enctype="multipart/form-data">
       @method('put')
       @csrf
       {{-- Nama Produk --}}
       <div class="mb-6">
-        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Produk</label>
-        <input type="text" id="nama" name="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required value="{{old('nama', $produk->nama)}}">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Produk</label>
+        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required value="{{old('name', $product->name)}}">
       </div>
 
       {{-- Kategori Produk --}}
       <div class="mb-6 flex flex-row space-x-7">
         <div>
-          <label for="kategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
-          <select id="kategori_id" name="kategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-            <option value="{{old('kategori_id', $produk->kategori_id)}}" selected>{{old('name', $produk->kategori->name)}}</option>
-            @foreach ($kategori as $item)
+          <label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
+          <select id="category_id" name="category_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option value="{{old('category_id', $product->category_id)}}" selected>{{old('name', $product->category->name)}}</option>
+            @foreach ($categories as $item)
             <option value="{{ $item->id }}">{{ $item->name }}</option>
             @endforeach
           </select>
         </div>
         <div>
-          <label for="subkategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub-Kategori</label>
-          <select id="subkategori_id" name="subkategori_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-            <option value="{{old('subkategori_id', $produk->subkategori_id)}}" selected>{{old('kategori_id', $produk->subkategori->name)}}</option>
+          <label for="subcategory_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub-Kategori</label>
+          <select id="subcategory_id" name="subcategory_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option value="{{old('subcategory_id', $product->subcategory_id)}}" selected>{{old('category_id', $product->subcategory->name)}}</option>
           </select>
         </div>
       </div>
@@ -46,16 +46,16 @@
       {{-- Slug --}}
       <div class="relative mb-6 hidden" >
         <label for="slug" class="block mb-2 text-sm font-medium text-gray-900">Slug</label>
-        <input type="text" id="slug" name="slug" readonly class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required value="{{old('slug', $produk->slug)}}">
+        <input type="text" id="slug" name="slug" readonly class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required value="{{old('slug', $product->slug)}}">
       </div>
 
       {{-- Image --}}
       <div class="mb-6">
         
-        <input type="hidden" name="oldImage" value="{{ $produk->image }}">
+        <input type="hidden" name="oldImage" value="{{ $product->image }}">
         <label class="block mb-2 text-sm font-medium text-gray-900" for="image">Foto Produk</label>
-        @if ($produk->image)
-          <img class="img-preview w-full object-cover md:object-none md:max-h-96 mb-2 rounded-sm" src="{{ asset($produk->image) }}">
+        @if ($product->image)
+          <img class="img-preview w-full object-cover md:object-none md:max-h-96 mb-2 rounded-sm" src="{{ asset($product->image) }}">
         @else
           <img class="img-preview w-full object-cover md:object-none md:max-h-96 mb-2 rounded-sm">
         @endif
@@ -64,12 +64,12 @@
 
       {{-- Description --}}
       <div class="relative mb-6">
-        <label for="deskripsi" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Description</label>
-        <textarea class="full-featured-non-premium" id="deskripsi" name="deskripsi">{{old('deskripsi', $produk->deskripsi)}}</textarea>        
+        <label for="deskription" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Description</label>
+        <textarea class="full-featured-non-premium" id="deskription" name="deskription">{{old('deskription', $product->deskription)}}</textarea>        
       </div>
 
       {{-- Button --}}
-      <a href="/dashboard/produk">
+      <a href="/dashboard/product">
         <button type="button" class="mr-1 rounded-lg py-2 px-4 text-sm !bg-slate-500 hover:!bg-slate-800 text-white">Cancel</button>
       </a>
       <button type="submit" class="rounded-lg py-2 px-4 text-sm !bg-blue-500 hover:!bg-blue-800 text-white">Update Product</button>
@@ -86,19 +86,19 @@
 <script>
   
   $(document).ready(function () {
-          $('#kategori_id').select2();
+          $('#category_id').select2();
       });
   $(document).ready(function () {
-          $('#subkategori_id').select2();
+          $('#subcategory_id').select2();
       });
 
   $(document).ready(function() {
-      $('#kategori_id').on('change', function() {
-          var kategori_id = $(this).val();
-          // console.log(kategori_id);
-          if (kategori_id) {
+      $('#category_id').on('change', function() {
+          var category_id = $(this).val();
+          // console.log(category_id);
+          if (category_id) {
               $.ajax({
-                  url: '/subkategori/' + kategori_id,
+                  url: '/subcategory/' + category_id,
                   type: 'GET',
                   data: {
                       '_token': '{{ csrf_token() }}'
@@ -107,27 +107,27 @@
                   success: function(data) {
                       // console.log(data);
                       if (data) {
-                          $('#subkategori_id').empty();
-                          $('#subkategori_id').append('<option value="">Pilih Sub-Kategori</option>');
-                          $.each(data, function(key, subkategori) {
-                              $('select[name="subkategori_id"]').append(
-                                  '<option value="' + subkategori.id + '">' +
-                                  subkategori.name + '</option>'
+                          $('#subcategory_id').empty();
+                          $('#subcategory_id').append('<option value="">Pilih Sub-Kategori</option>');
+                          $.each(data, function(key, subcategory) {
+                              $('select[name="subcategory_id"]').append(
+                                  '<option value="' + subcategory.id + '">' +
+                                  subcategory.name + '</option>'
                               );
                           });
                       } else {
-                          $('#subkategori_id').empty();
+                          $('#subcategory_id').empty();
                       }
                   }
               });
           } else {
-              $('#subkategori').empty();
+              $('#subcategory').empty();
           }
       });
   });
 
   // Membuat slug otomatis
-  const title = document.querySelector('#nama');
+  const title = document.querySelector('#name');
   const slug = document.querySelector('#slug');
 
   title.addEventListener("keyup", function(){
