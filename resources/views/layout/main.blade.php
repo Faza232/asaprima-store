@@ -25,6 +25,7 @@
     </div>  
     </footer>
     
+    @include('partials.scripts')
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 </body>
