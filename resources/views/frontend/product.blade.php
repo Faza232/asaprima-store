@@ -4,7 +4,7 @@
   <!-- Learn More: https://formbold.com -->
 
   <div class="container mx-auto px-4 flex">
-  <aside class="relative w-64 h-screen max-h-[30vh] overflow-y-auto bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
+  <aside class="relative w-100 h-screen max-h-[30vh] overflow-y-auto bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
     <h1 class>category</h1>
     <div class="px-3 py-4 overflow-y-auto rounded bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2">
@@ -51,6 +51,5 @@
  @endforeach
     </div>
  </div>
-  {{-- <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script> --}}
   </div>
   @endsection
