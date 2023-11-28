@@ -1,8 +1,5 @@
 @extends('layout.main')
 @section('container')    
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
 
@@ -54,6 +51,6 @@
  @endforeach
     </div>
  </div>
-  <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+  {{-- <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script> --}}
   </div>
   @endsection
