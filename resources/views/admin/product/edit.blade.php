@@ -46,9 +46,8 @@
 
       {{-- Image --}}
       <div class="mb-6">
-        
-        <input type="hidden" name="oldImage" value="{{ $product->image }}">
         <label class="block mb-2 text-sm font-medium text-gray-900" for="image">Foto Produk</label>
+        <input type="hidden" name="oldImage" value="{{ $product->image }}">
         @if ($product->image)
           <img class="img-preview w-full object-cover md:object-none md:max-h-96 mb-2 rounded-sm" src="{{ asset($product->image) }}">
         @else
@@ -59,8 +58,8 @@
 
       {{-- Description --}}
       <div class="relative mb-6">
-        <label for="deskription" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Description</label>
-        <textarea class="full-featured-non-premium" id="deskription" name="deskription">{{old('deskription', $product->deskription)}}</textarea>        
+        <label for="description" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Description</label>
+        <textarea class="full-featured-non-premium" id="description" name="description">{{old('description', $product->description)}}</textarea>        
       </div>
 
       {{-- Button --}}
@@ -76,50 +75,10 @@
 
 @section('content-js')
 
+@vite('public/assets/js/select-cat.js')
 @vite('public/assets/js/tinymce.js')
 
 <script>
-  
-  $(document).ready(function () {
-          $('#category_id').select2();
-      });
-  $(document).ready(function () {
-          $('#subcategory_id').select2();
-      });
-
-  $(document).ready(function() {
-      $('#category_id').on('change', function() {
-          var category_id = $(this).val();
-          // console.log(category_id);
-          if (category_id) {
-              $.ajax({
-                  url: '/subcategory/' + category_id,
-                  type: 'GET',
-                  data: {
-                      '_token': '{{ csrf_token() }}'
-                  },
-                  dataType: 'json',
-                  success: function(data) {
-                      // console.log(data);
-                      if (data) {
-                          $('#subcategory_id').empty();
-                          $('#subcategory_id').append('<option value="">Pilih Sub-Kategori</option>');
-                          $.each(data, function(key, subcategory) {
-                              $('select[name="subcategory_id"]').append(
-                                  '<option value="' + subcategory.id + '">' +
-                                  subcategory.name + '</option>'
-                              );
-                          });
-                      } else {
-                          $('#subcategory_id').empty();
-                      }
-                  }
-              });
-          } else {
-              $('#subcategory').empty();
-          }
-      });
-  });
 
   // Membuat slug otomatis
   const title = document.querySelector('#name');
