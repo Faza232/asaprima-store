@@ -6,7 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
 {{-- Tiny --}}
-<script src="https://cdn.tiny.cloud/1/wcc4fmgwnc7p3ymks5z66gy6ei5l89y7p6uq6mrs9ezfka3m/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/vvtubwfqy00od0afuoc8f9yjggym90flam7o31by6gzehgij/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 <div class="container w-full rounded-lg bg-white shadow-lg p-4 md:p-6">
   <div class="border-b-2">

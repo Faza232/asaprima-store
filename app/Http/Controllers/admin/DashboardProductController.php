@@ -68,6 +68,7 @@ class DashboardProductController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required',
@@ -114,7 +115,7 @@ class DashboardProductController extends Controller
     {
         return view('admin.product.edit', [
             'product' => $product,
-            'category' => Category::all()
+            'categories' => Category::all()
         ]);
     }
 

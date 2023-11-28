@@ -7,12 +7,12 @@
 
 @if($articles->count())
     <div class="mb-10 rounded overflow-hidden flex flex-col mx-auto">
-        <a href="/articles/{{ $articles[0]->slug }}"
+        <a href="/article/{{ $articles[0]->slug }}"
             class="text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">The
             {{ $articles[0]->title }}
         </a>
         <div class="relative">
-            <a href="/articles/{{ $articles[0]->slug }}">
+            <a href="/article/{{ $articles[0]->slug }}">
               @if($articles[0]->image)
               <img class="w-full"
               sr="{{ $articles[0]->image }}"
