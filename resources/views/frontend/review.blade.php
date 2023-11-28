@@ -5,7 +5,7 @@
     <h3 class="text-gray-600 text-2xl font-medium text-center mt-8 bold">Testimonials</h3>
     <p class="text-lg text-gray-600">What others say about us</p>
 </div>
-<div class="lg:grid lg:grid-cols-3">
+<div class="lg:grid lg:grid-cols-3 sm:px-6 lg:px-8">
   @foreach ($reviews as $review)
 
     <div class="p-4 text-gray-800 rounded-lg shadow-md">
@@ -25,6 +25,7 @@
           </div>
     </div>
   @endforeach
+</div>
 </div>
 
 <div class="container mx-auto px-40">
