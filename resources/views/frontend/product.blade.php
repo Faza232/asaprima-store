@@ -6,8 +6,8 @@
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
 
-  <div class="container mx-auto px-40">
-  <aside class="fixed top-50 left-10 z-40 w-64 h-screen " aria-label="Sidebar">
+  <div class="container mx-auto px-4 flex">
+  <aside class="relative w-64 h-screen max-h-[30vh] overflow-y-auto bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
     <h1 class>category</h1>
     <div class="px-3 py-4 overflow-y-auto rounded bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2">
@@ -35,7 +35,7 @@
     </div>
 </aside>
 
-<div class="p-4 sm:ml-64">
+<div class="sm:ml-4 flex-1 z-20">
     <div class="relative m-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
       @if($products->isEmpty())
       <p>Belum ada produk</p>
@@ -45,15 +45,15 @@
       <div class="overflow-x-hidden rounded-t-lg relative">
         <img class="h-40 w-full object-cover" src="{{ $product->image }}">
       </div>
-      <div class="mt-4 pl-2 mb-2 flex justify-between ">
+      <div class="mt-4 pl-2 mb-2 justify-between ">
         <div>
           <p class="p-2 font-semibold text-sm text-gray-900 mb-0">{{ $product->name }}</p>
         </div>
       </div>
     </div>
-  @endforeach
+ @endforeach
     </div>
-    </div>
+ </div>
   <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
   </div>
   @endsection
