@@ -34,7 +34,6 @@ class DashboardArticleController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         // Proses Menyimpan data
         $validatedData = $request->validate([
             'title' => 'required|max:255',
