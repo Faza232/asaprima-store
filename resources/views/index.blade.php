@@ -210,10 +210,6 @@
             {{$review->body}}
             </p>
             <div class="flex flex-col items-center justify-center">
-                <div class="w-12 h-12 overflow-hidden bg-gray-100 border-2 border-indigo-100 rounded-full">
-                    <img src="https://cdn.pixabay.com/photo/2017/05/19/12/38/entrepreneur-2326419__340.jpg" alt="img"
-                        class="object-cover object-center w-full h-full" />
-                </div>
                 <h5 class="font-bold text-indigo-600">{{$review->name}}</h5>
                 <p class="text-sm text-gray-600">Customer</p>
             </div>
