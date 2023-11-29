@@ -7,9 +7,6 @@
 
     @include('partials.links')
 
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
 </head>
 <body>
     @include('layout.nav') <!-- Include the navbar template here -->
