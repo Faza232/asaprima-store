@@ -38,6 +38,7 @@
       <p>Belum ada produk</p>
       @endif
       @foreach($products as $product)
+      <a href="/product/{{ $product->slug }}">
     <div class="relative max-w-xs min-w-[200px] bg-white shadow-md rounded-lg mx-1 my-3 cursor-pointer">
       <div class="overflow-x-hidden rounded-t-lg relative">
         <img class="h-40 w-full object-cover" src="{{ $product->image }}">

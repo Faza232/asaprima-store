@@ -13,10 +13,9 @@
 </head>
 <body>
     @include('layout.nav') <!-- Include the navbar template here -->
-    <div class="container mx-auto">
-        <!-- Your page content here -->
-        @yield('container')
-    </div>
+    
+    <!-- Your page content here -->
+    @yield('container')
 
     <footer>
       @include('layout.footer') 
