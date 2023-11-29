@@ -1,13 +1,10 @@
 @extends('layout.main')
 @section('container')    
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
 
   <div class="container mx-auto px-4 flex">
-  <aside class="relative w-64 h-screen max-h-[30vh] overflow-y-auto bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
+  <aside class="relative w-100 h-screen max-h-[30vh] overflow-y-auto bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
     <h1 class>category</h1>
     <div class="px-3 py-4 overflow-y-auto rounded bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2">
@@ -41,6 +38,7 @@
       <p>Belum ada produk</p>
       @endif
       @foreach($products as $product)
+      <a href="/product/{{ $product->slug }}">
     <div class="relative max-w-xs min-w-[200px] bg-white shadow-md rounded-lg mx-1 my-3 cursor-pointer">
       <div class="overflow-x-hidden rounded-t-lg relative">
         <img class="h-40 w-full object-cover" src="{{ $product->image }}">
@@ -54,6 +52,5 @@
  @endforeach
     </div>
  </div>
-  <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
   </div>
   @endsection

@@ -8,8 +8,8 @@
                 <span class="mx-1 text-sm">YOGYAKARTA</span>
             </div>
             <div class="w-full items-center text-gray-700 md:text-center text-2xl font-semibold">
-                <span class="">PT ASA PRIMA NIAGA</span>
-                <img src="img/APN_Logo.png" alt="" class="h-10 mr-2 ml-9" style="margin-top: -30px; ">
+                <span class="hidden md:block md:mt-2">PT ASA PRIMA NIAGA</span>
+                <img src="img/APN_Logo.png" alt="" class="h-10 mr-2 md:ml-9 md:-mt-9">
             </div>
             <div class="flex items-center justify-end w-full">
                 <button @click="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none mx-4 sm:mx-0">

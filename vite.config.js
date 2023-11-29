@@ -5,9 +5,9 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                "resources/css/app.css",
                 "resources/js/app.js",
                 "public/assets/js/tinymce.js",
+                "public/assets/js/select-cat.js",
             ],
             refresh: true,
         }),
