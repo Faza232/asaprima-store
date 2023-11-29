@@ -2,78 +2,73 @@
 
 @section('container')
 
-    <!-- component -->
-<div class="flex items-center justify-center p-12">
-  <!-- Author: FormBold Team -->
-  <!-- Learn More: https://formbold.com -->
-  <div class="mx-auto w-full max-w-[550px]">
-    <form action="/dashboard/review" method="POST">
+<div class="container w-full rounded-lg bg-white shadow-lg p-4 md:p-6">
+  <div class="border-b-2">
+    <h1 class="font-semibold text-2xl mb-2">Create New Post</h1>
+  </div>
+  
+  {{-- Form --}}
+  <div class="block border max-w-3xl rounded-lg p-6 my-4">
+    <form method="POST" action="/dashboard/review" enctype="multipart/form-data">
       @csrf
-      <div class="mb-5">
-        <label
-          for="name"
-          class="mb-3 block text-base font-medium text-[#07074D]"
-        >
-          Nama
-        </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Full Name"
-          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-        />
-          
+      {{-- Nama --}}
+      <div class="mb-6">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
       </div>
-      <div class="mb-5">
-        <label
-          for="email"
-          class="mb-3 block text-base font-medium text-[#07074D]"
-        >
-          Email Address
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="example@domain.com"
-          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-        />
-        
+
+      {{-- Email --}}
+      <div class="mb-6">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+        <input type="text" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
       </div>
-      <div class="mb-5">
-        <label
-          for="body"
-          class="mb-3 block text-base font-medium text-[#07074D]"
-        >
-          Ulasan
-        </label>
-        <textarea
-          rows="4"
-          name="body"
-          id="body"
-          placeholder="Type your message"
-          class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-        ></textarea>
+
+      {{-- Body --}}
+      <div class="relative mb-6">
+        <label for="body" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Ulasan</label>
+        <textarea class="full-featured-non-premium" id="body" name="body"></textarea>        
       </div>
-      <div class="mb-5 flex">
-          <div class="flex items-center mr-4">
-              <input id="status" type="radio" value="1" name="status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-              <label for="status" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Publish</label>
-          </div>
-          <div class="flex items-center mr-4">
-              <input id="status" type="radio" value="0" name="status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-              <label for="status" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Dont Publish</label>
-          </div>
-      </div>
-      <div>
-        <button
-          class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
-        >
-          Submit
-        </button>
-      </div>
-    </form>
+
+      {{-- Status --}}
+      <h3 class="mb-5 text-lg font-medium text-gray-900">Status</h3>
+      <ul class="mb-6 grid w-full gap-6 md:grid-cols-2">
+          <li>
+              <input type="radio" id="status-app" name="status" value="1" class="hidden peer" required>
+              <label for="status-app" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-main peer-checked:text-main hover:text-gray-600 hover:bg-gray-100">                           
+                  <div class="block">
+                      <div class="w-full text-lg font-semibold">Publish</div>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ms-3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>                  
+              </label>
+          </li>
+          <li>
+              <input type="radio" id="status-not" name="status" value="0" class="hidden peer">
+              <label for="status-not" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-red-600 peer-checked:text-red-600 hover:text-gray-600 hover:bg-gray-100">
+                  <div class="block">
+                      <div class="w-full text-lg font-semibold">Don't Publish</div>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ms-3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>                  
+              </label>
+          </li>
+      </ul>
+
+      {{-- Button --}}
+      <a href="/dashboard/review">
+        <button type="button" class="mr-1 rounded-lg py-2 px-4 text-sm !bg-slate-500 hover:!bg-slate-800 text-white">Cancel</button>
+      </a>
+      <button type="submit" class="rounded-lg py-2 px-4 text-sm !bg-blue-500 hover:!bg-blue-800 text-white">Create Post</button>
+  </form>
   </div>
 </div>
+
+@endsection
+
+@section('content-js')
+
+@vite('public/assets/js/tinymce.js')
+    
 @endsection
