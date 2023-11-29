@@ -1,72 +1,47 @@
 @extends('layout.admin')
 
 @section('container')
-<div class="flex items-center justify-center p-12">
-  <!-- Author: FormBold Team -->
-  <!-- Learn More: https://formbold.com -->
-  <div class="mx-auto w-full max-w-[550px]">
-    <form action="/dashboard/review/{{$review->id}}" method="POST">
-    @method('put')
+
+<div class="container w-full rounded-lg bg-white shadow-lg p-4 md:p-6">
+  <div class="border-b-2">
+    <h1 class="font-semibold text-2xl mb-2">Update Post</h1>
+  </div>
+  
+  {{-- Form --}}
+  <div class="block border max-w-3xl rounded-lg p-6 my-4">
+    <form method="POST" action="/dashboard/review/{{$review->id}}" enctype="multipart/form-data">
       @csrf
-      <div class="mb-5">
-        <label
-          for="name"
-          class="mb-3 block text-base font-medium text-[#07074D]"
-        >
-          Nama
-        </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Full Name"
-          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-          required
-          value="{{ old('name', $review->name) }}"
-          />
+      {{-- Nama --}}
+      <div class="mb-6">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required value="{{ old('name', $review->name) }}">
       </div>
-      <div class="mb-5">
-        <label
-          for="email"
-          class="mb-3 block text-base font-medium text-[#07074D]"
-        >
-          Email Address
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="example@domain.com"
-          required
-          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-          autocomplete="on"
-          value="{{ old('email', $review->email) }}"
-        />
+
+      {{-- Email --}}
+      <div class="mb-6">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+        <input type="text" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required value="{{ old('email', $review->email) }}">
       </div>
-      <div class="mb-5">
-        <label
-          for="body"
-          class="mb-3 block text-base font-medium text-[#07074D]"
-        >
-          Ulasan
-        </label>
-        <textarea
-          rows="4"
-          name="body"
-          id="body"
-          placeholder="Type your message"
-          required
-          class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-        >{{ old('body', $review->body) }}</textarea>
+
+      {{-- Body --}}
+      <div class="relative mb-6">
+        <label for="body" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Ulasan</label>
+        <textarea class="full-featured-non-premium" id="body" name="body">{{ old('body', $review->body) }}</textarea>        
       </div>
-      <div>
-        <button
-          type="submit" class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
-        >
-          Update Ulasan
-        </button>
-      </div>
-    </form>
+
+      {{-- Button --}}
+      <a href="/dashboard/review">
+        <button type="button" class="mr-1 rounded-lg py-2 px-4 text-sm !bg-slate-500 hover:!bg-slate-800 text-white">Cancel</button>
+      </a>
+      <button type="submit" class="rounded-lg py-2 px-4 text-sm !bg-blue-500 hover:!bg-blue-800 text-white">Update Post</button>
+  </form>
   </div>
 </div>
+
+@endsection
+
+@section('content-js')
+
+@vite('public/assets/js/tinymce.js')
+    
 @endsection
