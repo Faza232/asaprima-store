@@ -7,7 +7,7 @@
                 </svg>
                 <span class="mx-1 text-sm">YOGYAKARTA</span>
             </div>
-            <div class="w-full items-center text-gray-700 md:text-center text-2xl font-semibold">
+            <div class="w-full items-center text-main md:text-center text-2xl font-semibold">
                 <span class="hidden md:block md:mt-2">PT ASA PRIMA NIAGA</span>
                 <img src="img/APN_Logo.png" alt="" class="h-10 mr-2 md:ml-9 md:-mt-9">
             </div>
@@ -29,12 +29,24 @@
         </div>
         <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center mt-4">
             <div class=""> <!-- flex flex-col sm:flex-row -->
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/'>Home</a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/product'>Product</a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/review'>Testimoni</a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/certificate'>Certificates</a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href='/article'>Article</a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/contact">Contact</a>
+            <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/'>Home
+                <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gray-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-bottom"></span>
+            </a>
+            <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/product'>Product
+                <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gray-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-bottom"></span>
+            </a>
+            <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/review'>Testimoni
+                <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gray-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-bottom"></span>
+            </a>
+            <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/certificates'>Certificates
+                <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gray-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-bottom"></span>
+            </a>
+            <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/article'>Article
+                <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gray-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-bottom"></span>
+            </a>
+            <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/contact'>Contact
+                <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gray-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-bottom"></span>
+            </a>
             </div>
         </nav>
         <div class="relative mt-6 max-w-lg mx-auto">

@@ -30,7 +30,7 @@ class ProductController extends Controller
             'active'=> $active,
             'categories'=> Category::all(),
             'subcategories'=>SubCategory::all(),
-            'products'=>Product::latest()->filter(request(['subcategory']))->paginate(7)->withQueryString()
+            'products'=>Product::latest()->filter(request(['subcategory']))->get()
         ]);
     }
 

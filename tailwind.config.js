@@ -14,6 +14,10 @@ module.exports = {
                 second: "#F0FCF2",
                 third: "#729A78",
             },
+            transitionProperty: {
+                'height': 'height',
+                'spacing': 'margin, padding',
+              }
         },
     },
     plugins: [require("flowbite/plugin")],
