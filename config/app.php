@@ -182,6 +182,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Auth' => Illuminate\Support\Facades\Auth::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

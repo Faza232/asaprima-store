@@ -38,7 +38,7 @@
             <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/review'>Testimoni
                 <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gray-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-bottom"></span>
             </a>
-            <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/certificates'>Certificates
+            <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/certificate'>Certificates
                 <span class="absolute inset-x-0 bottom-0 h-0.5 bg-gray-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-bottom"></span>
             </a>
             <a class="mt-3 text-gray-600 relative group sm:mx-3 sm:mt-0" href='/article'>Article
