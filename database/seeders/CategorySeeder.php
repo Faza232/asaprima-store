@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CategorySeeder extends Seeder
 {
@@ -13,19 +12,22 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create([
-            'name' => 'Implants',
-            'slug' => 'implants'
-        ]);
+        // Data nama Category
+        $categoriesData = [
+            'Implants',
+            'Instruments',
+            'General Instruments Surgical',
+        ];
 
-        Category::create([
-            'name' => 'Instriments',
-            'slug' => 'instriments'
-        ]);
+        foreach ($categoriesData as $categoryName) {
+            // Membuat slug dari nama
+            $slug = strtolower(str_replace(' ', '-', $categoryName));
 
-        Category::create([
-            'name' => 'General Instruments Surgical',
-            'slug' => 'general instruments surgical'
-        ]);
+            // Membuat Category baru
+            Category::create([
+                'name' => $categoryName,
+                'slug' => $slug,
+            ]);
+        }
     }
 }
