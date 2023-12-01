@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             CategorySeeder::class,
-            SubCategorySeeder::class,
-            ProductSeeder::class,
+            // SubCategorySeeder::class,
+            // ProductSeeder::class,
         ]);
         Review::factory(20)->create();
         Article::factory(20)->create();

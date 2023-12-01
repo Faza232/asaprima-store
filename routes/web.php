@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\DashboardArticleController;
 use App\Http\Controllers\admin\DashboardProductController;
 use App\Http\Controllers\admin\DashboardCategoryController;
 use App\Http\Controllers\admin\DashboardCertificateController;
+use App\Http\Controllers\admin\DashboardSubCategoryController;
 
 
 /*
@@ -69,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/subcategory/{id}', [DashboardProductController::class,'getSubCategory'])->name('getSubCategory');
 
     Route::resource('/dashboard/category', DashboardCategoryController::class);
+    Route::resource('/dashboard/subcategory', DashboardSubCategoryController::class);
 
     Route::resource('/dashboard/review', DashboardReviewController::class);
     Route::resource('/dashboard/article', DashboardArticleController::class);

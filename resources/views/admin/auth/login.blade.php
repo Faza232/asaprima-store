@@ -17,15 +17,17 @@
                             Sign In With Username and Password
                         </div>
                     </div>
-
+                    <form class="space-y-4 md:space-y-6" action="/login/action" method="POST">
+                        @csrf
                     <div class="mx-auto max-w-xs">
                         <input
                             class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                            type="email" placeholder="Email" />
+                            type="username" name="username" id="username" placeholder="username" />
                         <input
                             class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                            type="password" placeholder="Password" />
+                            type="password" name="password" id="password" placeholder="Password" />
                         <button
+                            type="submit"
                             class="mt-5 tracking-wide font-semibold bg-main text-white-500 w-full py-4 rounded-lg hover:bg-green-800 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                             <span class="ml-">
                                 Sign In

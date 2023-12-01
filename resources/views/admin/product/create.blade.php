@@ -21,7 +21,7 @@
       <div class="mb-6 flex flex-row space-x-7">
         <div>
           <label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
-          <select id="category_id" name="category_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <select id="category_id" name="category_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
             <option value="" selected>Pilih Kategori</option>
             @foreach ($categories as $item)
             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -30,7 +30,7 @@
         </div>
         <div>
           <label for="subcategory_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub-Kategori</label>
-          <select id="subcategory_id" name="subcategory_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <select id="subcategory_id" name="subcategory_id" class="form-select input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
             <option value="" selected>Pilih Sub-Kategori</option>
           </select>
         </div>
@@ -52,7 +52,7 @@
       {{-- Description --}}
       <div class="relative mb-6">
         <label for="description" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Description</label>
-        <textarea class="full-featured-non-premium" id="description" name="description"></textarea>        
+        <textarea class="full-featured-non-premium" id="description" name="description" required></textarea>        
       </div>
 
       {{-- Button --}}
