@@ -3,7 +3,7 @@
 
 <div>
     <div>
-        <div class="container mx-auto">
+        <div class="container mx-auto px-40">
             <h1 class="text-center text-2xl font-bold uppercase">{{ $article->title }}</h1>
 
             @if ($article->image)
@@ -11,15 +11,14 @@
                     <img src="{{$article->image}}" alt="{{ $article->image }}">
                 </div>
             @else
-            <div class="flex items-center justify-center">
-                <img src="https://source.unsplash.com/1200x400?{{ $article->titile }}" alt="{{ $article->titile }}">
-            </div>
+                <div class="flex items-center justify-center">
+                    <img src="https://source.unsplash.com/1200x400?{{ $article->title }}" alt="{{ $article->title }}">
+                </div>
             @endif
 
-            <article class="mt-8 text-center">
+            <article class="mt-8 text-justify">
                 {!! $article->body !!}
             </article>
-
 
             <br>
 

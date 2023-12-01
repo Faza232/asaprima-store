@@ -194,7 +194,7 @@
                         {{$review->body}}
                     </p>
                     <div class="flex flex-col items-center justify-center">
-                        <h5 class="font-bold text-main font-normal text-center mt-8">{{$review->name}}</h5>
+                        <h5 class="text-main font-normal text-center mt-8">{{$review->name}}</h5>
                         <p class="text-sm text-gray-600 font-normal">Customer</p>
                     </div>
                 </div>

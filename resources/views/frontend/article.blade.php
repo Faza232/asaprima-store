@@ -1,6 +1,5 @@
 @extends('layout.main')
 @section('container')
-
 <!-- Weekly Card Blog -->
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 <h2 class="mb-12 text-center text-3xl font-bold">Newest Article</h2>
@@ -84,9 +83,9 @@
         </div>
       </div>
 
-      <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12">
+      <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12 ">
         <a href="/article/{{ $article->slug }}">
-        <h5 class="mb-3 text-lg font-bold">{{ $article->title }}</h5>
+        <h5 class="mb-3 text-lg font-bold ">{{ $article->title }}</h5>
         </a>
         <div class="mb-3 flex items-center justify-center text-sm font-medium text-yellow-600 md:justify-start">
         </div>

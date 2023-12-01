@@ -1,5 +1,4 @@
 @extends('layout.main')
-
 @section('container')
 <!-- source:https://codepen.io/owaiswiz/pen/jOPvEPB -->
 <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
