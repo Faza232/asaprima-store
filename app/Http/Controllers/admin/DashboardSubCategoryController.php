@@ -36,10 +36,12 @@ class DashboardSubCategoryController extends Controller
     {
         // Validasi data jika diperlukan
         $validatedData = $request->validate([
-            'nama' => 'required|max:255',
-            'slug' => 'required|max:255',
+            'name' => 'required|max:255',
             'category_id' => 'required'
         ]);
+        // Membuat slug dari nama
+        $slug = strtolower(str_replace(' ', '-', $validatedData['name']));
+        $validatedData['slug'] = $slug;
         SubCategory::create($validatedData);
 
         return redirect('/dashboard/category')->with('success', 'New SubCategory has been added!');
@@ -65,7 +67,7 @@ class DashboardSubCategoryController extends Controller
         // dd($request);
         //proses update
         $rules = [
-            'nama' => 'required|max:255',
+            'name' => 'required|max:255',
             'slug' => 'required|max:255',
             'category_id' => 'required'
         ];

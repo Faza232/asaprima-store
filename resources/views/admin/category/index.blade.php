@@ -50,7 +50,7 @@
                     <td class="px-6 py-4">
                         <div class="flex flex-row space-x-4">
                              {{-- Add subcategory button --}}
-                            <button class="flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 hover:text-slate-800" data-category-id="{{ $category->id }}" data-category-name="{{ $category->name }}" id="open-btn2">
+                            <button class="flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 hover:text-slate-800" data-category-id2="{{ $category->id }}" data-category-name2="{{ $category->name }}" id="open-btn3">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                             </svg>       
@@ -119,7 +119,7 @@
     <div class="fixed inset-0 z-[999] items-center justify-center bg-neutral-100 bg-opacity-75 hidden" id="my-modal2">
         <div class="relative top-1/4 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
-                <form method="POST" action="/dashboard/category/{{ $category->id ?? ''}}">
+                <form method="POST">
                     @method('put')
                     @csrf
                     <div class="relative mb-6" data-te-input-wrapper-init>
@@ -129,8 +129,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             id="name2"
                             name="name"
-                            placeholder="Name" 
-                            value="{{ old('name', $category->name ?? '') }}"
+                            placeholder="Name"
                         />
                     </div>
                     <div class="flex justify-center space-x-4">
@@ -145,7 +144,7 @@
     <div class="fixed inset-0 z-[999] items-center justify-center bg-neutral-100 bg-opacity-75 hidden" id="my-modal">
         <div class="relative top-1/4 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
-                <form method="POST" action="{{ route('category.store') }}">
+                <form method="POST">
                     @csrf
                     <div class="mb-4">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
@@ -160,14 +159,15 @@
     </div> 
 
         {{-- Add SubCategory Modal --}}
-        <div class="fixed inset-0 z-[999] items-center justify-center bg-neutral-100 bg-opacity-75 hidden" id="my-modal">
+        <div class="fixed inset-0 z-[999] items-center justify-center bg-neutral-100 bg-opacity-75 hidden" id="my-modal3">
             <div class="relative top-1/4 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
                 <div class="mt-3 text-center">
                     <form method="POST" action="{{ route('subcategory.store') }}">
                         @csrf
                         <div class="mb-4">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">SubCategory</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Type here..." required>
+                            <label id="name3" for="name" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                            <input type="text" name="name" id="name4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Type here..." required>
+                            <input type="text" name="category_id" id="category_id" class="hidden" required>
                         </div>
                         <div class="flex justify-center space-x-4">
                             <button type="submit" class="my-4 bg-main hover:bg-third text-white py-2 px-4 rounded-lg inline-flex items-center">Submit Category</button>
@@ -180,6 +180,44 @@
 @endsection
 
 @section('content-js')
+<script>
+    
+    let modal3 = document.getElementById("my-modal3");
+    let form3 = modal3.querySelector("form");
+
+    // Temukan semua tombol "Edit"
+    let AddSubButtons = document.querySelectorAll("[data-category-id2]");
+
+    // Loop melalui setiap tombol "Edit" dan tambahkan event listener
+    AddSubButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            let categoryId = button.getAttribute("data-category-id2");
+            let categoryName = button.getAttribute("data-category-name2");
+
+            // Isi nilai input "Name" dalam modal update dengan nama kategori yang sesuai
+            form3.querySelector("#name3").textContent = categoryName;
+
+            form3.querySelector("#category_id").value = categoryId;
+
+            modal3.style.display = "block";
+        });
+    });
+
+    // Event listener untuk menutup modal saat diklik di luar modal
+    window.addEventListener("click", function (event) {
+        if (event.target == modal3) {
+            modal3.style.display = "none";
+        }
+    });
+
+    // Selainnya, Anda bisa tetap mempertahankan kode untuk menutup modal saat diklik di luar modal
+    window.onclick = function (event) {
+        if (event.target == modal3) {
+            modal3.style.display = "none";
+        }
+    }
+</script>
+
 <script>
     let modal2 = document.getElementById("my-modal2");
     let form2 = modal2.querySelector("form");
