@@ -1,10 +1,6 @@
 @extends('layout.admin')
 
 @section('container')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
-@php($category=null)
 <div class="px-4 md:px-6 container w-full">
     <div class="border-b-2">
       <h1 class="font-semibold text-2xl mb-2">Category</h1>
@@ -130,6 +126,7 @@
                             id="name2"
                             name="name"
                             placeholder="Name"
+                            value="{{ old('name', $category->name ?? '') }}"
                         />
                     </div>
                     <div class="flex justify-center space-x-4">

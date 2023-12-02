@@ -49,9 +49,13 @@ Route::get('/certificate/show', [CertificateController::class, 'show'])->name('i
 //contact
 Route::get('/contact', [Home::class, 'contact'])->name('contact');
 
-Route::controller(AuthController::class)->group(function() {
+// AUTHENTICATION ROUTING AREA
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/register', 'registerSave')->name('register.save');
     Route::get('/login', 'login')->name('login');
     Route::post('/login/action', 'loginAction')->name('login.action');
+    Route::get('/logout', 'logout')->middleware('auth')->name('logout');
 });
 
 Route::middleware('auth')->group(function () {
