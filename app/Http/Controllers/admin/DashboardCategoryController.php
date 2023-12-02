@@ -36,53 +36,42 @@ class DashboardCategoryController extends Controller
     {
         // Validasi data jika diperlukan
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'slug' => 'required|max:255'
+            'name' => 'required|max:255'
         ]);
+    
+        // Membuat slug dari nama
+        $slug = strtolower(str_replace(' ', '-', $validatedData['name']));
+        $validatedData['slug'] = $slug;
+    
+        // Membuat kategori baru
         Category::create($validatedData);
-
+    
         return redirect('/dashboard/category')->with('success', 'New Category has been added!');
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-        // Menampilkan data spesifik tiap category (READ)
-        return view('admin.category.show', [
-            'category' => $category
-        ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Category $category)
-    {
-        // menampilkan view untuk update
-        return view('admin.category.edit', [
-            'category' => $category
-        ]);
-    }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Category $category)
     {
-        // dd($request);
-        //proses update
+        // Validasi data jika diperlukan
         $rules = [
-            'name' => 'required|max:255',
-            'slug' => 'required|max:255'
+            'name' => 'required|max:255'
         ];
         $validatedData = $request->validate($rules);
-
+    
+        // Membuat slug dari nama
+        $slug = strtolower(str_replace(' ', '-', $validatedData['name']));
+        $validatedData['slug'] = $slug;
+    
+        // Proses update
         Category::where('id', $category->id)
             ->update($validatedData);
-
+    
         return redirect('/dashboard/category')->with('success', 'Category has been updated!');
     }
+    
     
 
     /**

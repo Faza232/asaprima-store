@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\DashboardArticleController;
 use App\Http\Controllers\admin\DashboardProductController;
 use App\Http\Controllers\admin\DashboardCategoryController;
 use App\Http\Controllers\admin\DashboardCertificateController;
+use App\Http\Controllers\admin\DashboardSubCategoryController;
 
 
 /*
@@ -48,9 +49,13 @@ Route::get('/certificate/show', [CertificateController::class, 'show'])->name('i
 //contact
 Route::get('/contact', [Home::class, 'contact'])->name('contact');
 
-Route::controller(AuthController::class)->group(function() {
+// AUTHENTICATION ROUTING AREA
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/register', 'registerSave')->name('register.save');
     Route::get('/login', 'login')->name('login');
     Route::post('/login/action', 'loginAction')->name('login.action');
+    Route::get('/logout', 'logout')->middleware('auth')->name('logout');
 });
 
 Route::middleware('auth')->group(function () {
@@ -69,6 +74,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/subcategory/{id}', [DashboardProductController::class,'getSubCategory'])->name('getSubCategory');
 
     Route::resource('/dashboard/category', DashboardCategoryController::class);
+    Route::resource('/dashboard/subcategory', DashboardSubCategoryController::class);
 
     Route::resource('/dashboard/review', DashboardReviewController::class);
     Route::resource('/dashboard/article', DashboardArticleController::class);

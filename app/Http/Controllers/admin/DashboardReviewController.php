@@ -16,7 +16,7 @@ class DashboardReviewController extends Controller
     public function index()
     {
         return view('admin.review.index', [
-            'reviews' => Review::all()
+            'reviews'=>Review::selectRaw('*, DATE_FORMAT(CONVERT_TZ(created_at, "+00:00", "+07:00"), "%d %M %Y") as formatted_created_date')->get()
         ]);
     }
 

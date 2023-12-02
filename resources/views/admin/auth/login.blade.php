@@ -1,5 +1,13 @@
-@extends('layout.main')
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    @include('partials.links')
+</head>
+<body class="font-poppins">
 <!-- source:https://codepen.io/owaiswiz/pen/jOPvEPB -->
 <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
     <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
@@ -16,17 +24,19 @@
                             Sign In With Username and Password
                         </div>
                     </div>
-
+                    <form class="space-y-4 md:space-y-6" action="/login/action" method="POST">
+                        @csrf
                     <div class="mx-auto max-w-xs">
                         <input
                             class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                            type="email" placeholder="Email" />
+                            type="username" name="username" id="username" placeholder="username" />
                         <input
                             class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                            type="password" placeholder="Password" />
+                            type="password" name="password" id="password" placeholder="Password" />
                         <button
-                            class="mt-5 tracking-wide font-semibold bg-main text-white-500 w-full py-4 rounded-lg hover:bg-green-800 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                            <span class="ml-">
+                            type="submit"
+                            class="mt-5 tracking-wide font-semibold bg-main text-gray-100 w-full py-4 rounded-lg hover:bg-green-800 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                            <span class="ml-2">
                                 Sign In
                             </span>
                         </button>
@@ -51,4 +61,7 @@
         </div>
     </div>
 </div>
-@endsection
+@include('partials.scripts')
+@yield('content-js')
+</body>
+</html>
