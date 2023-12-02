@@ -131,7 +131,7 @@
               <h1 class="mb-6 md:mb-8 text-2xl md:text-3xl font-medium text-center text-main">About Us</h1>
               <div data-aos="zoom-in-up" data-aos-delay="70" data-aos-duration="1500" data-aos-mirror="true" class="aos-init aos-animate transition-all duration-500 ease-in-out">
                   <p class="mb-6 text-lg text-center text-gray-600">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      PT. Asa Prima Niaga merupakan perusahaan yang bergerak di bidang Distributor Alat Kesehatan yang berpusat di Jogja.
                       <div class="border-b-2 border-green-500"></div>
 
                   </p>

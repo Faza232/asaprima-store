@@ -5,7 +5,7 @@
         <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
               <a href="" class="flex items-center">
-                  <img src="img/APN_Logo.png" class="h-8 me-3" alt="FlowBite Logo" />
+                  <img src="img/APN_Logo.png" class="h-8 me-3" alt=""/>
                   <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">PT ASA PRIMA NIAGA</span>
               </a>
           </div>
