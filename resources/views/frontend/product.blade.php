@@ -20,8 +20,7 @@
                   @foreach($subcategories as $subcategory)
                   @if($subcategory->category_id == $category->id)
                       <li>
-                          <div class="flex items-center w-full p-2 text-sm font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover-bg-gray-700 pl-11" data-subcategory-id="{{ $subcategory->id }}">{{ $subcategory->name }}
-                          </div>
+                        <a href="/product?subcategory={{ $subcategory->id }}" class="flex items-center w-full p-2 text-sm font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover-bg-gray-700 pl-11" data-subcategory-id="{{ $subcategory->id }}">{{ $subcategory->name }}</a>
                       </li>
                   @endif              
               @endforeach                           

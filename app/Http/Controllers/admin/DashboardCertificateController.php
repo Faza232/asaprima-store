@@ -127,7 +127,7 @@ class DashboardCertificateController extends Controller
             unlink($imagepath);
         }
 
-        Certificate::destroy(@$certificate->id);   // delete from post where id = slug
+        Certificate::destroy($certificate->id);   // delete from post where id = slug
         return redirect('/dashboard/certificate')->with('success', 'Post has been deleted');
     }
 }

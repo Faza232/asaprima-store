@@ -14,7 +14,7 @@
             <a href="/article/{{ $articles[0]->slug }}">
               @if($articles[0]->image)
               <img class="w-full"
-              sr="{{ $articles[0]->image }}"
+              src="{{ $articles[0]->image }}"
               alt="image">
               @else
                 <img class="w-full"

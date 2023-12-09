@@ -20,7 +20,10 @@ class ProductController extends Controller
     {
         $title = '';
         $active = '';
-
+        $status=true;
+        if(request('status')){
+            $status = request('status');
+        }
         if(request('subcategory')){
             $subcategory = SubCategory::firstWhere('id', request('subcategory'));
             $title = ' in '.$subcategory->name;
@@ -30,7 +33,7 @@ class ProductController extends Controller
             'active'=> $active,
             'categories'=> Category::all(),
             'subcategories'=>SubCategory::all(),
-            'products'=>Product::latest()->filter(request(['subcategory']))->get()
+            'products'=>Product::latest()->filter(request(['subcategory']))->where('status',$status)->get()
         ]);
     }
 

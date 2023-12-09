@@ -8,7 +8,7 @@
 
             @if ($article->image)
                 <div class="flex items-center justify-center">
-                    <img src="{{$article->image}}" alt="{{ $article->image }}">
+                    <img src={{ asset($article->image) }} alt="{{ $article->image }}">
                 </div>
             @else
                 <div class="flex items-center justify-center">

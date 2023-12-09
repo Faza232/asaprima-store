@@ -5,7 +5,7 @@
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
   <div class="mx-auto w-full max-w-[550px]">
-    <form action="/dashboard/sertifikat" method="POST" enctype="multipart/form-data">
+    <form action="/dashboard/certificate" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="mb-5">
         <label

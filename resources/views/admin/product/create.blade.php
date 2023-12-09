@@ -52,12 +52,40 @@
       {{-- Description --}}
       <div class="relative mb-6">
         <label for="description" class="mb-2 inline-block text-sm text-neutral-700 font-medium">Description</label>
-        <textarea class="full-featured-non-premium" id="description" name="description" required></textarea>        
+        <textarea class="full-featured-non-premium" id="description" name="description"></textarea>        
       </div>
 
+            {{-- Status --}}
+            <h3 class="mb-5 text-lg font-medium text-gray-900">Status</h3>
+            <ul class="mb-6 grid w-full gap-6 md:grid-cols-2">
+                <li>
+                    <input type="radio" id="status-app" name="status" value="1" class="hidden peer" required>
+                    <label for="status-app" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-main peer-checked:text-main hover:text-gray-600 hover:bg-gray-100">                           
+                        <div class="block">
+                            <div class="w-full text-lg font-semibold">Publish</div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ms-3">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>                  
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="status-not" name="status" value="0" class="hidden peer">
+                    <label for="status-not" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-red-600 peer-checked:text-red-600 hover:text-gray-600 hover:bg-gray-100">
+                        <div class="block">
+                            <div class="w-full text-lg font-semibold">Don't Publish</div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ms-3">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>                  
+                    </label>
+                </li>
+            </ul>
+      
+
       {{-- Button --}}
-      <a href="/dashboard/product">
-        <button type="button" class="mr-1 rounded-lg py-2 px-4 text-sm !bg-slate-500 hover:!bg-slate-800 text-white">Cancel</button>
+      <a href="/dashboard/product" class="mr-1 rounded-lg py-2 px-4 text-sm !bg-slate-500 hover:!bg-slate-800 text-white">
+        Cancel
       </a>
       <button type="submit" class="rounded-lg py-2 px-4 text-sm !bg-blue-500 hover:!bg-blue-800 text-white">Create Product</button>
   </form>
@@ -83,10 +111,6 @@
       slug.value = preslug.toLowerCase();
   });
 
-  // Mematikan fungsi upload file dalam trix editor
-  document.addEventListener('trix-file-accept', function(e){
-      e.preventDefault();
-  })
 
   // Menampilkan preview gambar yang diupload
   function previewImage(){

@@ -75,7 +75,8 @@ class DashboardProductController extends Controller
             'image' => 'image|file|max:5048',
             'category_id' => 'required',
             'subcategory_id' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'status'=>'required'
         ]);
 
         // Buat name foto agar tidak tabrakan
@@ -156,6 +157,18 @@ class DashboardProductController extends Controller
             ->update($validatedData);
 
         return redirect('/dashboard/product')->with('success', 'New Product has been updated');
+    }
+
+    public function approve(Product $product)
+    {
+        $product->update(['status' => true]);
+        return redirect('/dashboard/product')->with('success', 'product has been approved');
+    }
+    
+    public function notapprove(Product $product)
+    {
+        $product->update(['status' => false]);
+        return redirect('/dashboard/product')->with('success', 'product has not been approved');
     }
 
     /**
