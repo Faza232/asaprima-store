@@ -3,8 +3,14 @@
 <title>Products</title>
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
-  <div class="container ">
-    <form action="/product" method="GET">
+  <section class="py-6 px-6 sm:px-8 md:px-16 lg:px-32">
+  <div class="mb-6 flex flex-col sm:flex-row justify-between">
+    <div>
+      <div class="mb-6 text-md">
+        Product
+      </div>
+    </div>
+    {{-- <form action="/product" method="GET">
       <div class="flex relative mt-6 max-w-lg mx-auto px-14">
         <input name="search" id="search" class="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" type="text" placeholder="Search">
         <button class="rounded-lg border bg-main p-2 ml-2 text-gray-100" type="submit">
@@ -12,7 +18,19 @@
             <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg></button>
       </div>
-  </form>
+  </form> --}}
+  <form action="/product" class="flex flex-row space-x-3" method="GET">
+        
+    <div class="flex items-center">   
+      <input type="text" id="search" name="search" class="bg-neutral-50 border border-gray-300 text-gray-900 focus:shadow-sm focus:shadow-[#EA6C20]/10 focus:border-[#EA6C20] focus:ring-0 text-sm rounded-lg block w-full p-2.5" placeholder="Type here..." required="">
+      <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-[#EA6C20] rounded-lg border hover:bg-orange-600">
+          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+          </svg>
+          <span class="sr-only">Search</span>
+      </button>
+    </div>
+    </form>
   </div>
 
   <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -22,9 +40,8 @@
     </svg>
  </button>
 
-    <div class="container mx-auto px-4 flex sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-    <aside id="logo-sidebar" class="h-max overflow-y-auto relative top-0 left-0 z-40 w-max transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-      <div class="my-4 ml-4 px-3 py-2 rounded-xl shadow-lg h-max overflow-y-auto bg-neutral-50 border border-gray-200">
+    <aside id="logo-sidebar" class="relative top-0 left-0 z-40 w-max sm:max-h-100 md:h-max lg:h-max transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+      <div class="my-4 ml-4 px-3 py-2 rounded-xl shadow-lg overflow-y-auto md:h-max lg:h-max bg-neutral-50 border border-gray-200">
         <h3 class="text-main text-2xl py-4 font-medium text-center">category</h3>
         <hr class="h-px mt-0 mb-3 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
           <ul class="space-y-2">
@@ -73,6 +90,6 @@
    @endforeach
       </div>
    </div>
-    </div>
+  </section>
     @endsection
     
