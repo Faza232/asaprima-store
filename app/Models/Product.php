@@ -52,9 +52,5 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class,'category_id');
     }
-    public function variasi()
-    {
-        return $this->hasMany(Variasi::class);
-    }  
     
 }
