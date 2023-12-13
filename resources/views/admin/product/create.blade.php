@@ -81,8 +81,11 @@
                     </label>
                 </li>
             </ul>
-      
-
+            @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+            @endif
       {{-- Button --}}
       <a href="/dashboard/product" class="mr-1 rounded-lg py-2 px-4 text-sm !bg-slate-500 hover:!bg-slate-800 text-white">
         Cancel

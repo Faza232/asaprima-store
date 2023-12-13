@@ -75,11 +75,11 @@ class DashboardProductController extends Controller
             'image' => 'image|file|max:5048',
             'category_id' => 'required',
             'subcategory_id' => 'required',
-            'description' => 'required',
+            'description' => 'nullable|string',
             'status'=>'required'
         ]);
-
         // Buat name foto agar tidak tabrakan
+        if($request->file('image')) {
         $extFile = $request->image->getClientOriginalExtension();
         $nameFile = Str::random(10) . time() . '.' . $extFile;
 
@@ -87,6 +87,10 @@ class DashboardProductController extends Controller
         $path = str_replace('\\', '/', $path);
 
         $validatedData['image'] = $path;
+        }
+        if (!$request->has('description')) {
+            return redirect()->back()->with('error', 'Description is required.');
+        }
         $validatedData['excerpt'] = Str::limit(strip_tags($request->description), 75);
     
 
@@ -132,7 +136,7 @@ class DashboardProductController extends Controller
             'image' => 'image|file|max:5048',
             'category_id' => 'required',
             'subcategory_id' => 'required',
-            'description' => 'required'
+            'description' => 'nullable|string'
         ];
 
         $validatedData = $request->validate($rules);

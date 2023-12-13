@@ -7,12 +7,13 @@
 
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div class="my-4 ml-4 px-3 py-4 rounded-xl shadow-lg h-max overflow-y-auto bg-neutral-50 border border-gray-200">
+      <hr class="h-px mt-0 mb-3 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+
       <a href="/" class="flex items-center ps-2.5 mb-5">
          <img src="/img/APN_Logo.png" class="h-6 me-3 sm:h-10" alt="APN Logo" />
          <span class="self-center text-lg text-gray-700 font-semibold whitespace-nowrap">Asa Prima Niaga</span>
       </a>
 
-      <hr class="h-px mt-0 mb-3 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
 
       <ul class="space-y-2 font-medium">
          <li>

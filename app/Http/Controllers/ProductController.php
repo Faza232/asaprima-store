@@ -33,7 +33,7 @@ class ProductController extends Controller
             'active'=> $active,
             'categories'=> Category::all(),
             'subcategories'=>SubCategory::all(),
-            'products'=>Product::latest()->filter(request(['subcategory']))->where('status',$status)->get()
+            'products'=>Product::latest()->filter(request(['search','subcategory']))->where('status',$status)->get()
         ]);
     }
 

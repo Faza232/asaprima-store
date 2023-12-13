@@ -28,18 +28,30 @@
         class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
         aria-current="true"
         aria-label="Slide 1"></button>
+        @if($count>1)
       <button
         type="button"
         data-te-target="#carouselExampleIndicators"
         data-te-slide-to="1"
         class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
         aria-label="Slide 2"></button>
+        @endif
+        @if($count>2)
       <button
         type="button"
         data-te-target="#carouselExampleIndicators"
         data-te-slide-to="2"
         class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
         aria-label="Slide 3"></button>
+        @endif
+        @if($count>3)
+        <button
+        type="button"
+        data-te-target="#carouselExampleIndicators"
+        data-te-slide-to="3"
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 4"></button>
+        @endif
   </div>
     
   <!--Carousel items-->
@@ -51,28 +63,23 @@
       data-te-carousel-item
       data-te-carousel-active>
       <img
-        src="img/banner.png"
+        src="{{ $carousels[0]->image }}"
         class="block w-full"
         alt="" />
     </div>
     <!--Second item-->
+    @foreach($carousels->skip(1) as $image)
     <div
       class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
       data-te-carousel-item>
       <img
-        src="img/banner1.png"
+        src="{{ $image->image }}"
         class="block w-full"
         alt="" />
     </div>
+    @endforeach
     <!--Third item-->
-    <div
-      class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item>
-      <img
-        src="img/banner2.png"
-        class="block w-full"
-        alt="" />
-    </div>
+
   </div>
   
   <!--Carousel controls - prev item-->
