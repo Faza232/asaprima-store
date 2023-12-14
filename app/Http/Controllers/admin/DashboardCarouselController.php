@@ -42,7 +42,7 @@ class DashboardCarouselController extends Controller
         // Proses Menyimpan data
         $validatedData = $request->validate([
             'link' => 'required',
-            'image' => 'required|image|file|max:3000',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
         ]);
         // Buat name foto agar tidak tabrakan
         $extFile = $request->image->getClientOriginalExtension();

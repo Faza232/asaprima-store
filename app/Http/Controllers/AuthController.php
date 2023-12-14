@@ -17,9 +17,9 @@ class AuthController extends Controller
     public function register()
     {
         if (Auth::check()) {
-            return redirect('/dashboard');
+            return view('admin.auth.register');
         }
-        return view('admin.auth.register');
+        return redirect('/dashboard');
     }
  
     // Proses menyimpan data register

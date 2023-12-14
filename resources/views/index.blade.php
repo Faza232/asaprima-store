@@ -79,7 +79,6 @@
     </div>
     @endforeach
     <!--Third item-->
-
   </div>
   
   <!--Carousel controls - prev item-->
