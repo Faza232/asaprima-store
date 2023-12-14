@@ -11,6 +11,11 @@ class Product extends Model
 
     public function scopeFilter($query, array $filters)
     {
+        $query->when($filters['search'] ?? false, function($query, $search) {
+            return $query->where(function($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%');
+            });
+        });
 
         $query->when($filters['subcategory'] ?? false, function($query, $subcategory) {
             return $query->whereHas('subcategory', function($query) use ($subcategory) {
@@ -47,8 +52,5 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class,'category_id');
     }
-    public function variasi()
-    {
-        return $this->hasMany(Variasi::class);
-    }  
+    
 }

@@ -72,13 +72,14 @@ class DashboardProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required',
-            'image' => 'image|file|max:5048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
             'category_id' => 'required',
             'subcategory_id' => 'required',
-            'description' => 'required'
+            'description' => 'nullable|string',
+            'status'=>'required'
         ]);
-
         // Buat name foto agar tidak tabrakan
+        if($request->file('image')) {
         $extFile = $request->image->getClientOriginalExtension();
         $nameFile = Str::random(10) . time() . '.' . $extFile;
 
@@ -86,6 +87,10 @@ class DashboardProductController extends Controller
         $path = str_replace('\\', '/', $path);
 
         $validatedData['image'] = $path;
+        }
+        if (!$request->has('description')) {
+            return redirect()->back()->with('error', 'Description is required.');
+        }
         $validatedData['excerpt'] = Str::limit(strip_tags($request->description), 75);
     
 
@@ -128,10 +133,10 @@ class DashboardProductController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'slug' => 'required',
-            'image' => 'image|file|max:5048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
             'category_id' => 'required',
             'subcategory_id' => 'required',
-            'description' => 'required'
+            'description' => 'nullable|string'
         ];
 
         $validatedData = $request->validate($rules);
@@ -156,6 +161,18 @@ class DashboardProductController extends Controller
             ->update($validatedData);
 
         return redirect('/dashboard/product')->with('success', 'New Product has been updated');
+    }
+
+    public function approve(Product $product)
+    {
+        $product->update(['status' => true]);
+        return redirect('/dashboard/product')->with('success', 'product has been approved');
+    }
+    
+    public function notapprove(Product $product)
+    {
+        $product->update(['status' => false]);
+        return redirect('/dashboard/product')->with('success', 'product has not been approved');
     }
 
     /**

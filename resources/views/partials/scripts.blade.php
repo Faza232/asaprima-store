@@ -5,3 +5,4 @@
 
 {{-- halaman product user --}}
 <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

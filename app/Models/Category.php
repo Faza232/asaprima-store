@@ -12,8 +12,17 @@ class Category extends Model
 
     protected $guarded = ['id'];
     
-    public function subkategori()
+    public function SubCategory()
     {
         return $this->hasMany(SubCategory::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($category) {
+            $category->subCategory()->delete();
+        });
     }
 }

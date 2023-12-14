@@ -17,16 +17,16 @@ class DashboardSubCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.subkategori.index', [
-            'subkategori' => SubCategory::all()
+        return view('admin.subcategory.index', [
+            'subcategory' => SubCategory::all()
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Category $kategori){
-        return view ('admin.subkategori.create');
+    public function create(Category $category){
+        return view ('admin.subcategory.create');
     }
 
     /**
@@ -36,53 +36,55 @@ class DashboardSubCategoryController extends Controller
     {
         // Validasi data jika diperlukan
         $validatedData = $request->validate([
-            'nama' => 'required|max:255',
-            'slug' => 'required|max:255',
-            'kategori_id' => 'required'
+            'name' => 'required|max:255',
+            'category_id' => 'required'
         ]);
+        // Membuat slug dari nama
+        $slug = strtolower(str_replace(' ', '-', $validatedData['name']));
+        $validatedData['slug'] = $slug;
         SubCategory::create($validatedData);
 
-        return redirect('/dashboard/subkategori')->with('success', 'New SubCategory has been added!');
+        return redirect('/dashboard/category')->with('success', 'New SubCategory has been added!');
     }
 
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SubCategory $subkategori)
+    public function edit(SubCategory $subcategory)
     {
         // menampilkan view untuk update
-        return view('admin.subkategori.edit', [
-            'subkategori' => $subkategori
+        return view('admin.subcategory.edit', [
+            'subcategory' => $subcategory
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SubCategory $subkategori)
+    public function update(Request $request, SubCategory $subcategory)
     {
         // dd($request);
         //proses update
         $rules = [
-            'nama' => 'required|max:255',
+            'name' => 'required|max:255',
             'slug' => 'required|max:255',
-            'kategori_id' => 'required'
+            'category_id' => 'required'
         ];
         $validatedData = $request->validate($rules);
 
-        SubCategory::where('id', $subkategori->id)
+        SubCategory::where('id', $subcategory->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/subkategori')->with('success', 'SubCategory has been updated!');
+        return redirect('/dashboard/category')->with('success', 'SubCategory has been updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SubCategory $subkategori)
+    public function destroy(SubCategory $subcategory)
     {
-        SubCategory::destroy($subkategori->id);
-        return redirect('/dashboard/subkategori')->with('success', 'SubCategory has been deleted');
+        SubCategory::destroy($subcategory->id);
+        return redirect('/dashboard/category')->with('success', 'SubCategory has been deleted');
     }    
 }

@@ -40,7 +40,7 @@ class DashboardCertificateController extends Controller
             'name' => 'required|max:255',
             'slug'=> 'required',
             'year'=> 'required',
-            'image' => 'nullable|image|file|max:3000',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
         ]);
         // Buat name foto agar tidak tabrakan
         $extFile = $request->image->getClientOriginalExtension();
@@ -89,7 +89,7 @@ class DashboardCertificateController extends Controller
             'name' => 'required|max:255',
             'slug'=> 'required',
             'year'=> 'required',
-            'image' => 'nullable|image|file|max:3000',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
         ];
 
         $validatedData = $request->validate($rules);
@@ -127,7 +127,7 @@ class DashboardCertificateController extends Controller
             unlink($imagepath);
         }
 
-        Certificate::destroy(@$certificate->id);   // delete from post where id = slug
+        Certificate::destroy($certificate->id);   // delete from post where id = slug
         return redirect('/dashboard/certificate')->with('success', 'Post has been deleted');
     }
 }

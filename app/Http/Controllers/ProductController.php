@@ -18,19 +18,34 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $title = '';
+        $subtitle = '';
         $active = '';
-
+        $search = '';
+        $sortOrder = 'asc';
+        $sortColumn = 'created_at';
+        $status=true;
+        if(request('status')){
+            $status = request('status');
+        }
+        if(request('search')){
+            $search = request('status');
+        }
+        if(request('sort')){
+            $sortOrder = request('sort_order');
+            $sortColumn = request('sort_column');
+        }
         if(request('subcategory')){
             $subcategory = SubCategory::firstWhere('id', request('subcategory'));
-            $title = ' in '.$subcategory->name;
+            $subtitle = $subcategory->name;
             $active = $subcategory->id;
         }
         return view("frontend.product", [
+            'subtitle'=>$subtitle,
             'active'=> $active,
+            'search'=>$search,
             'categories'=> Category::all(),
-            'subcategories'=>SubCategory::all(),
-            'products'=>Product::latest()->filter(request(['subcategory']))->paginate(7)->withQueryString()
+            'subcategories' => SubCategory::orderBy('id')->get(),   
+            'products'=>Product::latest()->filter(request(['search','subcategory']))->where('status',$status)->orderBy($sortColumn, $sortOrder)->get()
         ]);
     }
 

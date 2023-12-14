@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Carousel;
 
 class Home extends Controller
 {
@@ -17,7 +18,9 @@ class Home extends Controller
                 ->where('status', true)
                 ->select('name', 'body')
                 ->take(3)
-                ->get()
+                ->get(), 
+            'carousels' => Carousel::all(),
+            'count'=> Carousel::count()
         ]);
     }
     public function contact(){

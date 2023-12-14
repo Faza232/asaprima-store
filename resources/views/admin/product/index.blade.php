@@ -54,7 +54,10 @@
                         Sub Kategori
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Variasi
+                        Status
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Approval
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Aksi
@@ -71,19 +74,52 @@
                         {{$product->name}}
                     </td>
                     <td class="px-6 py-4">
-                        {{$product->category->name}}
+                        {{$product?->category?->name}}
                     </td>
                     <td class="px-6 py-4">
                         {{$product->subcategory->name}}
                     </td>
+                    @if ($product->status)
                     <td class="px-6 py-4">
-                        <a href="#" class="flex items-center px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 hover:text-slate-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                            </svg>                       
-                            <span class="inline">Edit Variasi</span>
-                          </a>
+                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h2 class="text-sm font-normal">Published</h2>
+                        </div>
                     </td>
+                    <td class="px-6 py-4">
+                        <div class="flex items-center">
+                            <form action="{{ route('product.notapprove', $product->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                    <button class="text-red-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                        Dont Publish
+                                    </button>
+                                </form>
+                        </div>
+                    </td>
+                @else
+                    <td class="px-6 py-4">
+                        <div class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h2 class="text-sm font-normal">Unpublished</h2>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="flex">
+                            <form action="{{ route('product.approve', $product->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button class="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
+                                    Publish
+                                </button>
+                                </form>
+                        </div>
+                    </td>
+                @endif
                     <td class="px-6 py-4">
                         <div class="flex flex-row space-x-4">
                             {{-- Edit Button --}}

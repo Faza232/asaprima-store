@@ -2,7 +2,15 @@
 @section('container')
 
 <!-- <div class="container mx-auto px-30"> -->
-<div>
+  <!-- Add this in your HTML head -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+<!-- Add this before the closing body tag -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+<div class="sm:px-6 lg:px-8 ">
   <div
     id="carouselExampleIndicators"
     class="relative"
@@ -20,18 +28,30 @@
         class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
         aria-current="true"
         aria-label="Slide 1"></button>
+        @if($count>1)
       <button
         type="button"
         data-te-target="#carouselExampleIndicators"
         data-te-slide-to="1"
         class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
         aria-label="Slide 2"></button>
+        @endif
+        @if($count>2)
       <button
         type="button"
         data-te-target="#carouselExampleIndicators"
         data-te-slide-to="2"
         class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
         aria-label="Slide 3"></button>
+        @endif
+        @if($count>3)
+        <button
+        type="button"
+        data-te-target="#carouselExampleIndicators"
+        data-te-slide-to="3"
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 4"></button>
+        @endif
   </div>
     
   <!--Carousel items-->
@@ -43,28 +63,22 @@
       data-te-carousel-item
       data-te-carousel-active>
       <img
-        src="img/banner.png"
+        src="{{ $carousels[0]->image }}"
         class="block w-full"
         alt="" />
     </div>
     <!--Second item-->
+    @foreach($carousels->skip(1) as $image)
     <div
       class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
       data-te-carousel-item>
       <img
-        src="img/banner1.png"
+        src="{{ $image->image }}"
         class="block w-full"
         alt="" />
     </div>
+    @endforeach
     <!--Third item-->
-    <div
-      class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item>
-      <img
-        src="img/banner2.png"
-        class="block w-full"
-        alt="" />
-    </div>
   </div>
   
   <!--Carousel controls - prev item-->
@@ -117,78 +131,82 @@
       >Next</span>
   </button> 
 </div>
-      
-    <!-- </div> -->
+    
         <div class="sm:px-6 lg:px-8">
-        <div class="text-center">
-        <h2 class="text-main text-2xl font-medium text-center mt-8 ">About Us</h2>
-        <p class="mb-2 text-center text-gray-600 ">
-                Lorem ipsum dolor, sit amet consectetur adipbodycing elit. Similique sapiente iusto esse.
-            </p>
-        </div>
-        <div class="mt-21">
-        <h3 class="text-main text-2xl font-medium text-center mt-8">Product Categories</h3>
-            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mt-6">
-                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                    <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('cart/cat-1.jpg')" >
-                        <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        </button>
-                        
-                    </div>
-                    <div class="px-5 py-3 transition duration-300 hover:text-blue-500">
-                        <h3 class="text-gray-700 uppercase">Instruments & Orthopedi​</h3>
-                        <span class="text-gray-500 mt-2"></span>
+            <div class="p-6 max-w-2xl lg:max-w-7xl flex flex-col items-center justify-center mx-auto">
+              <h1 class="mb-6 md:mb-8 text-2xl md:text-3xl font-medium text-center text-main">About Us</h1>
+              <div data-aos="zoom-in-up" data-aos-delay="70" data-aos-duration="1500" data-aos-mirror="true" class="aos-init aos-animate transition-all duration-500 ease-in-out">
+                  <p class="mb-6 text-lg text-center text-gray-600">
+                      PT. Asa Prima Niaga merupakan perusahaan yang bergerak di bidang Distributor Alat Kesehatan yang berpusat di Jogja.
+                      <div class="border-b-2 border-green-500"></div>
+
+                  </p>
+              </div>
+              
+
+            </div>
+
+          <div class="">
+            <div class="mt-8">
+              <h3 class="text-main text-2xl font-medium text-center mt-8">Product Categories</h3>
+              <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mt-6">
+                    <div class="z-10 max-w-sm rounded-md h-fit overflow-hidden shadow-lg group sm:max-w-2xl lg:max-w-sm aos-init aos-animate" data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000" data-aos-mirror="true">
+                        <div class="flex items-end justify-end h-40 sm:h-56 w-full bg-cover" style="background-image: url('cart/cat-1.png')">
+                        </div>
+                        <div class="px-4 py-3 transition duration-300 hover:text-blue-500">
+                            <h3 class="text-main text-lg font-medium text-center mt-4 sm:mt-8">Instruments & Orthopedic</h3>
+                            <span class="text-gray-500 mt-2"></span>
+                        </div>
                     </div>
 
-                </div>
-                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                    <div class="flex items-end justify-end h-56 w-full bg-cover"style="background-image: url('cart/cat-2.jpg')" >
-                        <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="px-5 py-3">
-                        <h3 class="text-gray-700 uppercase">Implants</h3>
-                        <span class="text-gray-500 mt-2"></span>
-                    </div>
-                </div>
-                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                    <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('cart/cat-3.jpg')" >
-                        <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="px-5 py-3">
-                        <h3 class="text-gray-700 uppercase">General Instruments Surgical</h3>
-                        <span class="text-gray-500 mt-2"></span>
-                    </div>
-                </div>
+                  <div class="z-10 max-w-sm rounded-md h-fit overflow-hidden shadow-lg group sm:max-w-2xl lg:max-w-sm aos-init aos-animate" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-mirror="true">
+                      <div class="flex items-end justify-end h-40 sm:h-56 w-full bg-cover" style="background-image: url('cart/cat-2.png')">
+                      </div>
+                      <div class="px-4 py-3 transition duration-300 hover:text-blue-500">
+                          <h3 class="text-main text-lg font-medium text-center mt-4 sm:mt-8">Implants</h3>
+                          <span class="text-gray-500 mt-2"></span>
+                      </div>
+                  </div>
+
+                  <div class="z-10 max-w-sm rounded-md h-fit overflow-hidden shadow-lg group sm:max-w-2xl lg:max-w-sm aos-init aos-animate" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1000" data-aos-mirror="true">">
+                      <div class="flex items-end justify-end h-40 sm:h-56 w-full bg-cover" style="background-image: url('cart/cat-3.jpg')">
+                      </div>
+                      <div class="px-4 py-3 transition duration-300 hover:text-blue-500">
+                          <h3 class="text-main text-lg font-medium text-center mt-4 sm:mt-8">General Instruments Surgical</h3>
+                          <span class="text-gray-500 mt-2"></span>
+                      </div>
+                  </div>
             </div>
-        </div>
-    </div>
+      </div>
     
 
 <!-- Testimonials  -->
-<div class="sm:px-6 lg:px-8">
-<div class="mb-8 text-center ">
-    <h3 class="text-main text-2xl font-medium text-center mt-8 bold">Testimonials</h3>
+<div class="sm:px-6 lg:px-8 mx-auto max-w-screen-2xl px-4 py-12">
+<div data-aos="flip-left" data-aos-delay="70" data-aos-duration="1500" data-aos-mirror="true" class="aos-init aos-animate transition-all duration-500 ease-in-out">
+                  <p class="mb-6 text-lg text-center text-gray-600">
+<div class="mb-8 text-center">
+    <h3 class="text-main text-2xl font-medium mt-8 bold">Testimonials</h3>
+    <div class="mx-auto w-40 border-t-2 border-main mt-2"></div>
     <p class="text-lg text-gray-600">What others say about us</p>
 </div>
-<div class="grid grid-cols-3 grid-flow-rows gap-4 py-12">
-@foreach ($reviews as $review)
-    <div class="p-4 text-gray-800 rounded-lg shadow-md">
-        <div class="mb-2">
-            <p class="mb-2 text-center text-gray-600 ">
-            {{$review->body}}
-            </p>
-            <div class="flex flex-col items-center justify-center">
-                <h5 class="font-bold text-indigo-600">{{$review->name}}</h5>
-                <p class="text-sm text-gray-600">Customer</p>
+</div>
+
+<div class=<div class="z-10 max-w-sm rounded-md h-fit overflow-hidden shadow-lg group sm:max-w-2xl lg:max-w-sm aos-init aos-animate" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-mirror="true">
+    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 grid-flow-rows gap-4 py-12">
+        @foreach ($reviews as $review)
+            <div class="p-4 text-gray-800 rounded-lg shadow-md">
+                <div class="mb-2">
+                    <p class="mb-2 text-center text-gray-600">
+                        {{$review->body}}
+                    </p>
+                    <div class="flex flex-col items-center justify-center">
+                        <h5 class="text-main font-normal text-center mt-8">{{$review->name}}</h5>
+                        <p class="text-sm text-gray-600 font-normal">Customer</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        @endforeach
     </div>
-  @endforeach
 </div>
 
 </div>
