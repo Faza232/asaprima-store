@@ -88,7 +88,6 @@
           @endif
           </div>
           <div class="grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8 2xl:grid-cols-4">
-            
             @foreach($products as $product)
             <a href="/product/{{ $product->slug }}" class="group">
               <div class="relative max-w-xs lg:min-w-[200px] md:min-w-[100px] bg-white rounded-lg mx-1 my-3 cursor-pointer">
@@ -107,9 +106,8 @@
               <h3 class="text-center font-semibold text-white text-2xl">-------------------------------------------------</h3>
               @endif
             </div>
-          </div>
+          </div> --}}
         </div>
     </div>
   </section>
     @endsection
-    
