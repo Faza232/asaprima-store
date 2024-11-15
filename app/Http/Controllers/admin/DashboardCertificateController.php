@@ -40,7 +40,7 @@ class DashboardCertificateController extends Controller
             'name' => 'required|max:255',
             'slug'=> 'required',
             'year'=> 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
+            'image' => 'nullable|image|file|max:3000',
         ]);
         // Buat name foto agar tidak tabrakan
         $extFile = $request->image->getClientOriginalExtension();
@@ -89,7 +89,7 @@ class DashboardCertificateController extends Controller
             'name' => 'required|max:255',
             'slug'=> 'required',
             'year'=> 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
+            'image' => 'nullable|image|file|max:3000',
         ];
 
         $validatedData = $request->validate($rules);

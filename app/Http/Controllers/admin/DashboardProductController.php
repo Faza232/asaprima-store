@@ -72,7 +72,7 @@ class DashboardProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
+            'image' => 'image|file|max:5048',
             'category_id' => 'required',
             'subcategory_id' => 'required',
             'description' => 'nullable|string',
@@ -133,7 +133,7 @@ class DashboardProductController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'slug' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
+            'image' => 'image|file|max:5048',
             'category_id' => 'required',
             'subcategory_id' => 'required',
             'description' => 'nullable|string'

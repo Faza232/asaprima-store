@@ -39,7 +39,7 @@ class DashboardArticleController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:articles',
             'body' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
+            'image' => 'nullable|image|file|max:3000',
             'status'=>'required'
         ]);
         // Buat nama foto agar tidak tabrakan
@@ -88,7 +88,7 @@ class DashboardArticleController extends Controller
         $rules = [
             'title' => 'required|max:255',
             'slug'=> 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|size:10240',
+            'image' => 'image|file|max:3000',
             'body' => 'required'
         ];
 

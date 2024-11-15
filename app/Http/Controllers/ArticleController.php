@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\article;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -20,11 +20,12 @@ class ArticleController extends Controller
         return view('frontend.article', [
             "title" => "All article",
             "active" => "article",
+            "article1" => Article::selectRaw('*')->latest()->first(),
             "articles" => Article::latest()
             ->selectRaw('*, DATE_FORMAT(CONVERT_TZ(created_at, "+00:00", "+07:00"), "%d %M %Y") as formatted_created_date')
             ->where('status',$status)
             ->orderBy("created_at","desc")
-            ->paginate(9)
+            ->paginate(6)
         ]);
     }
     /**
